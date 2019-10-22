@@ -41,7 +41,7 @@ li {
     background-color: rgb(0, 117, 195);
 }
 
-@media only screen and (max-width: 481px){
+/* @media only screen and (max-width: 481px){
 
     #navbar {
         position: fixed;
@@ -67,5 +67,5 @@ li {
         float:right;
     }
 
-}
+} */
 
