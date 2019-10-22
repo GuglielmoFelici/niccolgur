@@ -8,9 +8,7 @@ li {
 }
 
 #navbar{
-    list-style-type: none;
-    margin: 0;
-    padding-right: 50px;
+    margin-top: 0;
     overflow: hidden;
     background-color: #333;
 }
@@ -23,11 +21,9 @@ li {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
 }
 
-/* Change the link color on hover */
 #navbar li a:hover {
     color: white;
     text-decoration: none;
@@ -44,3 +40,32 @@ li {
     text-decoration: none;
     background-color: rgb(0, 117, 195);
 }
+
+@media only screen and (max-width: 481px){
+
+    #navbar {
+        position: fixed;
+        top: 0;
+    }
+
+    #navbar li * {
+        padding: 14px 20px;
+    }
+}
+
+@media only screen and (min-width: 482px){
+    
+    #navbar{
+        padding-right: 50px;
+    }
+
+    #navbar li * {
+        padding: 14px 16px;
+    }
+
+    #navbar-search {
+        float:right;
+    }
+
+}
+

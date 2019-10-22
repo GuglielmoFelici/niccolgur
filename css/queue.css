@@ -35,7 +35,12 @@
     background-color: #c8d6f0 !important;
 }
 
-@media screen and (max-width: 481px){
+@media only screen and (max-width: 481px){
+
+    #queue li img {
+        height: auto;
+        width: 150px;
+    }
 
     
     /*write your CSS-Code here*/
