@@ -34,3 +34,13 @@
 .master:hover {
     background-color: #c8d6f0 !important;
 }
+
+@media screen and (max-width: 481px){
+
+    li {
+        background-color: red;
+    }
+    /*write your CSS-Code here*/
+  
+  
+  }
