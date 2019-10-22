@@ -1,6 +1,6 @@
-/* FOSCAIOLI GAY */
+/* MOBILE */
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 500px) {
 
     /* Lista */
     #queue {
@@ -51,62 +51,6 @@
         background-color: #c8d6f0 !important;
     }
 }
-
-
-/* MOBILE */
-
-@media only screen and (min-width: 301px) and (max-width: 800px) {
-
-    /* Lista */
-    #queue {
-        padding-left: 0;
-        margin-top: 50px;
-    }
-
-    /* Riga */
-    #queue li {
-        padding: 5px 0 5px 0;
-        overflow: auto;
-    }
-       
-    #queue li:hover {
-        background: #eee;
-        cursor: pointer;
-    }
-    
-    /* Foto */
-    #queue li img {
-        margin: 0 5px 0 5px;
-        height: auto;
-        width: 50px;
-        float: left;
-    }
-    
-    /* Nome */
-    #queue li h2 {
-        vertical-align: top;
-        margin: 0 0 5px 10px;
-        font-size: medium; 
-    }
-    
-    /* Bio */
-    #queue li p {
-        color: rgb(78, 78, 78);
-        display:inline;
-        font-size: small;
-    }
-    
-    /* Master */
-    .master {
-        background-color: #c8d6f0;
-    }
-    
-    .master:hover {
-        background-color: #c8d6f0 !important;
-    }
-
-  
-  }
 
 /* DESKTOP */
 
