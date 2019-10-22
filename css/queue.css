@@ -1,6 +1,6 @@
 /* MOBILE */
 
-@media only screen and (max-width: 499px) {
+@media only screen and (max-width: 799px) {
 
     /* Lista */
     #queue {
@@ -75,7 +75,7 @@
 
 /* DESKTOP */
 
-@media only screen and (min-width: 500px){
+@media only screen and (min-width: 800px){
 
     /* Lista */
     #queue {
