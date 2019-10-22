@@ -1,0 +1,36 @@
+#queue {
+    margin-top: 30px;
+}
+
+#queue li {
+    padding: 20px 0 20px 0;
+    overflow: auto;
+}
+   
+#queue li:hover {
+    background: #eee;
+    cursor: pointer;
+}
+
+#queue li img {
+    float: left;
+    margin: 0 15px 0 15px;
+    height: auto;
+    width: 150px;
+}
+
+#queue li h2 {
+    margin: 10px 0 10px 0;
+}
+
+#queue li p {
+    margin: 20px 70% 0 0;
+}
+
+.master {
+    background-color: #c8d6f0;
+}
+
+.master:hover {
+    background-color: #c8d6f0 !important;
+}
