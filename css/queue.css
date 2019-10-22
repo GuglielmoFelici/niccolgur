@@ -9,7 +9,6 @@
 }
 
 #queue li img {
-    float: left;
     margin: 0 15px 0 15px;
     height: auto;
     width: 150px;
@@ -34,17 +33,14 @@
 @media only screen and (max-width: 481px){
 
     #queue {
+        padding-left: 0;
         margin-top: 80px;
     }
 
-    #queue li img {
-        height: auto;
-        width: 150px;
+    #queue li h2 {
+        margin-top: 15%;
     }
 
-    
-    /*write your CSS-Code here*/
-  
   
   }
 
@@ -52,6 +48,10 @@
 
     #queue {
         margin-top: 30px;
+    }
+
+    #queue li img {
+        float: left;
     }
   
   
