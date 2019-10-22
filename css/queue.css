@@ -19,6 +19,8 @@
         background: #eee;
         cursor: pointer;
     }
+
+
     
     /* Foto */
     #queue li img {
@@ -38,9 +40,25 @@
     /* Bio */
     #queue li p {
         color: rgb(78, 78, 78);
-        display:inline;
+        margin: 0;
         font-size: x-small;
     }
+
+    #queue .highlighted > img {
+        max-height: 70px;
+        max-width: 70px;
+    }
+
+    #queue .highlighted > h2 {
+        font-size: medium;
+        margin-left: 90px;
+    }
+
+    #queue .highlighted > p {
+        font-size: small;
+        margin: 10px 0 0 90px;
+    }
+    
     
     /* Master */
     .master {

@@ -12,4 +12,8 @@ $(document).ready(function () {
             ).attr("class", (x, old) => i === 0 ? "master" : "")
         );
     })
+    $("li").on("click", (event) => {
+        $(".highlighted").removeClass("highlighted");
+        $(event.currentTarget).addClass("highlighted");
+    });
 });
