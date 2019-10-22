@@ -1,6 +1,6 @@
 /* FOSCAIOLI GAY */
 
-@media only screen and (max-width: 200px) {
+@media only screen and (max-width: 250px) {
 
     /* Lista */
     #queue {
@@ -55,7 +55,7 @@
 
 /* MOBILE */
 
-@media only screen and (min-width: 200px) and (max-width: 800px) {
+@media only screen and (min-width: 250px) and (max-width: 800px) {
 
     /* Lista */
     #queue {
