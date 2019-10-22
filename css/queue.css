@@ -1,6 +1,6 @@
 /* MOBILE */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 499px) {
 
     /* Lista */
     #queue {
@@ -28,6 +28,7 @@
         max-height: 30px;
         max-width: 30px;
         float: left;
+        transition: 500ms;
     }
     
     /* Nome */
@@ -35,6 +36,7 @@
         vertical-align: top;
         margin: 0 0 0 10px;
         font-size: small; 
+        transition: 500ms;
     }
     
     /* Bio */
@@ -42,24 +44,22 @@
         color: rgb(78, 78, 78);
         margin: 0;
         font-size: x-small;
+        transition: 500ms;
     }
 
     #queue .highlighted > img {
         max-height: 70px;
         max-width: 70px;
-        transition-duration: 500ms;
     }
 
     #queue .highlighted > h2 {
         font-size: medium;
         margin-left: 90px;
-        transition-duration: 500ms;
     }
 
     #queue .highlighted > p {
         font-size: small;
         margin: 10px 0 0 90px;
-        transition-duration: 500ms;
     }
     
     
@@ -75,11 +75,11 @@
 
 /* DESKTOP */
 
-@media only screen and (min-width: 481px){
+@media only screen and (min-width: 500px){
 
     /* Lista */
     #queue {
-        margin-top: 30px;
+        margin-top: 60px;
     }
 
     /* Riga */
