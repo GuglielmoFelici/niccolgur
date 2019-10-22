@@ -16,4 +16,10 @@ $(document).ready(function () {
         $(".highlighted").removeClass("highlighted");
         $(event.currentTarget).addClass("highlighted");
     });
+    $("li").each((i, e) => {
+        setTimeout(() => $(e).addClass("highlighted"), i * 100);
+        setTimeout(() => $(e).removeClass("highlighted"), i * 100 + 550);
+
+    });
+    $("li").children().css("transition", "500ms");
 });
