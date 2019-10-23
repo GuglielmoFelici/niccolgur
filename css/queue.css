@@ -52,13 +52,19 @@
         margin-right:10px;
         opacity: 1;
         transition: 500ms;
-        background: #3498db;
-        padding: 6px;    
-        /* border-radius: 10%; */
+        background: white;
+        padding: 6px; 
+        font-family: Arial, Helvetica, sans-serif;   
         font-size: small;
-        /* font-family: 'Roboto';  */
-        color: #FFF;
+        color: rgb(29, 29, 29);
+        border-radius: 7%;
+        border-style: outset;
+        border-color: white;
         text-decoration: none;
+    }
+
+    #queue .highlighted {
+        background-color: #eee;
     }
 
     #queue .highlighted > img {
