@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
     $("li").each((i, e) => {
-        $(e).css("opacity", 1);
+        setTimeout(() => $(e).css("opacity", 1), i * 100);
         setTimeout(() => $(e).removeClass("highlighted"), 500 + i * 100);
 
     });

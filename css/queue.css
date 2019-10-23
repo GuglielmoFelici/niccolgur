@@ -13,7 +13,7 @@
     #queue li {
         padding: 5px 0 5px 0;
         overflow: auto;
-        transition: opacity 6000ms;
+        transition: 1500ms;
     }
        
     #queue li:hover {
