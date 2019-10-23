@@ -19,7 +19,7 @@ $(document).ready(function () {
         $(event.currentTarget).addClass("highlighted");
     });
     $("li").each((i, e) =>
-        setTimeout(() => $(e).removeClass("highlighted"), i * 100)
+        setTimeout(() => $(e).removeClass("highlighted"), 500 + i * 100)
     );
     $("li").children().css("transition", "500ms");
 });
