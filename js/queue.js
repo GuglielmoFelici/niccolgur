@@ -25,12 +25,12 @@ $(document).ready(function () {
         $(".highlighted").removeClass("highlighted");
         $(".profile").remove();
         if (!isSame) {
-            $(event.currentTarget).addClass("highlighted");
-            $(event.currentTarget).append(
-                $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
-                    .hide()
-                    .fadeIn(120)
-            )
+            $(event.currentTarget)
+                .addClass("highlighted")
+                .append(
+                    $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
+                        .hide()
+                        .fadeIn(300));
         }
     });
 

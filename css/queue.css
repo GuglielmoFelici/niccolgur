@@ -49,11 +49,12 @@
     /* Profile */
     #queue li a {
         float: right;
-        margin-right:10px;
+        margin-right: 10px;
+        bottom: 10px;
         opacity: 1;
         transition: 500ms;
         background: white;
-        padding: 6px; 
+        padding: 4px 6px 4px 6px; 
         font-family: Arial, Helvetica, sans-serif;   
         font-size: small;
         color: rgb(29, 29, 29);
@@ -79,7 +80,7 @@
 
     #queue .highlighted > p {
         font-size: small;
-        margin: 10px 0 10px 90px;
+        margin: 4px 0 0 90px;
         overflow: hidden;
     }
     
