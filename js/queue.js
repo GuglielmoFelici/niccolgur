@@ -8,15 +8,9 @@ $(document).ready(function () {
             $("<li/>")
                 .append(
                     $("<img/>")
-                        .attr("src", (i, old) => `../data/images/${user.img}`),
+                        .attr("src", `../data/images/${user.img}`),
                     `<h2>${user.nickname}</h2>`,
-                    `<p>${user.bio}</p>`,
-                    $("<a/>")
-                        .attr("href", () => "#")
-                        .append(
-                            $("<img/>")
-                                .attr("src", () => "../data/images/profile.png")
-                        )
+                    `<p>${user.bio}</p>`
                 )
                 .addClass((x, old) => i === 0 ? "master" : "")
                 .addClass("highlighted")
@@ -29,8 +23,14 @@ $(document).ready(function () {
     $("li").on("click", (event) => {
         let isSame = $(event.currentTarget).hasClass("highlighted");
         $(".highlighted").removeClass("highlighted");
+        $(".profile").remove();
         if (!isSame) {
             $(event.currentTarget).addClass("highlighted");
+            $(event.currentTarget).append(
+                $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
+                    .hide()
+                    .fadeIn(120)
+            )
         }
     });
 

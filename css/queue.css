@@ -41,9 +41,24 @@
     /* Bio */
     #queue li p {
         color: rgb(78, 78, 78);
-        margin: 0;
+        margin: 0 0 0 5px;
         font-size: x-small;
         transition: 500ms;
+    }
+
+    /* Profile */
+    #queue li a {
+        float: right;
+        margin-right:10px;
+        opacity: 1;
+        transition: 500ms;
+        background: #3498db;
+        padding: 6px;    
+        /* border-radius: 10%; */
+        font-size: small;
+        /* font-family: 'Roboto';  */
+        color: #FFF;
+        text-decoration: none;
     }
 
     #queue .highlighted > img {
@@ -53,14 +68,14 @@
 
     #queue .highlighted > h2 {
         font-size: medium;
-        margin-left: 90px;
+        margin: 0 0 0 90px;
     }
 
     #queue .highlighted > p {
         font-size: small;
-        margin: 10px 0 0 90px;
+        margin: 10px 0 10px 90px;
+        overflow: hidden;
     }
-    
     
     /* Master */
     .master {
