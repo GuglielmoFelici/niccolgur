@@ -1,15 +1,15 @@
 const db =
 {
     "queue": [
-        "dano",
-        "ceccherini",
         "caciotta",
+        "pogre",
+        "ceccherini",
+        "iroli",
         "sanchez",
         "jala",
-        "pogre",
-        "iroli",
         "fosq",
-        "paglia"
+        "paglia",
+        "dano",
     ],
     "users": {
         "dano": {
