@@ -1,14 +1,14 @@
 const db =
 {
     "queue": [
-        "caciotta",
-        "pogre",
         "ceccherini",
         "iroli",
+        "caciotta",
         "sanchez",
-        "jala",
         "fosq",
         "paglia",
+        "jala",
+        "pogre",
         "dano",
     ],
     "users": {
