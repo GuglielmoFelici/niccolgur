@@ -3,7 +3,7 @@ console.log("Queue.js");
 $(document).ready(function () {
     const renderQueue = (queue) => {
         $.each(queue, (i, name) => {
-            let user = db.users[name];
+            let user = users[name];
             $("#queue").append(
                 $("<li/>")
                 .append(
@@ -38,10 +38,17 @@ $(document).ready(function () {
         });
     }
     $.ajax({
-        url: 'https://guglielmofelici.github.io/niccolgur/data/queue.json',
-        success: renderQueue,
-        cache: false
-    });
+        url: 'https://guglielmofelici.github.io/niccolgur/data/users.json',
+        success: (response) => {
+            export const users = response;
+            $.ajax({
+                url: 'https://guglielmofelici.github.io/niccolgur/data/queue.json',
+                success: renderQueue,
+                cache: false
+            });
+        }
+    })
+
 
 
 });
