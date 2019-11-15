@@ -1,20 +1,25 @@
 const section = "QUEUE";
 $(document).ready(function () {
     let queue = $("#queue");
+    const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (response) => {
+        const queueDb = JSON.parse(response);
+        console.log(queueDb);
+    })
+    const queueDb = JSON.parse()
 
     $.each(db.queue, (i) => {
         let user = db.users[db.queue[i]];
         $("#queue").append(
             $("<li/>")
-                .append(
-                    $("<img/>")
-                        .attr("src", `../data/images/${user.img}`),
-                    `<h2>${user.nickname}</h2>`,
-                    `<p>${user.bio}</p>`
-                )
-                .addClass((x, old) => i === 0 ? "master" : "")
-                .addClass("highlighted")
-                .css("opacity", 0)
+            .append(
+                $("<img/>")
+                .attr("src", `../data/images/${user.img}`),
+                `<h2>${user.nickname}</h2>`,
+                `<p>${user.bio}</p>`
+            )
+            .addClass((x, old) => i === 0 ? "master" : "")
+            .addClass("highlighted")
+            .css("opacity", 0)
         );
     });
 
@@ -29,8 +34,8 @@ $(document).ready(function () {
                 .addClass("highlighted")
                 .append(
                     $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
-                        .hide()
-                        .fadeIn(300));
+                    .hide()
+                    .fadeIn(300));
         }
     });
 
