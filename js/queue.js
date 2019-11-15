@@ -5,11 +5,9 @@ $(document).ready(function () {
     $.ajax({
         url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
         success: (queueDb) => {
-            console.log(queueDb);
             $.each(queueDb.queue, (i, name) => {
-                console.log(name);
-                console.log(db.users);
                 let user = db.users[name];
+                console.log(user);
                 $("#queue").append(
                     $("<li/>")
                     .append(
