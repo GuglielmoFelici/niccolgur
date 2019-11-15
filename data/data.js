@@ -1,5 +1,4 @@
-const db =
-{
+const db = {
     "queue": [
         "iroli",
         "caciotta",
@@ -10,7 +9,7 @@ const db =
         "ceccherini",
         "jala",
         "pogre",
-        
+
     ],
     "users": {
         "dano": {

@@ -1,5 +1,6 @@
 const section = "QUEUE";
 console.log("Queue.js");
+let users;
 $(document).ready(function () {
     const renderQueue = (queue) => {
         $.each(queue, (i, name) => {
@@ -40,7 +41,7 @@ $(document).ready(function () {
     $.ajax({
         url: 'https://guglielmofelici.github.io/niccolgur/data/users.json',
         success: (response) => {
-            export const users = response;
+            users = response;
             $.ajax({
                 url: 'https://guglielmofelici.github.io/niccolgur/data/queue.json',
                 success: renderQueue,
