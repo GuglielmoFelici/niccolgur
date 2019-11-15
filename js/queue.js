@@ -8,6 +8,7 @@ $(document).ready(function () {
             console.log(queueDb);
             $.each(queueDb.queue, (i, name) => {
                 console.log(name);
+                console.log(db.users);
                 let user = db.users[name];
                 $("#queue").append(
                     $("<li/>")
