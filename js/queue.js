@@ -5,7 +5,8 @@ $(document).ready(function () {
     const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (queueDb) => {
         console.log(queueDb);
         $.each(queueDb.queue, (i) => {
-            console.log(i);
+            console.log(queueDb[i]);
+            console.log(db.users);
             let user = db.users[queueDb[i]];
             $("#queue").append(
                 $("<li/>")
