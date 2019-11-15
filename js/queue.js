@@ -1,6 +1,8 @@
 const section = "QUEUE";
+console.log("Queue.js");
 $(document).ready(function () {
-    const main = (queue) => {
+    const main = (queueDb) => {
+        console.log(queueDb);
         $.each(queueDb.queue, (i, name) => {
             console.log(name);
             let user = db.users[name];
