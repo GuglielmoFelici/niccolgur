@@ -1,13 +1,11 @@
-{
-    "queue": [
-        "iroli",
-        "caciotta",
-        "sanchez",
-        "paglia",
-        "dano",
-        "fosq",
-        "ceccherini",
-        "jala",
-        "pogre"
-    ]
-}
+[
+    "iroli",
+    "caciotta",
+    "sanchez",
+    "paglia",
+    "dano",
+    "fosq",
+    "ceccherini",
+    "jala",
+    "pogre"
+]

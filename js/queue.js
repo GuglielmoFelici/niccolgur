@@ -1,8 +1,8 @@
 const section = "QUEUE";
 console.log("Queue.js");
 $(document).ready(function () {
-    const renderQueue = (queJSON) => {
-        $.each(queJSON.queue, (i, name) => {
+    const renderQueue = (queue) => {
+        $.each(queue, (i, name) => {
             let user = db.users[name];
             $("#queue").append(
                 $("<li/>")
