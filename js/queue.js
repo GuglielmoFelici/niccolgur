@@ -1,6 +1,7 @@
 const section = "QUEUE";
 $(document).ready(function () {
     let queue = $("#queue");
+    console.log('request');
     const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (response) => {
         const queueDb = JSON.parse(response);
         console.log(queueDb);
