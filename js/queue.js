@@ -21,29 +21,30 @@ $(document).ready(function () {
                     .css("opacity", 0)
                 );
             });
+            $("li").addClass("highlighted");
+
+            $("li").on("click", (event) => {
+                let isSame = $(event.currentTarget).hasClass("highlighted");
+                $(".highlighted").removeClass("highlighted");
+                $(".profile").remove();
+                if (!isSame) {
+                    $(event.currentTarget)
+                        .addClass("highlighted")
+                        .append(
+                            $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
+                            .hide()
+                            .fadeIn(300));
+                }
+            });
+
+            $("li").each((i, e) => {
+                setTimeout(() => $(e).css("opacity", 1), i * 120);
+                setTimeout(() => $(e).removeClass("highlighted"), 500 + i * 100);
+
+            });
         },
         cache: false
     });
 
-    $("li").addClass("highlighted");
 
-    $("li").on("click", (event) => {
-        let isSame = $(event.currentTarget).hasClass("highlighted");
-        $(".highlighted").removeClass("highlighted");
-        $(".profile").remove();
-        if (!isSame) {
-            $(event.currentTarget)
-                .addClass("highlighted")
-                .append(
-                    $("<a class=\"profile\" href=\"#\">VAI AL PROFILO</a>")
-                    .hide()
-                    .fadeIn(300));
-        }
-    });
-
-    $("li").each((i, e) => {
-        setTimeout(() => $(e).css("opacity", 1), i * 120);
-        setTimeout(() => $(e).removeClass("highlighted"), 500 + i * 100);
-
-    });
 });
