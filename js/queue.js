@@ -1,12 +1,9 @@
 const section = "QUEUE";
 console.log("Queue.js");
 $(document).ready(function () {
-    const main = (queueDb) => {
-        console.log(queueDb);
-        $.each(queueDb.queue, (i, name) => {
-            console.log(name);
+    const renderQueue = (queJSON) => {
+        $.each(queJSON.queue, (i, name) => {
             let user = db.users[name];
-            console.log(user);
             $("#queue").append(
                 $("<li/>")
                 .append(
@@ -21,7 +18,6 @@ $(document).ready(function () {
             );
         });
         $("li").addClass("highlighted");
-
         $("li").on("click", (event) => {
             let isSame = $(event.currentTarget).hasClass("highlighted");
             $(".highlighted").removeClass("highlighted");
@@ -35,17 +31,15 @@ $(document).ready(function () {
                         .fadeIn(300));
             }
         });
-
         $("li").each((i, e) => {
             setTimeout(() => $(e).css("opacity", 1), i * 120);
             setTimeout(() => $(e).removeClass("highlighted"), 500 + i * 100);
 
         });
     }
-    let queue = $("#queue");
     $.ajax({
         url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
-        success: main,
+        success: renderQueue,
         cache: false
     });
 
