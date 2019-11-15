@@ -6,6 +6,7 @@ $(document).ready(function () {
         url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
         success: (queueDb) => {
             $.each(queueDb.queue, (i, name) => {
+                console.log(name);
                 let user = db.users[name];
                 console.log(user);
                 $("#queue").append(
