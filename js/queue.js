@@ -3,6 +3,7 @@ $(document).ready(function () {
     let queue = $("#queue");
     console.log('request');
     const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (response) => {
+        console.log(response);
         const queueDb = JSON.parse(response);
         console.log(queueDb);
     })
