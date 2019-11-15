@@ -1,7 +1,6 @@
 const section = "QUEUE";
 $(document).ready(function () {
     let queue = $("#queue");
-    console.log('request');
     $.ajax({
         url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
         success: (queueDb) => {
