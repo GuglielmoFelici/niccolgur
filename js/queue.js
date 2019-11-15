@@ -2,26 +2,30 @@ const section = "QUEUE";
 $(document).ready(function () {
     let queue = $("#queue");
     console.log('request');
-    const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (queueDb) => {
-        console.log(queueDb);
-        $.each(queueDb.queue, (i) => {
-            console.log(queueDb[i]);
-            console.log(db.users);
-            let user = db.users[queueDb[i]];
-            $("#queue").append(
-                $("<li/>")
-                .append(
-                    $("<img/>")
-                    .attr("src", `../data/images/${user.img}`),
-                    `<h2>${user.nickname}</h2>`,
-                    `<p>${user.bio}</p>`
-                )
-                .addClass((x, old) => i === 0 ? "master" : "")
-                .addClass("highlighted")
-                .css("opacity", 0)
-            );
-        });
-    })
+    $.ajax({
+        url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
+        success: (queueDb) => {
+            console.log(queueDb);
+            $.each(queueDb.queue, (i) => {
+                console.log(queueDb[i]);
+                console.log(db.users);
+                let user = db.users[queueDb[i]];
+                $("#queue").append(
+                    $("<li/>")
+                    .append(
+                        $("<img/>")
+                        .attr("src", `../data/images/${user.img}`),
+                        `<h2>${user.nickname}</h2>`,
+                        `<p>${user.bio}</p>`
+                    )
+                    .addClass((x, old) => i === 0 ? "master" : "")
+                    .addClass("highlighted")
+                    .css("opacity", 0)
+                );
+            });
+        },
+        cache: false
+    });
 
     $("li").addClass("highlighted");
 
