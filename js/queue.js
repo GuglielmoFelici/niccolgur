@@ -3,6 +3,7 @@ $(document).ready(function () {
     let queue = $("#queue");
     console.log('request');
     const htmlQueue = $.get('https://guglielmofelici.github.io/niccolgur/data/prova.json', (queueDb) => {
+        console.log(queueDb);
         $.each(queueDb.queue, (i) => {
             console.log(i);
             let user = db.users[queueDb[i]];
