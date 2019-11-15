@@ -38,7 +38,7 @@ $(document).ready(function () {
         });
     }
     $.ajax({
-        url: 'https://guglielmofelici.github.io/niccolgur/data/prova.json',
+        url: 'https://guglielmofelici.github.io/niccolgur/data/queue.json',
         success: renderQueue,
         cache: false
     });
