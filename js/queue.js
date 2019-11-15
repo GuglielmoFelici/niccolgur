@@ -6,7 +6,6 @@ $(document).ready(function () {
         const queueDb = JSON.parse(response);
         console.log(queueDb);
     })
-    const queueDb = JSON.parse()
 
     $.each(db.queue, (i) => {
         let user = db.users[db.queue[i]];
