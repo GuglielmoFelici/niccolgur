@@ -1,0 +1,10 @@
+<div>
+    <ul id="navbar">
+        <li *ngFor="let tab of tabs">
+            <a [className]="isCurrent(tab)"
+               (click)="tabOnClick(tab)">
+                {{tab.desc}}
+            </a>
+        </li>
+    </ul>
+</div>
