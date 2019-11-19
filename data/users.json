@@ -1,0 +1,56 @@
+[
+    {
+        "id": "dano",
+        "nickname": "Dano",
+        "img": "dano.jpg",
+        "bio": "Chin chon chun mi scopo i parenti e i morti"
+    },
+    {
+        "id": "ceccherini",
+        "nickname": "Ceccherini",
+        "img": "ceccherini.jpg",
+        "bio": "Hell no"
+    },
+    {
+        "id": "caciotta",
+        "nickname": "Guglielmo il diarca bello",
+        "img": "caciotta.jpg",
+        "bio": "Vi cano il pano"
+    },
+    {
+        "id": "sanchez",
+        "nickname": "Sanchez il diarca simpatico",
+        "img": "sanchez.jpg",
+        "bio": "Oh zi caccia il commander"
+    },
+    {
+        "id": "jala",
+        "nickname": "Jalapegno",
+        "img": "jala.jpg",
+        "bio": "Il mio nome... è Jalapegno."
+    },
+    {
+        "id": "pogre",
+        "nickname": "Pogre",
+        "img": "pogre.jpg",
+        "bio": "L'arte è molto worth"
+    },
+    {
+        "id": "iroli",
+        "nickname": "Iroli",
+        "img": "iroli.jpg",
+        "bio": "Eeeeeh Platone..."
+    },
+    {
+        "id": "fosq",
+        "nickname": "Fosq",
+        "img": "fosq.jpg",
+        "bio": "Un saluto a mia zia Graziana"
+    },
+    {
+        "id": "paglia",
+        "nickname": "Paglia",
+        "img": "paglia.jpg",
+        "bio": "..."
+    }
+]

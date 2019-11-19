@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {images} from '../../ts/endpoints';
 import {User} from '../../ts/domain';
+import {AppComponent} from '../../app.component';
 
 @Component({
     selector: 'app-queue',
@@ -20,6 +21,7 @@ export class QueueComponent implements OnInit {
     }
 
     ngOnInit() {
+        AppComponent.setTitle()
         this.niccolgurManager.getUsers()
             .then(users => {
                 this.elements = users;
