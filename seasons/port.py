@@ -2,12 +2,12 @@ import sys
 import os
 import json
 
+entries = []
 for cmd in sys.argv[1:]:
-    entries = []
     seasonFile = open(
         cmd, 'r+', encoding=('utf-8-sig' if os.name == 'nt' else 'utf-8'))
+    season = []
     for line in seasonFile.readlines():
-        season = []
         records = line.split('_')
         season.append({
             "master": records[0],

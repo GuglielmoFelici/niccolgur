@@ -29,6 +29,7 @@ export class User {
 export interface Niccolgur {
     master: string;
     movie_id: string;
+    movie_data?;
     members: string[];
     date: string;
     offers: string;

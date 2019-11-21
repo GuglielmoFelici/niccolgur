@@ -29,12 +29,12 @@ export class NiccolgurManagerService {
     async getSeason(seasonNumber: number): Promise<Season> {
         return this.niccolgurService.getSeasons()
             .pipe(
-                map(seasons => seasons[seasonNumber])
+                map(seasons => seasons[seasonNumber - 1])
             ).toPromise();
     }
 
     async getMovie(id: string): Promise<any> {
-        return this.niccolgurService.getMovie(id);
+        return this.niccolgurService.getMovie(id).toPromise();
     }
 
 }

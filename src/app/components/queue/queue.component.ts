@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
-import {images} from '../../ts/endpoints';
+import {images} from '../../ts/env';
 import {User} from '../../ts/domain';
 
 @Component({

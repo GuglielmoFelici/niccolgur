@@ -3,7 +3,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import {Season, TmdbConfig, User} from '../ts/domain';
-import {apiKey, config, movie, niccolgurs, queue, users} from '../ts/endpoints';
+import {apiKey, config, movie, niccolgurs, queue, users} from '../ts/env';
 
 @Injectable({
     providedIn: 'root'
@@ -28,6 +28,6 @@ export class NiccolgurService {
 
     getMovie(movieId: string): Observable<any> {
         const params = new HttpParams().set('api_key', apiKey).set('language', 'it');
-        return this.http.get(`${movie}/movieId`, {params});
+        return this.http.get(`${movie}/${movieId}`, {params});
     }
 }
