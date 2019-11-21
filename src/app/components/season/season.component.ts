@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Niccolgur, Season} from '../../ts/domain';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {StorageService} from '../../services/storage-service.service';
+import {images} from '../../ts/env';
 
 @Component({
     selector: 'app-season',
@@ -15,6 +16,7 @@ export class SeasonComponent implements OnInit {
     season: Season;
     error;
     config;
+    images = images;
 
     constructor(private niccolgurManager: NiccolgurManagerService,
                 private storage: StorageService) {

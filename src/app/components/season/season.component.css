@@ -23,19 +23,29 @@
         transition: 500ms;
     }
 
-    /* Nome */
-    h2 {
-        vertical-align: top;
-        margin: 0 0 0 10px;
-        font-size: small;
-        transition: 500ms;
-    }
 
-    /* Bio */
+    /* Titolo film */
+    h2 {
+    display: inline;
+    vertical-align: top;
+    margin: 0 0 0 10px;
+    font-size: small;
+    transition: 500ms;
+}
+
+    /* Master */
     p {
-        color: rgb(78, 78, 78);
-        margin: 0 0 0 5px;
-        font-size: x-small;
+    color: rgb(78, 78, 78);
+    margin: 0 0 0 5px;
+    font-size: x-small;
+    transition: 500ms;
+}
+    /* Foto */
+    p > img {
+        margin: 0 5px 0 5px;
+        height: 10px;
+        width: 10px;
+        float: left;
         transition: 500ms;
     }
 
@@ -110,14 +120,23 @@
         width: 150px;
     }
 
-    /* Nome*/
+    /* Foto */
+    p > img {
+        margin: 0 5px 0 5px;
+        height: 40px;
+        width: auto;
+        float: left;
+        transition: 500ms;
+    }
+
+    /* Titolo film */
     h2 {
         margin: 10px 0 10px 0;
     }
 
-    /* Bio */
+    /* Master */
     p {
-        margin: 20px 70% 0 0;
+        margin: 50px 70% 0 0;
     }
 
     .highlighted {

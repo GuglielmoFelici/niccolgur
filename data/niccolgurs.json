@@ -2,7 +2,7 @@
     [
         {
             "master":"sanchez",
-            "movie_id":"Kill Bill vol. 1",
+            "movie_id":"24",
             "members":[
                 "sanchez",
                 "caciotta",
@@ -17,7 +17,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Uccelli",
+            "movie_id":"571",
             "members":[
                 "sanchez",
                 "caciotta",
@@ -34,7 +34,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Zatoichi",
+            "movie_id":"246",
             "members":[
                 "sanchez",
                 "ceccherini",
@@ -48,7 +48,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Casablanca",
+            "movie_id":"289",
             "members":[
                 "sanchez",
                 "ceccherini",
@@ -63,7 +63,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"L'infernale Quinlan",
+            "movie_id":"1480",
             "members":[
                 "sanchez",
                 "ceccherini",
@@ -79,7 +79,7 @@
         },
         {
             "master":"ceccherini",
-            "movie_id":"Qualcuno volò sul nido del cuculo",
+            "movie_id":"510",
             "members":[
                 "sanchez",
                 "paglia",
@@ -94,7 +94,7 @@
         },
         {
             "master":"paglia",
-            "movie_id":"Be kind rewind",
+            "movie_id":"4953",
             "members":[
                 "sanchez",
                 "paglia",
@@ -111,7 +111,7 @@
         },
         {
             "master":"sanchez",
-            "movie_id":"Il Racconto dei Racconti",
+            "movie_id":"314405",
             "members":[
                 "sanchez",
                 "caciotta",
@@ -126,7 +126,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Una pura formalità",
+            "movie_id":"19223",
             "members":[
                 "sanchez",
                 "ceccherini",
@@ -144,7 +144,7 @@
     [
         {
             "master":"jala",
-            "movie_id":"Metropolis",
+            "movie_id":"19",
             "members":[
                 "fosq",
                 "caciotta",
@@ -158,7 +158,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Tetsuo - The iron man",
+            "movie_id":"41428",
             "members":[
                 "fosq",
                 "caciotta",
@@ -172,7 +172,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Fuga da New York",
+            "movie_id":"1103",
             "members":[
                 "ceccherini",
                 "fosq",
@@ -186,7 +186,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"Dillinger è morto",
+            "movie_id":"56693",
             "members":[
                 "dano",
                 "caciotta",
@@ -199,7 +199,7 @@
         },
         {
             "master":"ceccherini",
-            "movie_id":"Quei bravi ragazzi",
+            "movie_id":"769",
             "members":[
                 "fosq",
                 "caciotta",
@@ -213,7 +213,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Headshot",
+            "movie_id":"403605",
             "members":[
                 "paglia",
                 "fosq",
@@ -224,7 +224,7 @@
         },
         {
             "master":"paglia",
-            "movie_id":"Holy Motors",
+            "movie_id":"103328",
             "members":[
                 "paglia",
                 "ceccherini",
@@ -236,7 +236,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Non violentate Jennifer",
+            "movie_id":"25239",
             "members":[
                 "jala",
                 "caciotta",
@@ -251,7 +251,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Gozu",
+            "movie_id":"12487",
             "members":[
                 "paglia",
                 "ceccherini",
@@ -266,7 +266,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Kung Fusion",
+            "movie_id":"9470",
             "members":[
                 "fosq",
                 "ceccherini",
@@ -281,7 +281,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"Possession",
+            "movie_id":"21484",
             "members":[
                 "caciotta",
                 "iroli",
@@ -294,7 +294,7 @@
         },
         {
             "master":"paglia",
-            "movie_id":"Dragon Ball Z: L'eroe del pianeta Conuts",
+            "movie_id":"39108",
             "members":[
                 "caciotta",
                 "ceccherini",
@@ -311,7 +311,7 @@
     [
         {
             "master":"ceccherini",
-            "movie_id":"Strange Days",
+            "movie_id":"281",
             "members":[
                 "dano",
                 "ceccherini",
@@ -325,7 +325,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Azur e Asmar",
+            "movie_id":"19026",
             "members":[
                 "iroli",
                 "fosq",
@@ -340,7 +340,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Moebius",
+            "movie_id":"215743",
             "members":[
                 "caciotta",
                 "dano",
@@ -354,7 +354,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Il primo re - CINEMA SWAG",
+            "movie_id":"565179",
             "members":[
                 "caciotta",
                 "dano",
@@ -368,7 +368,7 @@
         },
         {
             "master":"pogre",
-            "movie_id":"I senza nome",
+            "movie_id":"11657",
             "members":[
                 "dano",
                 "iroli",
@@ -382,7 +382,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"Lo zoo di Venere",
+            "movie_id":"33078",
             "members":[
                 "pogre",
                 "ceccherini",
@@ -397,7 +397,7 @@
         },
         {
             "master":"ceccherini",
-            "movie_id":"The Green Book",
+            "movie_id":"581012",
             "members":[
                 "fosq",
                 "ceccherini",
@@ -411,7 +411,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Creep",
+            "movie_id":"250574",
             "members":[
                 "ceccherini",
                 "pogre",
@@ -426,7 +426,7 @@
         },
         {
             "master":"pogre",
-            "movie_id":"La rivolta delle gladiatrici",
+            "movie_id":"29039",
             "members":[
                 "caciotta",
                 "dano",
@@ -440,7 +440,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"The Audition",
+            "movie_id":"11075",
             "members":[
                 "caciotta",
                 "dano",
@@ -454,7 +454,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"L'isola dei cani",
+            "movie_id":"399174",
             "members":[
                 "iroli",
                 "pogre",
@@ -470,7 +470,7 @@
         },
         {
             "master":"sanchez",
-            "movie_id":"Il Grinta (1969)",
+            "movie_id":"17529",
             "members":[
                 "iroli",
                 "pogre",
@@ -485,7 +485,7 @@
         },
         {
             "master":"ceccherini",
-            "movie_id":"Brazil",
+            "movie_id":"2118",
             "members":[
                 "jala",
                 "iroli",
@@ -503,7 +503,7 @@
     [
         {
             "master":"caciotta",
-            "movie_id":"LA Confidential",
+            "movie_id":"2118",
             "members":[
                 "fosq",
                 "jala",
@@ -518,7 +518,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"Badlands",
+            "movie_id":"3133",
             "members":[
                 "fosq",
                 "caciotta",
@@ -533,7 +533,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Visitor Q",
+            "movie_id":"4241",
             "members":[
                 "fosq",
                 "caciotta",
@@ -548,7 +548,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Watchmen",
+            "movie_id":"13183",
             "members":[
                 "ceccherini",
                 "sanchez",
@@ -561,7 +561,7 @@
         },
         {
             "master":"pogre",
-            "movie_id":"La gatta sul tetto che scotta",
+            "movie_id":"261",
             "members":[
                 "dano",
                 "iroli",
@@ -576,7 +576,7 @@
         },
         {
             "master":"caciotta",
-            "movie_id":"Il Concerto",
+            "movie_id":"25205",
             "members":[
                 "fosq",
                 "sanchez",
@@ -590,7 +590,7 @@
         },
         {
             "master":"sanchez",
-            "movie_id":"The Grandmaster",
+            "movie_id":"44865",
             "members":[
                 "ceccherini",
                 "caciotta",
@@ -604,7 +604,7 @@
         },
         {
             "master":"iroli",
-            "movie_id":"La proprietà non è più un furto",
+            "movie_id":"129564",
             "members":[
                 "caciotta",
                 "dano",
@@ -617,7 +617,7 @@
         },
         {
             "master":"fosq",
-            "movie_id":"Get Out!",
+            "movie_id":"419430",
             "members":[
                 "caciotta",
                 "iroli",
@@ -633,7 +633,7 @@
         },
         {
             "master":"dano",
-            "movie_id":"Rashomon",
+            "movie_id":"548",
             "members":[
                 "dano",
                 "caciotta",
@@ -646,7 +646,7 @@
         },
         {
             "master":"pogre",
-            "movie_id":"Zardoz",
+            "movie_id":"4923",
             "members":[
                 "paglia",
                 "sanchez",
@@ -660,7 +660,7 @@
         },
         {
             "master":"ceccherini",
-            "movie_id":"Motherless Brooklyn",
+            "movie_id":"504562",
             "members":[
                 "sanchez",
                 "ceccherini",
@@ -674,7 +674,7 @@
         },
         {
             "master":"sanchez",
-            "movie_id":"La Madre",
+            "movie_id":"132232",
             "members":[
                 "fosq",
                 "dano",

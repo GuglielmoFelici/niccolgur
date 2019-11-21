@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TypeObject} from '../../ts/domain';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -17,10 +17,11 @@ export class NavbarComponent implements OnInit {
     ];
 
     constructor(private router: Router) {
-        this.current = this.tabs[0];
     }
 
     ngOnInit() {
+        this.current = this.tabs.find(tab => tab.data === window.location.href.split('/').pop())
+            || this.tabs[0];
     }
 
     isCurrent(tab: TypeObject) {
