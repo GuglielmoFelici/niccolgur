@@ -33,13 +33,13 @@ export class SeasonComponent implements OnInit {
 
     async getImageUrl(niccolgur: Niccolgur): Promise<string> {
         const config = await this.storage.config.toPromise();
-        console.log(niccolgur);
         return this.niccolgurManager.getMovie(niccolgur.movie_id)
             .then(
                 movie => {
                     return `${config.images.base_url}/w500/${movie.poster_path}`;
                 },
                 err => {
+                    console.log(err);
                     return 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Dialog-error-round.svg/768px-Dialog-error-round.svg.png';
                 });
     }
@@ -54,6 +54,7 @@ export class SeasonComponent implements OnInit {
                 this.error = err;
             });
         this.cd.detectChanges();
+        this.cd.detach();
     }
 
 }
