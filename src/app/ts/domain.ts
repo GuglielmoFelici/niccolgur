@@ -25,3 +25,19 @@ export class User {
     }
 
 }
+
+export interface Niccolgur {
+    master: string | User;
+    movie_id: string;
+    movie_data?;
+    members: string[];
+    date: string;
+    offers: string;
+}
+
+export type Season = Niccolgur[];
+
+export interface TmdbConfig {
+    images?;
+    change_keys?;
+}

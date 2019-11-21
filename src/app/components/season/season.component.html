@@ -1,16 +1,14 @@
-<br>
-<br>
-<br>
-er
-<br>
-cane
-<br>
-vostro
-<br>
-ih
-<br>
-ih
-<br>
-ih
-<br>
-ih
+<div>
+    <label>
+        <input [ngModel]="seasonNumber" (ngModelChange)="changeSeason($event)" type="number" [min]="1"
+               [max]="seasonsCount">
+    </label>
+    <ul id="season">
+        <li *ngFor="let niccolgur of season">
+            <img [src]="getImageUrl(niccolgur)" alt="X">
+            <h2>{{niccolgur.movie_data?.title}}</h2>
+            <p> <img [src]="images + niccolgur.master.img" alt="X"> {{niccolgur.master.nickname}} </p>
+            <!--        <a class=\"profile\" href=\"#\" [show]="isSelected">VAI AL PROFILO</a>-->
+        </li>
+    </ul>
+</div>

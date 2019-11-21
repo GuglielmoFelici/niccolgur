@@ -32,12 +32,19 @@ export class QueueComponent implements OnInit {
 
     getClassList(user: User) {
         const ret = [];
+<<<<<<< HEAD
+        if (this.selected.id === user.id) {
+=======
         if (this.master.id === user.id) {
             ret.push('master');
         }
         if (this.selected && this.selected.id === user.id) {
+>>>>>>> develop
             ret.push('highlighted');
         } // TODO css opacity 0 ??
+        if (this.master.id === user.id) {
+            ret.push('master');
+        }
         return ret;
     }
 
