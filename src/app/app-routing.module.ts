@@ -20,8 +20,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'queue',
-        pathMatch: 'full',
+        component: QueueComponent,
     },
 
 ];
