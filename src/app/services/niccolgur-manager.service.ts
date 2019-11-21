@@ -27,10 +27,16 @@ export class NiccolgurManagerService {
     }
 
     async getSeason(seasonNumber: number): Promise<Season> {
-        return this.niccolgurService.getSeasons()
-            .pipe(
-                map(seasons => seasons[seasonNumber - 1])
-            ).toPromise();
+        const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
+        season.forEach((niccolgur, i, ssn) =>
+            this.getMovie(niccolgur.movie_id).then(
+                movie => {
+                    ssn[i].movie_data = movie;
+                }, err => {
+                    ssn[i].movie_data = undefined;
+                }
+            ));
+        return season;
     }
 
     async getMovie(id: string): Promise<any> {

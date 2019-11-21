@@ -4,7 +4,8 @@
     </label>
     <ul id="season">
         <li *ngFor="let niccolgur of season">
-            <img [src]="getImageUrl(niccolgur) | async" alt="X">
+            <img [src]="getImageUrl(niccolgur)" alt="x">
+            <h2>{{niccolgur.movie_data?.title}}</h2>
             <!--        <h2> {{user.nickname}}</h2>
                     <p> {{user.bio}} </p>-->
             <!--        <a class=\"profile\" href=\"#\" [show]="isSelected">VAI AL PROFILO</a>-->
