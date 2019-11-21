@@ -1,13 +1,13 @@
-er
-<br>
-cane
-<br>
-vostro
-<br>
-ih
-<br>
-ih
-<br>
-ih
-<br>
-ih
+<label>
+    <select [(ngModel)]="seasonNumber">
+        <option *ngFor="let i of seasonsCount" [value]="i">{{i}}</option>
+    </select>
+</label>
+<ul id="season">
+    <li *ngFor="let niccolgur of season" [ngClass]="getClassList(user)" (click)="userOnClick(user)">
+        <img [src]="getImageUrl(niccolgur) | async" alt="X">
+<!--        <h2> {{user.nickname}}</h2>
+        <p> {{user.bio}} </p>-->
+        <!--        <a class=\"profile\" href=\"#\" [show]="isSelected">VAI AL PROFILO</a>-->
+    </li>
+</ul>

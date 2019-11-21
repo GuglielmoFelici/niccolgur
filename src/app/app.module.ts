@@ -8,6 +8,7 @@ import {QueueElementComponent} from './components/queue/queue-element/queue-elem
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {SeasonComponent} from './components/season/season.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
     imports: [
         BrowserModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {images} from '../../ts/endpoints';
 import {User} from '../../ts/domain';
-import {AppComponent} from '../../app.component';
 
 @Component({
     selector: 'app-queue',
@@ -21,8 +20,8 @@ export class QueueComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.niccolgurManager.getUsers()
-            .then(users => {
+        this.niccolgurManager.getUsers().then(
+            users => {
                 this.elements = users;
                 this.master = this.elements[0];
                 this.selected = this.elements[0];
@@ -36,15 +35,18 @@ export class QueueComponent implements OnInit {
         if (this.master.id === user.id) {
             ret.push('master');
         }
-        if (this.selected.id === user.id) {
+        if (this.selected && this.selected.id === user.id) {
             ret.push('highlighted');
         } // TODO css opacity 0 ??
         return ret;
     }
 
     userOnClick(user: User) {
-        console.log(user);
-        this.selected = user;
+        if (!this.selected || this.selected.id !== user.id) {
+            this.selected = user;
+        } else {
+            this.selected = undefined;
+        }
     }
 
     // TODO animazioni
