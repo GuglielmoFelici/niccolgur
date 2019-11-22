@@ -1,14 +1,18 @@
 <div>
-    <label>
-        <input [ngModel]="seasonNumber" (ngModelChange)="changeSeason($event)" type="number" [min]="1"
-               [max]="seasonsCount">
-    </label>
-    <ul id="season">
-        <li *ngFor="let niccolgur of season">
-            <img [src]="getImageUrl(niccolgur)" alt="X">
-            <h2> <img [src]="images + niccolgur.master.img" alt="X"> {{niccolgur.movie_data?.title}}</h2>
-            <p>  {{niccolgur.movie_data?.tagline}} </p>
-            <!--        <a class=\"profile\" href=\"#\" [show]="isSelected">VAI AL PROFILO</a>-->
-        </li>
-    </ul>
+    <!--    <label>-->
+    <!--        <input [ngModel]="seasonNumber" (ngModelChange)="changeSeason($event)" type="number" [min]="1"-->
+    <!--               [max]="seasonsCount">-->
+    <!--    </label>-->
+    <mat-card class="movie-card" *ngFor="let niccolgur of season">
+        <mat-card-header>
+            <mat-card-title>{{niccolgur.movie_data?.title}}</mat-card-title>
+            <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">
+        </mat-card-header>
+        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">
+        <mat-card-content>
+            <p>
+                {{niccolgur.movie_data?.tagline}}
+            </p>
+        </mat-card-content>
+    </mat-card>
 </div>

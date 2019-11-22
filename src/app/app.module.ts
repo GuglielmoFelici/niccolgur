@@ -9,6 +9,10 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {SeasonComponent} from './components/season/season.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatCardModule} from '@angular/material';
+import {MatListModule} from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -22,7 +26,11 @@ import {FormsModule} from '@angular/forms';
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        MatCardModule,
+        MatListModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,128 +1,38 @@
+/* DESKTOP */
+
+@media only screen and (min-width: 800px) {
+
+    .movie-card {
+        display: inline-block;
+        z-index: -999;
+        margin: 40px 0 0 10px;
+        width: 250px;
+        height: 350px;
+    }
+
+    mat-card-content {
+        height: 100px;
+        overflow: scroll;
+    }
+
+}
+
 /* MOBILE */
 
 @media only screen and (max-width: 799px) {
 
-    /* Input */
-    input {
-        margin-top: 60px;
-    }
-
-    ul {
-        margin-left: -40px;
-    }
-
-    /* Riga */
-    li {
-        padding: 5px 0 5px 0;
-        overflow: auto;
-        transition: 1500ms;
-    }
-
-    li:hover {
-        background: #eee;
-        cursor: pointer;
-    }
-
-    /* Foto */
-    img {
-        /*margin: 0 5px 0 5px;*/
-        max-height: 70px;
-        max-width: 70px;
-        float: left;
-        transition: 500ms;
+    .movie-card {
+        align-self: center;
+        z-index: -999;
+        margin: 40px 0 0 10px;
+        /*height: 180px;*/
     }
 
 
-    /* Titolo film */
-    h2 {
-    display: inline;
-    vertical-align: top;
-    font-size: small;
-    transition: 500ms;
-}
-
-    /* Foto master */
-    h2 > img {
-        margin: 2px 5px 0 10px;
-        height: 10px;
-        width: 10px;
-        float: left;
-        transition: 500ms;
-    }
-
-    /* Descrizione */
-    p {
-    color: rgb(78, 78, 78);
-    margin-left: 55px;
-    font-size: x-small;
-    transition: 500ms;
-}
-
-    .highlighted {
-        background-color: #eee;
-    }
-
-    .highlighted > img {
-        max-height: 70px;
-        max-width: 70px;
-    }
-
-    .highlighted > h2 {
-        font-size: medium;
-        margin: 0 0 0 90px;
-    }
-
-    .highlighted > p {
-        font-size: small;
-        margin: 4px 0 0 90px;
-        overflow: hidden;
-    }
-}
-
-/* DESKTOP */
-
-@media only screen and (min-width: 800px){
-
-    /* Riga */
-    li {
-        padding: 20px 0 20px 0;
-        overflow: auto;
-    }
-
-    li:hover {
-        background: #eee;
-        cursor: pointer;
-    }
-
-    /* Foto */
-    img {
-        float: left;
-        margin: 0 15px 0 15px;
-        height: auto;
-        width: 150px;
-    }
-
-    /* Foto */
-    p > img {
-        margin: 0 5px 0 5px;
-        height: 40px;
-        width: auto;
-        float: left;
-        transition: 500ms;
-    }
-
-    /* Titolo film */
-    h2 {
-        margin: 10px 0 10px 0;
-    }
-
-    /* Master */
-    p {
-        margin: 50px 70% 0 0;
-    }
-
-    .highlighted {
-        background-color: #eee;
-    }
+    /*.movie-img {*/
+    /*    margin-top: 5px;*/
+    /*    width: auto;*/
+    /*    height: 100px;*/
+    /*}*/
 
 }

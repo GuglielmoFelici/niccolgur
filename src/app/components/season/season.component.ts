@@ -45,7 +45,9 @@ export class SeasonComponent implements OnInit {
         this.seasonNumber = n;
         this.niccolgurManager.getSeason(n).then(
             season => {
+                console.log(season);
                 this.season = season.reverse();
+                console.log(this.season);
             }, err => {
                 console.log(err);
                 this.error = err;
