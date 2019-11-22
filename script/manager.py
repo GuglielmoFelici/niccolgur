@@ -25,6 +25,7 @@ class Manager(object):
     def __init__(self):
         self.queue = MyQueue()
         self.hangouts = []
+        self.allSeasons = []
 
     def get_members(self):
         return self.queue.elements
@@ -59,24 +60,26 @@ class Manager(object):
 
     '''Carica dati da file.'''
 
-    def load(self, path):
+    def load(self, ssnNo):
         try:
             with open("queue.json") as queueFile:
                 self.queue = MyQueue(json.load(queueFile))
-            with open(path+".ncg", "r") as source:
-                self.hangouts = json.load(source)
+            with open("niccolgurs.json", "r") as source:
+                self.allSeasons = json.load(source)
+                self.hangouts = self.allSeasons[ssnNo-1]
             return True
         except IOError as e:
             return False
 
     '''Scrive dati su file.'''
 
-    def save(self, path):
+    def save(self, ssnNo):
         try:
-            with open(path+".ncg", "w") as queueFile:
-                queueFile.write(json.dumps(self.queue))
-            with open(path+".ncg", "w") as niccolFile:
-                niccolFile.write(json.dumps(self.hangouts))
+            with open("queue.json", "w") as queueFile:
+                queueFile.write(json.dumps(self.queue.elements))
+            with open("niccolgurs.json", "w") as niccolFile:
+                self.allSeasons[ssnNo-1] = self.hangouts
+                niccolFile.write(json.dumps(self.allSeasons))
             return True
         except IOError as e:
             return False

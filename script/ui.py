@@ -77,26 +77,24 @@ def clear():
 
 def file_menu(manager, mode):
     while True:
-        print(OKBLUE+"Main menu -> Choose file"+ENDC)
+        print(OKBLUE+"Main menu -> Choose season"+ENDC)
         if mode == OPEN:
-            file_list = sorted(
-                [x[:-4] for x in os.listdir(os.curdir) if x[-4:] == ".ncg"])
-            for i in range(len(file_list)):
-                print(HEADER, i+1, ") ", file_list[i], ENDC, sep="")
-            fileno = input(
-                "Scegliere il file da aprire (digitando un numero) o digita "+EXIT+" per annullare.\n")
-            while (fileno != EXIT and (not fileno.isdigit() or int(fileno) > len(file_list))):
-                fileno = input(FAIL+"Inserire un numero compreso tra 1 e " +
-                               str(len(file_list))+", o "+EXIT + " per annullare.\n"+ENDC)
-            if fileno == EXIT:
+            ssnList = json.load(open("niccolgurs.json"))
+            ssnList = [x for x in range(1, len(ssnList)+1)]
+            for i in range(len(ssnList)):
+                print(HEADER, i+1, ") ", ssnList[i], ENDC, sep="")
+            ssnNo = input(
+                "Scegliere la season da aprire (digitando un numero) o digita "+EXIT+" per annullare.\n")
+            while (ssnNo != EXIT and (not ssnNo.isdigit() or int(ssnNo) > len(ssnList))):
+                ssnNo = input(FAIL+"Inserire un numero compreso tra 1 e " +
+                              str(len(ssnList))+", o "+EXIT + " per annullare.\n"+ENDC)
+            if ssnNo == EXIT:
                 clear()
                 return EXIT
-            else:
-                path = file_list[int(fileno)-1]
             clear()
-            if not manager.load(path):
+            if not manager.load(int(ssnNo)):
                 return False
-            return path
+            return ssnNo
         elif mode == SAVE:
             path = input("Inserire il nome con cui salvare il file. Digitare " +
                          EXIT+" per annullare.\n").strip()
@@ -114,24 +112,23 @@ def file_menu(manager, mode):
 '''Menu visualizzato dopo la riuscita apertura di un file. '''
 
 
-def opened_menu(manager, path):
+def opened_menu(manager, ssnNo):
     while True:
         print(OKBLUE+"Main menu -> Niccolgur menu"+ENDC)
-        command = input(HEADER+path+" - Queue attuale: " +
+        command = input(HEADER+ssnNo+" - Queue attuale: " +
                         str(manager.queue)+ENDC+"\n"+phrases["opened"]).strip()
         if command == HANGOUTS:
             clear()
-            hangouts_menu(manager, path)
+            hangouts_menu(manager, ssnNo)
         elif command == MEMBERS:
             clear()
-            members_menu(manager, path)
+            members_menu(manager, ssnNo)
         elif command == QUEUE:
             clear()
-            queue_menu(manager, path)
+            queue_menu(manager, ssnNo)
         elif command == SAVE:
-            confirm = input(WARNING+"Salvare il file \""+path +
-                            "\"? "+YES+"/"+NO+"\n"+ENDC).strip()
-            if confirm == YES and manager.save(path):
+            confirm = input(WARNING+"Salvare? "+YES+"/"+NO+"\n"+ENDC).strip()
+            if confirm == YES and manager.save(int(ssnNo)):
                 clear()
                 print(OKGREEN, "File salvato correttamente.\n", ENDC, sep="")
         elif command == SAVEAS:
@@ -146,7 +143,7 @@ def opened_menu(manager, path):
             else:
                 clear()
                 print(OKGREEN, "File salvato correttamente.\n", ENDC, sep="")
-                path = saved
+                ssnNo = saved
         elif command == EXIT:
             confirm = input(
                 WARNING+"Sicuro? Eventuali progressi non salvati andranno persi. "+YES+"/"+NO+"\n"+ENDC).strip()
@@ -374,7 +371,7 @@ while True:
     elif command == NEW:
         name = DEFAULT_NEWNAME
         version = 0
-        while os.path.isfile(name+".ncg"):
+        while os.path.isfile(name+".json"):
             version += 1
             name = DEFAULT_NEWNAME+"("+str(version)+")"
         manager.add_members(DEFAULT_MEMBERS)

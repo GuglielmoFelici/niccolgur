@@ -1,9 +1,9 @@
 [
     [
         {
-            "master":"sanchez",
-            "movie_id":"24",
-            "members":[
+            "master": "sanchez",
+            "movie_id": "24",
+            "members": [
                 "sanchez",
                 "caciotta",
                 "paglia",
@@ -12,13 +12,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"04/05/2018",
-            "offers":""
+            "date": "04/05/2018",
+            "offers": ""
         },
         {
-            "master":"caciotta",
-            "movie_id":"571",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "571",
+            "members": [
                 "sanchez",
                 "caciotta",
                 "paglia",
@@ -29,13 +29,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"11/05/2018",
-            "offers":"Pasta con fave e guanciale"
+            "date": "11/05/2018",
+            "offers": "Pasta con fave e guanciale"
         },
         {
-            "master":"dano",
-            "movie_id":"246",
-            "members":[
+            "master": "dano",
+            "movie_id": "246",
+            "members": [
                 "sanchez",
                 "ceccherini",
                 "caciotta",
@@ -43,13 +43,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"18/05/2018",
-            "offers":"Assortimento di patatine e pop corn"
+            "date": "18/05/2018",
+            "offers": "Assortimento di patatine e pop corn"
         },
         {
-            "master":"fosq",
-            "movie_id":"289",
-            "members":[
+            "master": "fosq",
+            "movie_id": "289",
+            "members": [
                 "sanchez",
                 "ceccherini",
                 "paglia",
@@ -58,13 +58,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"25/05/2018",
-            "offers":"Pop corn fatti in casa"
+            "date": "25/05/2018",
+            "offers": "Pop corn fatti in casa"
         },
         {
-            "master":"iroli",
-            "movie_id":"1480",
-            "members":[
+            "master": "iroli",
+            "movie_id": "1480",
+            "members": [
                 "sanchez",
                 "ceccherini",
                 "caciotta",
@@ -74,13 +74,13 @@
                 "paglia",
                 "iroli"
             ],
-            "date":"01/06/2018",
-            "offers":"Ciambelline e vino rosso"
+            "date": "01/06/2018",
+            "offers": "Ciambelline e vino rosso"
         },
         {
-            "master":"ceccherini",
-            "movie_id":"510",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "510",
+            "members": [
                 "sanchez",
                 "paglia",
                 "caciotta",
@@ -89,13 +89,13 @@
                 "ceccherini",
                 "iroli"
             ],
-            "date":"08/06/2018",
-            "offers":"Quantità mastodontica di pizza bianca componibile con disparati affettati"
+            "date": "08/06/2018",
+            "offers": "Quantit\u00c3\u00a0 mastodontica di pizza bianca componibile con disparati affettati"
         },
         {
-            "master":"paglia",
-            "movie_id":"4953",
-            "members":[
+            "master": "paglia",
+            "movie_id": "4953",
+            "members": [
                 "sanchez",
                 "paglia",
                 "caciotta",
@@ -106,13 +106,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"22/06/2018",
-            "offers":"Cena completa di compleanno, con verdurine annesse"
+            "date": "22/06/2018",
+            "offers": "Cena completa di compleanno, con verdurine annesse"
         },
         {
-            "master":"sanchez",
-            "movie_id":"314405",
-            "members":[
+            "master": "sanchez",
+            "movie_id": "314405",
+            "members": [
                 "sanchez",
                 "caciotta",
                 "paglia",
@@ -121,13 +121,13 @@
                 "ceccherini",
                 "iroli"
             ],
-            "date":"06/07/2018",
-            "offers":""
+            "date": "06/07/2018",
+            "offers": ""
         },
         {
-            "master":"caciotta",
-            "movie_id":"19223",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "19223",
+            "members": [
                 "sanchez",
                 "ceccherini",
                 "paglia",
@@ -137,15 +137,15 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"13/07/2018",
-            "offers":"La Morte"
+            "date": "13/07/2018",
+            "offers": "La Morte"
         }
     ],
     [
         {
-            "master":"jala",
-            "movie_id":"19",
-            "members":[
+            "master": "jala",
+            "movie_id": "19",
+            "members": [
                 "fosq",
                 "caciotta",
                 "iroli",
@@ -153,13 +153,13 @@
                 "paglia",
                 "jala"
             ],
-            "date":"21/09/2018",
-            "offers":"Pennette Marchette"
+            "date": "21/09/2018",
+            "offers": "Pennette Marchette"
         },
         {
-            "master":"dano",
-            "movie_id":"41428",
-            "members":[
+            "master": "dano",
+            "movie_id": "41428",
+            "members": [
                 "fosq",
                 "caciotta",
                 "iroli",
@@ -167,13 +167,13 @@
                 "paglia",
                 "ceccherini"
             ],
-            "date":"28/09/2018",
-            "offers":"Pasta senza funghi"
+            "date": "28/09/2018",
+            "offers": "Pasta senza funghi"
         },
         {
-            "master":"fosq",
-            "movie_id":"1103",
-            "members":[
+            "master": "fosq",
+            "movie_id": "1103",
+            "members": [
                 "ceccherini",
                 "fosq",
                 "dano",
@@ -181,26 +181,26 @@
                 "paglia",
                 "iroli"
             ],
-            "date":"05/10/2018",
-            "offers":"Sontuosi salumi, salse esageratamente piccanti, pasta al pesto foschesto, pollo al foscurry, gelato foscato"
+            "date": "05/10/2018",
+            "offers": "Sontuosi salumi, salse esageratamente piccanti, pasta al pesto foschesto, pollo al foscurry, gelato foscato"
         },
         {
-            "master":"iroli",
-            "movie_id":"56693",
-            "members":[
+            "master": "iroli",
+            "movie_id": "56693",
+            "members": [
                 "dano",
                 "caciotta",
                 "iroli",
                 "ceccherini",
                 "jala"
             ],
-            "date":"12/10/2018",
-            "offers":""
+            "date": "12/10/2018",
+            "offers": ""
         },
         {
-            "master":"ceccherini",
-            "movie_id":"769",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "769",
+            "members": [
                 "fosq",
                 "caciotta",
                 "iroli",
@@ -208,36 +208,36 @@
                 "dano",
                 "jala"
             ],
-            "date":"19/10/2018",
-            "offers":"Pasta alla fagiolona"
+            "date": "19/10/2018",
+            "offers": "Pasta alla fagiolona"
         },
         {
-            "master":"caciotta",
-            "movie_id":"403605",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "403605",
+            "members": [
                 "paglia",
                 "fosq",
                 "caciotta"
             ],
-            "date":"26/10/2018",
-            "offers":"StrozziRoli alla Foscana"
+            "date": "26/10/2018",
+            "offers": "StrozziRoli alla Foscana"
         },
         {
-            "master":"paglia",
-            "movie_id":"103328",
-            "members":[
+            "master": "paglia",
+            "movie_id": "103328",
+            "members": [
                 "paglia",
                 "ceccherini",
                 "iroli",
                 "caciotta"
             ],
-            "date":"02/11/2018",
-            "offers":"Pasta broccagliosa"
+            "date": "02/11/2018",
+            "offers": "Pasta broccagliosa"
         },
         {
-            "master":"caciotta",
-            "movie_id":"25239",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "25239",
+            "members": [
                 "jala",
                 "caciotta",
                 "ceccherini",
@@ -246,13 +246,13 @@
                 "paglia",
                 "dano"
             ],
-            "date":"09/11/2018",
-            "offers":"Felicini fosk e pepe"
+            "date": "09/11/2018",
+            "offers": "Felicini fosk e pepe"
         },
         {
-            "master":"dano",
-            "movie_id":"12487",
-            "members":[
+            "master": "dano",
+            "movie_id": "12487",
+            "members": [
                 "paglia",
                 "ceccherini",
                 "iroli",
@@ -261,13 +261,13 @@
                 "dano",
                 "jala"
             ],
-            "date":"16/11/2018",
-            "offers":"Patatine"
+            "date": "16/11/2018",
+            "offers": "Patatine"
         },
         {
-            "master":"fosq",
-            "movie_id":"9470",
-            "members":[
+            "master": "fosq",
+            "movie_id": "9470",
+            "members": [
                 "fosq",
                 "ceccherini",
                 "pogre",
@@ -276,26 +276,26 @@
                 "dano",
                 "iroli"
             ],
-            "date":"23/11/2018",
-            "offers":"Salse mortali, sbrodaglia foscaglia pt 2, gentilini"
+            "date": "23/11/2018",
+            "offers": "Salse mortali, sbrodaglia foscaglia pt 2, gentilini"
         },
         {
-            "master":"iroli",
-            "movie_id":"21484",
-            "members":[
+            "master": "iroli",
+            "movie_id": "21484",
+            "members": [
                 "caciotta",
                 "iroli",
                 "fosq",
                 "dano",
                 "paglia"
             ],
-            "date":"30/11/2018",
-            "offers":"Crostata tattica"
+            "date": "30/11/2018",
+            "offers": "Crostata tattica"
         },
         {
-            "master":"paglia",
-            "movie_id":"39108",
-            "members":[
+            "master": "paglia",
+            "movie_id": "39108",
+            "members": [
                 "caciotta",
                 "ceccherini",
                 "dano",
@@ -304,15 +304,15 @@
                 "paglia",
                 "iroli"
             ],
-            "date":"07/12/2018",
-            "offers":"Carbonara sgrevia, verza con pomodori, nduja e cipolle, Macine"
+            "date": "07/12/2018",
+            "offers": "Carbonara sgrevia, verza con pomodori, nduja e cipolle, Macine"
         }
     ],
     [
         {
-            "master":"ceccherini",
-            "movie_id":"281",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "281",
+            "members": [
                 "dano",
                 "ceccherini",
                 "caciotta",
@@ -320,13 +320,13 @@
                 "pogre",
                 "iroli"
             ],
-            "date":"11/01/2019",
-            "offers":"Affettati Cecchinati"
+            "date": "11/01/2019",
+            "offers": "Affettati Cecchinati"
         },
         {
-            "master":"caciotta",
-            "movie_id":"19026",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "19026",
+            "members": [
                 "iroli",
                 "fosq",
                 "pogre",
@@ -335,13 +335,13 @@
                 "ceccherini",
                 "caciotta"
             ],
-            "date":"18/01/2019",
-            "offers":"Pizza varia"
+            "date": "18/01/2019",
+            "offers": "Pizza varia"
         },
         {
-            "master":"dano",
-            "movie_id":"215743",
-            "members":[
+            "master": "dano",
+            "movie_id": "215743",
+            "members": [
                 "caciotta",
                 "dano",
                 "pogre",
@@ -349,13 +349,13 @@
                 "iroli",
                 "ceccherini"
             ],
-            "date":"28/01/2019",
-            "offers":"Pesto zinzonio"
+            "date": "28/01/2019",
+            "offers": "Pesto zinzonio"
         },
         {
-            "master":"fosq",
-            "movie_id":"565179",
-            "members":[
+            "master": "fosq",
+            "movie_id": "565179",
+            "members": [
                 "caciotta",
                 "dano",
                 "pogre",
@@ -363,13 +363,13 @@
                 "iroli",
                 "ceccherini"
             ],
-            "date":"01/02/2019",
-            "offers":"Cena da Burger King spesata tramite BPD (Buoni Pasto Demenziali)"
+            "date": "01/02/2019",
+            "offers": "Cena da Burger King spesata tramite BPD (Buoni Pasto Demenziali)"
         },
         {
-            "master":"pogre",
-            "movie_id":"11657",
-            "members":[
+            "master": "pogre",
+            "movie_id": "11657",
+            "members": [
                 "dano",
                 "iroli",
                 "caciotta",
@@ -377,13 +377,13 @@
                 "ceccherini",
                 "fosq"
             ],
-            "date":"08/02/2019",
-            "offers":"Grassius Varietà"
+            "date": "08/02/2019",
+            "offers": "Grassius Variet\u00c3\u00a0"
         },
         {
-            "master":"iroli",
-            "movie_id":"33078",
-            "members":[
+            "master": "iroli",
+            "movie_id": "33078",
+            "members": [
                 "pogre",
                 "ceccherini",
                 "caciotta",
@@ -392,13 +392,13 @@
                 "dano",
                 "sanchez"
             ],
-            "date":"15/02/2019",
-            "offers":"Return to Zanarkand"
+            "date": "15/02/2019",
+            "offers": "Return to Zanarkand"
         },
         {
-            "master":"ceccherini",
-            "movie_id":"581012",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "581012",
+            "members": [
                 "fosq",
                 "ceccherini",
                 "pogre",
@@ -406,13 +406,13 @@
                 "sanchez",
                 "iroli"
             ],
-            "date":"22/02/2019",
-            "offers":"Green Kebab"
+            "date": "22/02/2019",
+            "offers": "Green Kebab"
         },
         {
-            "master":"caciotta",
-            "movie_id":"250574",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "250574",
+            "members": [
                 "ceccherini",
                 "pogre",
                 "caciotta",
@@ -421,13 +421,13 @@
                 "iroli",
                 "jala"
             ],
-            "date":"01/03/2019",
-            "offers":"Cane e pepe"
+            "date": "01/03/2019",
+            "offers": "Cane e pepe"
         },
         {
-            "master":"pogre",
-            "movie_id":"29039",
-            "members":[
+            "master": "pogre",
+            "movie_id": "29039",
+            "members": [
                 "caciotta",
                 "dano",
                 "pogre",
@@ -435,13 +435,13 @@
                 "sanchez",
                 "fosq"
             ],
-            "date":"08/03/2019",
-            "offers":""
+            "date": "08/03/2019",
+            "offers": ""
         },
         {
-            "master":"dano",
-            "movie_id":"11075",
-            "members":[
+            "master": "dano",
+            "movie_id": "11075",
+            "members": [
                 "caciotta",
                 "dano",
                 "ceccherini",
@@ -449,13 +449,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"15/03/2019",
-            "offers":"Paste spastiche"
+            "date": "15/03/2019",
+            "offers": "Paste spastiche"
         },
         {
-            "master":"fosq",
-            "movie_id":"399174",
-            "members":[
+            "master": "fosq",
+            "movie_id": "399174",
+            "members": [
                 "iroli",
                 "pogre",
                 "ceccherini",
@@ -465,13 +465,13 @@
                 "dano",
                 "fosq"
             ],
-            "date":"22/03/2019",
-            "offers":"2 kg di pasta pistacchiata"
+            "date": "22/03/2019",
+            "offers": "2 kg di pasta pistacchiata"
         },
         {
-            "master":"sanchez",
-            "movie_id":"17529",
-            "members":[
+            "master": "sanchez",
+            "movie_id": "17529",
+            "members": [
                 "iroli",
                 "pogre",
                 "ceccherini",
@@ -480,13 +480,13 @@
                 "caciotta",
                 "dano"
             ],
-            "date":"29/03/2019",
-            "offers":"Pasta con kfc dentro (e le uova in cima)"
+            "date": "29/03/2019",
+            "offers": "Pasta con kfc dentro (e le uova in cima)"
         },
         {
-            "master":"ceccherini",
-            "movie_id":"68",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "68",
+            "members": [
                 "jala",
                 "iroli",
                 "dano",
@@ -496,15 +496,15 @@
                 "ceccherini",
                 "caciotta"
             ],
-            "date":"05/04/2019",
-            "offers":"Modalità Zombi"
+            "date": "05/04/2019",
+            "offers": "Modalit\u00c3\u00a0 Zombi"
         }
     ],
     [
         {
-            "master":"caciotta",
-            "movie_id":"2118",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "2118",
+            "members": [
                 "fosq",
                 "jala",
                 "iroli",
@@ -513,13 +513,13 @@
                 "pogre",
                 "sanchez"
             ],
-            "date":"28/06/2019",
-            "offers":"Formaggi Caravaggi"
+            "date": "28/06/2019",
+            "offers": "Formaggi Caravaggi"
         },
         {
-            "master":"iroli",
-            "movie_id":"3133",
-            "members":[
+            "master": "iroli",
+            "movie_id": "3133",
+            "members": [
                 "fosq",
                 "caciotta",
                 "ceccherini",
@@ -528,13 +528,13 @@
                 "jala",
                 "dano"
             ],
-            "date":"05/07/2019",
-            "offers":""
+            "date": "05/07/2019",
+            "offers": ""
         },
         {
-            "master":"dano",
-            "movie_id":"4241",
-            "members":[
+            "master": "dano",
+            "movie_id": "4241",
+            "members": [
                 "fosq",
                 "caciotta",
                 "ceccherini",
@@ -543,26 +543,26 @@
                 "sanchez",
                 "dano"
             ],
-            "date":"12/07/2019",
-            "offers":"Pesto/porco rosso"
+            "date": "12/07/2019",
+            "offers": "Pesto/porco rosso"
         },
         {
-            "master":"fosq",
-            "movie_id":"13183",
-            "members":[
+            "master": "fosq",
+            "movie_id": "13183",
+            "members": [
                 "ceccherini",
                 "sanchez",
                 "caciotta",
                 "pogre",
                 "fosq"
             ],
-            "date":"06/09/2019",
-            "offers":"Burger Cringe"
+            "date": "06/09/2019",
+            "offers": "Burger Cringe"
         },
         {
-            "master":"pogre",
-            "movie_id":"261",
-            "members":[
+            "master": "pogre",
+            "movie_id": "261",
+            "members": [
                 "dano",
                 "iroli",
                 "pogre",
@@ -571,13 +571,13 @@
                 "fosq",
                 "sanchez"
             ],
-            "date":"13/09/2019",
-            "offers":"The Sbrido Sbrado"
+            "date": "13/09/2019",
+            "offers": "The Sbrido Sbrado"
         },
         {
-            "master":"caciotta",
-            "movie_id":"25205",
-            "members":[
+            "master": "caciotta",
+            "movie_id": "25205",
+            "members": [
                 "fosq",
                 "sanchez",
                 "caciotta",
@@ -585,13 +585,13 @@
                 "pogre",
                 "iroli"
             ],
-            "date":"20/09/2019",
-            "offers":"Vellutata di cani"
+            "date": "20/09/2019",
+            "offers": "Vellutata di cani"
         },
         {
-            "master":"sanchez",
-            "movie_id":"44865",
-            "members":[
+            "master": "sanchez",
+            "movie_id": "44865",
+            "members": [
                 "ceccherini",
                 "caciotta",
                 "sanchez",
@@ -599,26 +599,26 @@
                 "pogre",
                 "iroli"
             ],
-            "date":"27/09/2019",
-            "offers":"Piadine sancine"
+            "date": "27/09/2019",
+            "offers": "Piadine sancine"
         },
         {
-            "master":"iroli",
-            "movie_id":"129564",
-            "members":[
+            "master": "iroli",
+            "movie_id": "129564",
+            "members": [
                 "caciotta",
                 "dano",
                 "fosq",
                 "iroli",
                 "sanchez"
             ],
-            "date":"04/10/2019",
-            "offers":""
+            "date": "04/10/2019",
+            "offers": ""
         },
         {
-            "master":"fosq",
-            "movie_id":"419430",
-            "members":[
+            "master": "fosq",
+            "movie_id": "419430",
+            "members": [
                 "caciotta",
                 "iroli",
                 "sanchez",
@@ -628,26 +628,26 @@
                 "pogre",
                 "dano"
             ],
-            "date":"18/10/2019",
-            "offers":"Blatta King"
+            "date": "18/10/2019",
+            "offers": "Blatta King"
         },
         {
-            "master":"dano",
-            "movie_id":"548",
-            "members":[
+            "master": "dano",
+            "movie_id": "548",
+            "members": [
                 "dano",
                 "caciotta",
                 "fosq",
                 "iroli",
                 "pogre"
             ],
-            "date":"25/10/2019",
-            "offers":"Oh heeeell no"
+            "date": "25/10/2019",
+            "offers": "Oh heeeell no"
         },
         {
-            "master":"pogre",
-            "movie_id":"4923",
-            "members":[
+            "master": "pogre",
+            "movie_id": "4923",
+            "members": [
                 "paglia",
                 "sanchez",
                 "pogre",
@@ -655,13 +655,13 @@
                 "fosq",
                 "iroli"
             ],
-            "date":"01/11/2019",
-            "offers":""
+            "date": "01/11/2019",
+            "offers": ""
         },
         {
-            "master":"ceccherini",
-            "movie_id":"504562",
-            "members":[
+            "master": "ceccherini",
+            "movie_id": "504562",
+            "members": [
                 "sanchez",
                 "ceccherini",
                 "iroli",
@@ -669,21 +669,38 @@
                 "dano",
                 "paglia"
             ],
-            "date":"08/11/2019",
-            "offers":"Kebbabbino cheguerino"
+            "date": "08/11/2019",
+            "offers": "Kebbabbino cheguerino"
         },
         {
-            "master":"sanchez",
-            "movie_id":"132232",
-            "members":[
+            "master": "sanchez",
+            "movie_id": "132232",
+            "members": [
                 "fosq",
                 "dano",
                 "paglia",
                 "ceccherini",
                 "sanchez"
             ],
-            "date":"15/11/2019",
-            "offers":"Pasta messa alla sanchasta"
+            "date": "15/11/2019",
+            "offers": "Pasta messa alla sanchasta"
+        },
+        {
+            "master": "paglia",
+            "movie_id": "asd",
+            "members": [
+                "caciotta",
+                "jala",
+                "dano",
+                "paglia",
+                "iroli",
+                "ceccherini",
+                "fosq",
+                "sanchez",
+                "pogre"
+            ],
+            "date": "22/11/2019",
+            "offers": ""
         }
     ]
 ]

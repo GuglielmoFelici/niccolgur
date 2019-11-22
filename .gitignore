@@ -47,3 +47,5 @@ Thumbs.db
 
 ./seasons/*
 seasons/
+
+*.pyc
