@@ -28,11 +28,10 @@
         /*height: 180px;*/
     }
 
-
-    /*.movie-img {*/
-    /*    margin-top: 5px;*/
-    /*    width: auto;*/
-    /*    height: 100px;*/
-    /*}*/
+    .movie-img {
+        width: auto;
+        height: 150px;
+        margin-left: 80px;
+    }
 
 }

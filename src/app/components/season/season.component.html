@@ -3,9 +3,10 @@
     <!--        <input [ngModel]="seasonNumber" (ngModelChange)="changeSeason($event)" type="number" [min]="1"-->
     <!--               [max]="seasonsCount">-->
     <!--    </label>-->
-    <mat-card class="movie-card" *ngFor="let niccolgur of season">
+    <mat-card class="movie-card" *ngFor="let niccolgur of season?.reverse()">
         <mat-card-header>
             <mat-card-title>{{niccolgur.movie_data?.title}}</mat-card-title>
+            <mat-card-subtitle>{{niccolgur.date}}</mat-card-subtitle>
             <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">
         </mat-card-header>
         <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">
