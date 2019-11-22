@@ -1,4 +1,4 @@
-call ng build --prod --output-path docs --base-href ""
+call ng build --prod --output-path docs --base-href "https://guglielmofelici.github.io/niccolgur/"
 call powershell cp docs/index.html docs/404.html
 call powershell cp -r data docs/data
 call git add .
