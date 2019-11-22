@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
 import {Season, User} from '../ts/domain';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -34,24 +34,33 @@ export class NiccolgurManagerService {
     async getSeason(seasonNumber: number): Promise<Season> {
         const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
         season.forEach((niccolgur, i, ssn) => {
-            this.getMovie(niccolgur.movie_id).then(
+            this.getMovie(niccolgur.movie_id, 'it', true).then(
                 movie => {
                     ssn[i].movie_data = movie;
                 }, err => {
-                    ssn[i].movie_data = undefined;
+                        this.getMovie(niccolgur.movie_id, 'en-US', false).then(
+                            movie => {
+                                ssn[i].movie_data = movie;
+                            }, () => {
+                                ssn[i].movie_data = undefined;
+                            });
                 });
             this.getUser(niccolgur.master).then(
                 user => {
                     ssn[i].master = user;
                 }, err => {
-                    ssn[i].movie_data = undefined;
+                    throw err;
                 });
         });
         return season;
     }
 
-    async getMovie(id: string): Promise<any> {
-        return this.niccolgurService.getMovie(id).toPromise();
+    async getMovie(id: string, lang = 'it', requireTagline = false): Promise<any> {
+        return this.niccolgurService.getMovie(id, lang).pipe(tap(response => {
+            if (requireTagline && !response.tagline) {
+                throw new Error('tagline');
+            }
+        })).toPromise();
     }
 
 }

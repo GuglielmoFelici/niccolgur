@@ -6,8 +6,8 @@
     <ul id="season">
         <li *ngFor="let niccolgur of season">
             <img [src]="getImageUrl(niccolgur)" alt="X">
-            <h2>{{niccolgur.movie_data?.title}}</h2>
-            <p> <img [src]="images + niccolgur.master.img" alt="X"> {{niccolgur.master.nickname}} </p>
+            <h2> <img [src]="images + niccolgur.master.img" alt="X"> {{niccolgur.movie_data?.title}}</h2>
+            <p>  {{niccolgur.movie_data?.tagline}} </p>
             <!--        <a class=\"profile\" href=\"#\" [show]="isSelected">VAI AL PROFILO</a>-->
         </li>
     </ul>

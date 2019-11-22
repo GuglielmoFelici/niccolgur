@@ -26,8 +26,8 @@ export class NiccolgurService {
         return this.http.get<Season[]>(niccolgurs);
     }
 
-    getMovie(movieId: string): Observable<any> {
-        const params = new HttpParams().set('api_key', apiKey).set('language', 'it');
+    getMovie(movieId: string, lang: string): Observable<any> {
+        const params = new HttpParams().set('api_key', apiKey).set('language', lang);
         return this.http.get(`${movie}/${movieId}`, {params});
     }
 }

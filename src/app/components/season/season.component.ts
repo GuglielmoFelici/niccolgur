@@ -35,10 +35,9 @@ export class SeasonComponent implements OnInit {
 
     getImageUrl(niccolgur: Niccolgur): string {
         if (this.config && niccolgur.movie_data) {
-            console.log("ciao");
             return `${this.config.images.base_url}/w500/${niccolgur.movie_data.poster_path}`;
         } else {
-            return 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Dialog-error-round.svg/768px-Dialog-error-round.svg.png';
+            return 'https://www.artranked.com/images/3b/3be9d9fcc7e4e8f433893ef020168598.jpg';
         }
     }
 
