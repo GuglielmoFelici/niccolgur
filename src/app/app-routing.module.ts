@@ -13,14 +13,17 @@ const routes: Routes = [
     {
         path: 'queue',
         component: QueueComponent,
+        pathMatch: 'full',
     },
     {
         path: 'season',
         component: SeasonComponent,
+        pathMatch: 'full',
     },
     {
         path: '**',
-        component: QueueComponent,
+        redirectTo: 'queue',
+        pathMatch: 'full',
     },
 
 ];

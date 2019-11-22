@@ -12,6 +12,7 @@
 
     .movie-card {
         display: inline-block;
+        cursor: pointer;
         box-shadow: -2px -2px 3px -1px rgb(100, 100, 100);
         vertical-align: top;
         margin: 20px 0 0 10px;
