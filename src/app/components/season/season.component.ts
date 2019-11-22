@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {Niccolgur, Season} from '../../ts/domain';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {StorageService} from '../../services/storage-service.service';
-import {images} from '../../ts/env';
+import {images, movieTMDBPage} from '../../ts/env';
 
 @Component({
     selector: 'app-season',
@@ -13,7 +13,7 @@ export class SeasonComponent implements OnInit {
 
     seasonNumber;
     seasonsCount;
-    season: Season;
+    season = [];
     error;
     config;
     images = images;
@@ -45,11 +45,17 @@ export class SeasonComponent implements OnInit {
         this.seasonNumber = n;
         this.niccolgurManager.getSeason(n).then(
             season => {
-                this.season = season;
+                season.forEach(e => this.season.push(e));
+                this.season.reverse();
             }, err => {
                 console.log(err);
                 this.error = err;
             });
+    }
+
+    openMovie(niccolgur: Niccolgur) {
+        console.log('click!');
+        window.open(`${movieTMDBPage}/${niccolgur.movie_id}`, '_blank');
     }
 
 }

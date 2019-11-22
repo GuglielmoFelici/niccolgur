@@ -9,3 +9,4 @@ export const images = 'https://guglielmofelici.github.io/niccolgur/data/images/'
 /* TMDB */
 export const config = 'https://api.themoviedb.org/3/configuration';
 export const movie = 'https://api.themoviedb.org/3/movie';
+export const movieTMDBPage = 'https://www.themoviedb.org/movie';

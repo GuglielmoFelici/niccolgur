@@ -2,17 +2,27 @@
 
 @media only screen and (min-width: 800px) {
 
+    div {
+        margin-top: 50px;
+    }
+
     .movie-card {
         display: inline-block;
-        z-index: -999;
-        margin: 40px 0 0 10px;
-        width: 250px;
-        height: 350px;
+        box-shadow: -2px -2px 3px -1px rgb(100, 100, 100);
+        vertical-align: top;
+        margin: 20px 0 0 10px;
+        width: 300px;
+        /*height: 400px;*/
+    }
+
+    .movie-img {
+        width: auto;
+        height: 200px;
+        margin-left: 80px;
     }
 
     mat-card-content {
-        height: 100px;
-        overflow: scroll;
+        /*max-height: 100px;*/
     }
 
 }
@@ -22,8 +32,7 @@
 @media only screen and (max-width: 799px) {
 
     .movie-card {
-        align-self: center;
-        z-index: -999;
+        vertical-align: top;
         margin: 40px 0 0 10px;
         /*height: 180px;*/
     }
