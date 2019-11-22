@@ -1,0 +1,186 @@
+[
+    {
+        "master": "caciotta",
+        "movie_id": "LA Confidential",
+        "members": [
+            "fosq",
+            "jala",
+            "iroli",
+            "dano",
+            "caciotta",
+            "pogre",
+            "sanchez"
+        ],
+        "date": "28/06/2019",
+        "offers": "Formaggi Caravaggi"
+    },
+    {
+        "master": "iroli",
+        "movie_id": "Badlands",
+        "members": [
+            "fosq",
+            "caciotta",
+            "ceccherini",
+            "iroli",
+            "pogre",
+            "jala",
+            "dano"
+        ],
+        "date": "05/07/2019",
+        "offers": ""
+    },
+    {
+        "master": "dano",
+        "movie_id": "Visitor Q",
+        "members": [
+            "fosq",
+            "caciotta",
+            "ceccherini",
+            "iroli",
+            "pogre",
+            "sanchez",
+            "dano"
+        ],
+        "date": "12/07/2019",
+        "offers": "Pesto/porco rosso"
+    },
+    {
+        "master": "fosq",
+        "movie_id": "Watchmen",
+        "members": [
+            "ceccherini",
+            "sanchez",
+            "caciotta",
+            "pogre",
+            "fosq"
+        ],
+        "date": "06/09/2019",
+        "offers": "Burger Cringe"
+    },
+    {
+        "master": "pogre",
+        "movie_id": "La gatta sul tetto che scotta",
+        "members": [
+            "dano",
+            "iroli",
+            "pogre",
+            "ceccherini",
+            "caciotta",
+            "fosq",
+            "sanchez"
+        ],
+        "date": "13/09/2019",
+        "offers": "The Sbrido Sbrado"
+    },
+    {
+        "master": "caciotta",
+        "movie_id": "Il Concerto",
+        "members": [
+            "fosq",
+            "sanchez",
+            "caciotta",
+            "dano",
+            "pogre",
+            "iroli"
+        ],
+        "date": "20/09/2019",
+        "offers": "Vellutata di cani"
+    },
+    {
+        "master": "sanchez",
+        "movie_id": "The Grandmaster",
+        "members": [
+            "ceccherini",
+            "caciotta",
+            "sanchez",
+            "jala",
+            "pogre",
+            "iroli"
+        ],
+        "date": "27/09/2019",
+        "offers": "Piadine sancine"
+    },
+    {
+        "master": "iroli",
+        "movie_id": "La propriet� non � pi� un furto",
+        "members": [
+            "caciotta",
+            "dano",
+            "fosq",
+            "iroli",
+            "sanchez"
+        ],
+        "date": "04/10/2019",
+        "offers": ""
+    },
+    {
+        "master": "fosq",
+        "movie_id": "Get Out!",
+        "members": [
+            "caciotta",
+            "iroli",
+            "sanchez",
+            "fosq",
+            "jala",
+            "ceccherini",
+            "pogre",
+            "dano"
+        ],
+        "date": "18/10/2019",
+        "offers": "Blatta King"
+    },
+    {
+        "master": "dano",
+        "movie_id": "Rashomon",
+        "members": [
+            "dano",
+            "caciotta",
+            "fosq",
+            "iroli",
+            "pogre"
+        ],
+        "date": "25/10/2019",
+        "offers": "Oh heeeell no"
+    },
+    {
+        "master": "pogre",
+        "movie_id": "Zardoz",
+        "members": [
+            "paglia",
+            "sanchez",
+            "pogre",
+            "ceccherini",
+            "fosq",
+            "iroli"
+        ],
+        "date": "01/11/2019",
+        "offers": ""
+    },
+    {
+        "master": "ceccherini",
+        "movie_id": "Motherless Brooklyn",
+        "members": [
+            "sanchez",
+            "ceccherini",
+            "iroli",
+            "caciotta",
+            "dano",
+            "paglia"
+        ],
+        "date": "08/11/2019",
+        "offers": "Kebbabbino cheguerino"
+    },
+    {
+        "master": "sanchez",
+        "movie_id": "La Madre",
+        "members": [
+            "fosq",
+            "dano",
+            "paglia",
+            "ceccherini",
+            "sanchez"
+        ],
+        "date": "15/11/2019",
+        "offers": "Pasta messa alla sanchasta"
+    }
+]
