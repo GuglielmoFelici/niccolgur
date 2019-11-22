@@ -1,4 +1,4 @@
-ng build --prod --output-path docs --base-href https://guglielmofelici.github.io/niccolgur/
+ng build --prod --output-path docs --deploy-url "https://guglielmofelici.github.io/niccolgur" --base-href "niccolgur"
 cp docs/index.html docs/404.html
 cp -r data docs/data
 git add .
