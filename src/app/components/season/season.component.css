@@ -6,6 +6,10 @@
         margin-top: 50px;
     }
 
+    .season-select {
+        display: block;
+    }
+
     .movie-card {
         display: inline-block;
         box-shadow: -2px -2px 3px -1px rgb(100, 100, 100);
