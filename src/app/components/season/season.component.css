@@ -31,10 +31,22 @@
 
 @media only screen and (max-width: 799px) {
 
+    div {
+        margin-top: 60px;
+    }
+
+    .season-select {
+        margin: 0 0 0 20px;
+    }
+
     .movie-card {
         vertical-align: top;
-        margin: 40px 0 0 10px;
+        margin: 20px 0 0 10px;
         /*height: 180px;*/
+    }
+
+    .movie-title {
+        font-size: medium;
     }
 
     .movie-img {

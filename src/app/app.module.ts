@@ -11,7 +11,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatCardModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {MatListModule} from '@angular/material';
 
 @NgModule({
@@ -31,6 +31,10 @@ import {MatListModule} from '@angular/material';
         MatSliderModule,
         MatCardModule,
         MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatButtonModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

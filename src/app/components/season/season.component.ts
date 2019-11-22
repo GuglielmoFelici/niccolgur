@@ -3,6 +3,7 @@ import {Niccolgur, Season} from '../../ts/domain';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {StorageService} from '../../services/storage-service.service';
 import {images, movieTMDBPage} from '../../ts/env';
+import {MatOptionSelectionChange} from '@angular/material';
 
 @Component({
     selector: 'app-season',
@@ -42,19 +43,34 @@ export class SeasonComponent implements OnInit {
     }
 
     changeSeason(n) {
+        console.log(n)
         this.seasonNumber = n;
         this.niccolgurManager.getSeason(n).then(
             season => {
                 season.forEach(e => this.season.push(e));
                 this.season.reverse();
             }, err => {
-                console.log(err);
                 this.error = err;
             });
     }
 
+    /* Handlers */
+
+    selectionChange(event: MatOptionSelectionChange, option) {
+        if (event.source.selected) {
+            this.changeSeason(option);
+        }
+    }
+
+    getSeasonsOptions() {
+        const ret = [];
+        for (let i = 1; i <= this.seasonsCount; i++) {
+            ret.push(i);
+        }
+        return ret;
+    }
+
     openMovie(niccolgur: Niccolgur) {
-        console.log('click!');
         window.open(`${movieTMDBPage}/${niccolgur.movie_id}`, '_blank');
     }
 

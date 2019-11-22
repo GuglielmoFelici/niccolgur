@@ -34,16 +34,13 @@ export class NiccolgurManagerService {
     async getSeason(seasonNumber: number): Promise<Season> {
         const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
         season.forEach((niccolgur, i, ssn) => {
-            this.getMovie(niccolgur.movie_id, 'it', true).then(
+            this.getMovie(niccolgur.movie_id, 'it').then(
                 movie => {
                     ssn[i].movie_data = movie;
+                    this.getTagline(niccolgur.movie_id).then(tagline => ssn[i].movie_data.tagline = tagline);
                 }, err => {
-                        this.getMovie(niccolgur.movie_id, 'en-US', false).then(
-                            movie => {
-                                ssn[i].movie_data = movie;
-                            }, () => {
-                                ssn[i].movie_data = undefined;
-                            });
+                    ssn[i].movie_data = undefined;
+                    throw err;
                 });
             this.getUser(niccolgur.master).then(
                 user => {
@@ -55,12 +52,19 @@ export class NiccolgurManagerService {
         return season;
     }
 
-    async getMovie(id: string, lang = 'it', requireTagline = false): Promise<any> {
-        return this.niccolgurService.getMovie(id, lang).pipe(tap(response => {
-            if (requireTagline && !response.tagline) {
-                throw new Error('tagline');
-            }
-        })).toPromise();
+    async getTagline(movieId): Promise<string> {
+        const ret = await this.niccolgurService.getMovie(movieId, 'it').toPromise();
+        if (ret.tagline) {
+            return new Promise(() => ret.tagline);
+        } else {
+            return this.niccolgurService.getMovie(movieId, 'en-US')
+                .pipe(map(response => response.tagline || ''))
+                .toPromise();
+        }
+    }
+
+    async getMovie(id: string, lang = 'it'): Promise<any> {
+        return this.niccolgurService.getMovie(id, lang).toPromise();
     }
 
 }
