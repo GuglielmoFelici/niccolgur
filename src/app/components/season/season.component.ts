@@ -43,10 +43,10 @@ export class SeasonComponent implements OnInit {
     }
 
     changeSeason(n) {
-        console.log(n)
         this.seasonNumber = n;
         this.niccolgurManager.getSeason(n).then(
             season => {
+                this.season = [];
                 season.forEach(e => this.season.push(e));
                 this.season.reverse();
             }, err => {
