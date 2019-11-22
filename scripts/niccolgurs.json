@@ -687,20 +687,18 @@
         },
         {
             "master": "paglia",
-            "movie_id": "asd",
+            "movie_id": "11951",
             "members": [
-                "caciotta",
-                "jala",
-                "dano",
-                "paglia",
-                "iroli",
-                "ceccherini",
                 "fosq",
+                "paglia",
                 "sanchez",
-                "pogre"
+                "jala",
+                "pogre",
+                "caciotta",
+                "ceccherini"
             ],
             "date": "22/11/2019",
-            "offers": ""
+            "offers": "Pasta con la melanzania"
         }
     ]
 ]
