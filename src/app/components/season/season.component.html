@@ -1,7 +1,7 @@
 <div *ngIf="season">
     <mat-form-field class="season-select">
-        <mat-select placeholder="Cambia season">
-            <mat-option *ngFor="let opt of getSeasonsOptions()" [value]="opt" (onSelectionChange)="selectionChange($event, opt)">Season {{opt}}</mat-option>
+        <mat-select placeholder="Cambia season" [value]="'asdasd'">
+            <mat-option *ngFor="let opt of getSeasonsOptions(); let i = index" [value]="i+1" (onSelectionChange)="selectionChange($event, i+1)">Season {{i+1}}</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-card class="movie-card card" *ngFor="let niccolgur of season" (click)="openMovie(niccolgur)">

@@ -63,11 +63,12 @@ export class SeasonComponent implements OnInit {
     }
 
     getSeasonsOptions() {
-        const ret = [];
-        for (let i = 1; i <= this.seasonsCount; i++) {
-            ret.push(i);
-        }
-        return ret;
+        return new Array(this.seasonsCount);
+        // const ret = [];
+        // for (let i = 1; i <= this.seasonsCount; i++) {
+        //     ret.push(i);
+        // }
+        // return ret;
     }
 
     openMovie(niccolgur: Niccolgur) {
