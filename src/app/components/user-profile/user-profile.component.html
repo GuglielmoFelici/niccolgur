@@ -1,23 +1,37 @@
-<ng-container *ngIf="user">
+<ng-container *ngIf="user && presenceData">
     <img [src]="images + user.img" alt="X">
     <h2> {{user.nickname}}</h2>
     <p> {{user.bio}} </p>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Presenze</mat-card-title>
-            <mat-card-subtitle>{{presenceData.ratio + '%'}}</mat-card-subtitle>
-<!--            <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">-->
-        </mat-card-header>
-<!--        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">-->
-        <mat-card-content>
+    <mat-tab-group>
+
+        <mat-tab>
+            <ng-template mat-tab-label>Presenze</ng-template>
+
+            <div class="chart-wrapper">
+                <canvas baseChart
+                        height="40%"
+                        [data]="[presenceData.ratio]"
+                        [chartType]="'horizontalBar'"
+                        [colors]="getPercentageColor(presenceData.ratio)"
+                        [options]="horizontalChartOptions">
+                </canvas>
+            </div>
             <div class="chart-wrapper">
                 <canvas baseChart
                         [data]="[presenceData.present, presenceData.absent]"
                         [labels]="['Present', 'Absent']"
                         [chartType]="'doughnut'"
-                        [colors]="[{backgroundColor: ['#2B60DE', '#F75D59']}]">
+                        [colors]="[{backgroundColor: ['#2B60DE', '#F75D59']}]"
+                        [plugins]="[chartLabels]"
+                        [options]="doughnutChartOptions">
                 </canvas>
             </div>
-        </mat-card-content>
-    </mat-card>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>Niccolgur</ng-template>
+        </mat-tab>
+
+    </mat-tab-group>
+
 </ng-container>

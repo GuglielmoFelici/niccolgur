@@ -11,7 +11,15 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
+import {
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule, MatTableModule,
+    MatTabsModule
+} from '@angular/material';
 import {MatListModule} from '@angular/material';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
@@ -38,6 +46,9 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
         MatSelectModule,
         MatButtonModule,
         ChartsModule,
+        MatTabsModule,
+        MatIconModule,
+        MatTableModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

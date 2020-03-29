@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
 import {User} from '../../ts/domain';
 import {images} from 'src/app/ts/env';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import {Context} from 'chartjs-plugin-datalabels/types/context';
 
 @Component({
     selector: 'app-user-profile',
@@ -20,6 +22,38 @@ export class UserProfileComponent implements OnInit {
         total,
         ratio,
     };
+    chartLabels = ChartDataLabels;
+
+    horizontalChartOptions = {
+        legend: undefined,
+        scales: {
+            display: false,
+            xAxes: [{
+                ticks: {
+                    min: 0,
+                    max: 100,
+                    display: false,
+                },
+                gridLines: {
+                    display: false,
+                }
+            }],
+        },
+        plugins: {
+            datalabels: {
+                color: 'white',
+                formatter: (value: any, context: Context) => value + '%',
+            }
+        }
+    };
+
+    doughnutChartOptions = {
+        plugins: {
+            datalabels: {
+                color: 'white'
+            }
+        }
+    };
 
     constructor(private route: ActivatedRoute,
                 private manager: NiccolgurManagerService) {
@@ -33,8 +67,8 @@ export class UserProfileComponent implements OnInit {
         }
         this.manager.getUser(id)
             .then(user => {
-                    this.user = user;
-                    this.notFound = !!user;
+                this.user = user;
+                this.notFound = !!user;
             });
         this.manager.getUserPresence(id)
             .then(presence => {
@@ -47,4 +81,13 @@ export class UserProfileComponent implements OnInit {
             });
     }
 
+    getPercentageColor(ratio) {
+        if (ratio < 33) {
+            return [{backgroundColor: ['#F75D59']}];
+        } else if (ratio >= 33 || ratio < 66) {
+            return [{backgroundColor: ['#FBB917']}];
+        } else {
+            return [{backgroundColor: '#4AA02C'}];
+        }
+    }
 }
