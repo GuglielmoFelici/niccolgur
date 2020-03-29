@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
-import {Season, User} from '../ts/domain';
+import {Niccolgur, Season, User} from '../ts/domain';
 import {map, tap} from 'rxjs/operators';
 
 @Injectable({
@@ -22,6 +22,20 @@ export class NiccolgurManagerService {
         return queue.map(u =>
             users.find(el => el.id === u)
         );
+    }
+
+    async getUserPresence(id: string): Promise<{ present: number, total: number }> {
+        const seasons = await this.niccolgurService.getSeasons().toPromise();
+        return {
+            present: seasons.reduce(
+                (presences: number, current: Niccolgur[]) =>
+                    presences +
+                    current.filter(nicc => nicc.members.includes(id)).length,
+                0),
+            total: seasons.reduce(
+                (total, current) => total + current.length,
+                0),
+        };
     }
 
     async getSeasonsCount(): Promise<number> {

@@ -12,9 +12,6 @@ export class StorageService {
 
     private _config;
     private _imageBaseUrlObs;
-    private _posterSizes;
-    private _fileSize;
-    private _fileSizeObs;
 
     constructor(private http: HttpClient) {
     }
@@ -33,4 +30,5 @@ export class StorageService {
             return this._imageBaseUrlObs;
         }
     }
+
 }

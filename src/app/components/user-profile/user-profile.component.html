@@ -1,0 +1,23 @@
+<ng-container *ngIf="user">
+    <img [src]="images + user.img" alt="X">
+    <h2> {{user.nickname}}</h2>
+    <p> {{user.bio}} </p>
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>Presenze</mat-card-title>
+            <mat-card-subtitle>{{presenceData.ratio + '%'}}</mat-card-subtitle>
+<!--            <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">-->
+        </mat-card-header>
+<!--        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">-->
+        <mat-card-content>
+            <div class="chart-wrapper">
+                <canvas baseChart
+                        [data]="[presenceData.present, presenceData.absent]"
+                        [labels]="['Present', 'Absent']"
+                        [chartType]="'doughnut'"
+                        [colors]="[{backgroundColor: ['#2B60DE', '#F75D59']}]">
+                </canvas>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</ng-container>

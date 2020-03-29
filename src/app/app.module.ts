@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
+import {ChartsModule} from 'ng2-charts';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {QueueComponent} from './components/queue/queue.component';
@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule} from '@angular/material';
 import {MatListModule} from '@angular/material';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import {MatListModule} from '@angular/material';
         QueueComponent,
         QueueElementComponent,
         NavbarComponent,
-        SeasonComponent
+        SeasonComponent,
+        UserProfileComponent
     ],
     imports: [
         BrowserModule,
@@ -35,6 +37,7 @@ import {MatListModule} from '@angular/material';
         MatInputModule,
         MatSelectModule,
         MatButtonModule,
+        ChartsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+/* MOBILE */
+
+@media only screen and (max-width: 799px) {
+
+    /* Foto */
+    img {
+        margin: 0 5px 0 5px;
+        max-height: 90px;
+        max-width: 90px;
+        float: left;
+    }
+
+    /* Nome */
+    h2 {
+        font-size: larger;
+    }
+
+    /* Bio */
+    p {
+    }
+
+}
+
+/* DESKTOP */
+
+@media only screen and (min-width: 800px) {
+}

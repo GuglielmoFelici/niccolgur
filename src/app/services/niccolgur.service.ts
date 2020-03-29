@@ -14,7 +14,6 @@ export class NiccolgurService {
     }
 
     getQueue(): Observable<string[]> {
-        // const params = new HttpParams().set('api_key', NiccolgurService.apiKey);
         return this.http.get<string[]>(queue);
     }
 

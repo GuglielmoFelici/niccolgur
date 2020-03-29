@@ -6,7 +6,6 @@
     #queue {
         height: 100%;
         padding-left: 0;
-        margin-top: 50px;
     }
 
     /* Riga */
@@ -100,7 +99,6 @@
 
     /* Lista */
     #queue {
-        margin-top: 60px;
     }
 
     /* Riga */

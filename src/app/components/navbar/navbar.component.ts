@@ -20,12 +20,12 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.current = this.tabs.find(tab => tab.data === window.location.href.split('/').pop())
-            || this.tabs[0];
+        this.current =
+            this.tabs.find(tab => tab.data === window.location.href.split('/').pop());
     }
 
     isCurrent(tab: TypeObject) {
-        return this.current.id === tab.id ? 'current' : '';
+        return this.current && this.current.id === tab.id ? 'current' : '';
     }
 
     tabOnClick(tab: TypeObject) {
