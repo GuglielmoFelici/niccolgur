@@ -11,5 +11,5 @@ export const totalMastered = (id: string, seasons: Season[]) =>
     seasons.reduce(
         (presences: number, current: Niccolgur[]) =>
             presences +
-            current.filter(nicc => nicc.master === id)  .length,
+            current.filter(nicc => nicc.master === id).length,
         0);

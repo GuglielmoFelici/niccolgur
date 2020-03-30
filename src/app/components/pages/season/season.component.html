@@ -4,18 +4,8 @@
             <mat-option *ngFor="let opt of getSeasonsOptions(); let i = index" [value]="i+1" (onSelectionChange)="selectionChange($event, i+1)">Season {{i+1}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <mat-card class="movie-card card" *ngFor="let niccolgur of season" (click)="openMovie(niccolgur)">
-        <mat-card-header>
-            <mat-card-title class="movie-title">{{niccolgur.movie_data?.title}}</mat-card-title>
-            <mat-card-subtitle>{{niccolgur.date}}</mat-card-subtitle>
-            <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">
-        </mat-card-header>
-        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">
-        <mat-card-content>
-            <p>
-                {{niccolgur.movie_data?.tagline || niccolgur.master.nickname + " è leso in cannula"}}
-            </p>
-        </mat-card-content>
-    </mat-card>
+    <ng-container *ngFor="let niccolgur of season">
+        <app-movie-card [niccolgur]="niccolgur"></app-movie-card>
+    </ng-container>
 
 </div>

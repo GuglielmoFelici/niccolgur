@@ -1,20 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
-import {Niccolgur, Season, User} from '../../../ts/domain';
+import {Season, User} from '../../../ts/domain';
 import {images} from 'src/app/ts/env';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {Context} from 'chartjs-plugin-datalabels/types/context';
 import {totalMastered, totalPresences} from '../../../ts/util';
-import {findIndex} from 'rxjs/operators';
 
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
     styleUrls: ['./user-profile.component.css']
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit{
 
+    loading = true;
     notFound = false;
     user: User;
     images = images;
@@ -109,6 +109,7 @@ export class UserProfileComponent implements OnInit {
                 this.initBarGraphData(this.seasons, users);
                 this.initBarGraphLabels(users);
                 this.initBarGraphColors(users);
+                this.loading = false;
             });
     }
 

@@ -22,7 +22,7 @@ const routes: Routes = [
         pathMatch: 'full',
     },
     {
-        path: 'user/:id',
+        path: 'users/:id',
         component: UserProfileComponent,
         pathMatch: 'full',
     },

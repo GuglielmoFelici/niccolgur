@@ -17,10 +17,15 @@
 
     /* Bio */
     p {
+        display: block;
     }
 
     .marginBtm {
         margin-bottom: 20px;
+    }
+
+    .marginBtm {
+        margin-top: 60px;
     }
 
     h5 {

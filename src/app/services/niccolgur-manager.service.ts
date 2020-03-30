@@ -31,40 +31,36 @@ export class NiccolgurManagerService {
             ).toPromise();
     }
 
-    async getSeason(seasonNumber: number): Promise<Season> {
+    async getSeason(seasonNumber: number, getFullMasterObj= false): Promise<Season> {
         const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
-        season.forEach((niccolgur, i, ssn) => {
-            this.getMovie(niccolgur.movie_id, 'it').then(
-                movie => {
-                    ssn[i].movie_data = movie;
-                    this.getTagline(niccolgur.movie_id).then(tagline => ssn[i].movie_data.tagline = tagline);
-                }, err => {
-                    ssn[i].movie_data = undefined;
-                    throw err;
-                });
-            this.getUser(niccolgur.master).then(
-                user => {
-                    ssn[i].master = user;
-                }, err => {
-                    throw err;
-                });
-        });
+        if (getFullMasterObj) {
+            season.forEach((niccolgur, i, ssn) => {
+                this.getUser(niccolgur.master).then(
+                    user => {
+                        ssn[i].masterFull = user;
+                    }, err => {
+                        throw err;
+                    });
+            });
+        }
         return season;
     }
 
     async getSeasons(): Promise<Season[]> {
-        return this.niccolgurService.getSeasons().toPromise();
+        const seasons = [];
+        const count = await this.getSeasonsCount();
+        for (let i = 1; i <= count; i++) {
+            seasons.push(await this.getSeason(i));
+        }
+        return seasons;
     }
 
     async getTagline(movieId): Promise<string> {
         const ret = await this.niccolgurService.getMovie(movieId, 'it').toPromise();
-        if (ret.tagline) {
-            return new Promise(() => ret.tagline);
-        } else {
-            return this.niccolgurService.getMovie(movieId, 'en-US')
+        return ret.tagline ||
+            this.niccolgurService.getMovie(movieId, 'en-US')
                 .pipe(map(response => response.tagline || ''))
                 .toPromise();
-        }
     }
 
     async getMovie(id: string, lang = 'it'): Promise<any> {

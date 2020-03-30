@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {images} from '../../../ts/env';
 import {User} from '../../../ts/domain';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-queue',
@@ -16,7 +17,8 @@ export class QueueComponent implements OnInit {
     selected: User;
     master: User;
 
-    constructor(private niccolgurManager: NiccolgurManagerService) {
+    constructor(private niccolgurManager: NiccolgurManagerService,
+                private router: Router) {
     }
 
     ngOnInit() {
@@ -45,8 +47,13 @@ export class QueueComponent implements OnInit {
         if (!this.selected || this.selected.id !== user.id) {
             this.selected = user;
         } else {
-            this.selected = undefined;
+            console.log('canio')
+            this.router.navigate([`/users/${user.id}`]);
         }
+    }
+
+    isSelected(user: User) {
+        return this.selected.id === user.id;
     }
 
     // TODO animazioni
