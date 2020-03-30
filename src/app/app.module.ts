@@ -3,10 +3,10 @@ import {NgModule} from '@angular/core';
 import {ChartsModule} from 'ng2-charts';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {QueueComponent} from './components/queue/queue.component';
-import {QueueElementComponent} from './components/queue/queue-element/queue-element.component';
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {SeasonComponent} from './components/season/season.component';
+import {QueueComponent} from './components/pages/queue/queue.component';
+import {QueueElementComponent} from './components/pages/queue/queue-element/queue-element.component';
+import {NavbarComponent} from './components/pages/navbar/navbar.component';
+import {SeasonComponent} from './components/pages/season/season.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,7 +21,8 @@ import {
     MatTabsModule
 } from '@angular/material';
 import {MatListModule} from '@angular/material';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
         QueueElementComponent,
         NavbarComponent,
         SeasonComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        MovieCardComponent
     ],
     imports: [
         BrowserModule,

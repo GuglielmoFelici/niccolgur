@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TypeObject} from '../../ts/domain';
+import {TypeObject} from '../../../ts/domain';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

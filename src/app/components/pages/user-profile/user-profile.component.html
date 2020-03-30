@@ -1,0 +1,53 @@
+<ng-container *ngIf="seasons && user && users">
+    <img [src]="images + user.img" alt="X">
+    <h2> {{user.nickname}}</h2>
+    <p> {{user.bio}} </p>
+    <mat-tab-group>
+
+        <mat-tab>
+            <ng-template mat-tab-label>Presenze</ng-template>
+
+            <h2>RANK: {{userRank}}</h2>
+
+            <h5>Niccolgur hittati</h5>
+            <div class="chart-wrapper">
+                <canvas baseChart
+                        height="40%"
+                        [data]="[userStatsData.ratio]"
+                        [chartType]="'horizontalBar'"
+                        [colors]="[{backgroundColor: [getPercentageColor(userStatsData.ratio)]}]"
+                        [options]="horizontalChartOptions">
+                </canvas>
+            </div>
+            <div class="chart-wrapper marginBtm">
+                <canvas baseChart
+                        [data]="[userStatsData.present, userStatsData.absent]"
+                        [labels]="['Presente', 'Assente']"
+                        [chartType]="'doughnut'"
+                        [colors]="[{backgroundColor: ['#2B60DE', '#F75D59']}]"
+                        [plugins]="[chartLabels]"
+                        [options]="doughnutChartOptions">
+                </canvas>
+            </div>
+
+            <h5>Percentuale Niccolgur hittati per master</h5>
+            <div class="chart-wrapper">
+                <canvas baseChart
+                        height="250%"
+                        [data]="barGraphData"
+                        [labels]="barGraphLabels"
+                        [chartType]="'bar'"
+                        [colors]="[{backgroundColor: barChartColors}]"
+                        [options]="barChartOptions">
+                </canvas>
+            </div>
+        </mat-tab>
+
+        <mat-tab>
+            <ng-template mat-tab-label>Niccolgur</ng-template>
+
+        </mat-tab>
+
+    </mat-tab-group>
+
+</ng-container>

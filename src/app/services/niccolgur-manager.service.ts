@@ -24,20 +24,6 @@ export class NiccolgurManagerService {
         );
     }
 
-    async getUserPresence(id: string): Promise<{ present: number, total: number }> {
-        const seasons = await this.niccolgurService.getSeasons().toPromise();
-        return {
-            present: seasons.reduce(
-                (presences: number, current: Niccolgur[]) =>
-                    presences +
-                    current.filter(nicc => nicc.members.includes(id)).length,
-                0),
-            total: seasons.reduce(
-                (total, current) => total + current.length,
-                0),
-        };
-    }
-
     async getSeasonsCount(): Promise<number> {
         return this.niccolgurService.getSeasons()
             .pipe(
@@ -64,6 +50,10 @@ export class NiccolgurManagerService {
                 });
         });
         return season;
+    }
+
+    async getSeasons(): Promise<Season[]> {
+        return this.niccolgurService.getSeasons().toPromise();
     }
 
     async getTagline(movieId): Promise<string> {

@@ -1,0 +1,13 @@
+<mat-card class="movie-card card" *ngFor="let niccolgur of niccolgur" (click)="openMovie(niccolgur)">
+    <mat-card-header>
+        <mat-card-title class="movie-title">{{niccolgur.movie_data?.title}}</mat-card-title>
+        <mat-card-subtitle>{{niccolgur.date}}</mat-card-subtitle>
+        <img mat-card-avatar [src]="images + niccolgur.master.img" alt="X">
+    </mat-card-header>
+    <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">
+    <mat-card-content>
+        <p>
+            {{niccolgur.movie_data?.tagline || niccolgur.master.nickname + " è leso in cannula"}}
+        </p>
+    </mat-card-content>
+</mat-card>

@@ -19,8 +19,12 @@
     p {
     }
 
-    .card-title {
-        margin-left: 50%;
+    .marginBtm {
+        margin-bottom: 20px;
+    }
+
+    h5 {
+        margin: 10px 0 10px 0;
     }
 
 }
