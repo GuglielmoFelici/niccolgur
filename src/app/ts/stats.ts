@@ -29,7 +29,7 @@ export const masteredPercentage = (id: string, seasons: Season[]) =>
         / niccolgursCount(seasons));
 
 export const getUserSR = (id: string, seasons: Season[]) =>
-    (presencesPercentage(id, seasons) + masteredPercentage(id, seasons)) / 2;
+    Math.round((presencesPercentage(id, seasons) + masteredPercentage(id, seasons)) / 2);
 
 export const getUserRank = (id: string, users: User[], seasons: Season[], userSR?: number) => {
     const userScore = userSR || getUserSR(id, seasons);
