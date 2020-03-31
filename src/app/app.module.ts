@@ -23,6 +23,7 @@ import {
 import {MatListModule} from '@angular/material';
 import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { UserStatsComponent } from './components/user-stats/user-stats.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
         NavbarComponent,
         SeasonComponent,
         UserProfileComponent,
-        MovieCardComponent
+        MovieCardComponent,
+        UserStatsComponent
     ],
     imports: [
         BrowserModule,

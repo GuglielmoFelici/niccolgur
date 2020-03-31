@@ -2,24 +2,6 @@
 
 @media only screen and (max-width: 799px) {
 
-    /* Foto */
-    img {
-        margin: 0 5px 0 5px;
-        max-height: 90px;
-        max-width: 90px;
-        float: left;
-    }
-
-    /* Nome */
-    h2 {
-        font-size: larger;
-    }
-
-    /* Bio */
-    p {
-        display: block;
-    }
-
     .marginBtm {
         margin-bottom: 20px;
     }
@@ -28,6 +10,7 @@
         margin-top: 60px;
     }
 
+    /* Titoli dei grafici */
     h5 {
         margin: 10px 0 10px 0;
     }
