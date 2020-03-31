@@ -2,38 +2,54 @@
     <h2>Caricamento...</h2>
 </ng-container>
 <ng-container *ngIf="!loading">
-    <h2>RANK: {{userRank}}</h2>
+
+    <mat-card class="stats-card card">
+        <mat-card-header>
+            <mat-card-title class="movie-title">RANK: {{userRank}}</mat-card-title>
+            <mat-card-subtitle>Skill rating: {{userSR}}</mat-card-subtitle>
+            <img mat-card-avatar
+                 class=""
+                 [src]="userStatsData.srImage"
+                 alt="X">
+        </mat-card-header>
+    </mat-card>
 
     <h5>Niccolgur hittati</h5>
     <div class="chart-wrapper">
         <canvas baseChart
                 height="40%"
-                [data]="[userStatsData.ratio]"
+                [data]="horizontalChart.data"
                 [chartType]="'horizontalBar'"
-                [colors]="[{backgroundColor: [getPercentageColor(userStatsData.ratio)]}]"
-                [options]="horizontalChartOptions">
+                [colors]="[{backgroundColor: horizontalChart.colors}]"
+                [plugins]="[chartLabels]"
+                [options]="horizontalChart.options">
         </canvas>
     </div>
     <div class="chart-wrapper marginBtm">
         <canvas baseChart
-                [data]="[userStatsData.present, userStatsData.absent]"
-                [labels]="['Presente', 'Assente']"
+                [data]="doughnutChart.data"
+                [labels]="doughnutChart.labels"
                 [chartType]="'doughnut'"
-                [colors]="[{backgroundColor: ['#2B60DE', '#F75D59']}]"
+                [colors]="[{backgroundColor: doughnutChart.colors}]"
                 [plugins]="[chartLabels]"
-                [options]="doughnutChartOptions">
+                [options]="doughnutChart.options">
         </canvas>
+    </div>
+
+    <h5>Niccolgur masterati</h5>
+    <div class="chart-wrapper marginBtm">
+
     </div>
 
     <h5>Percentuale Niccolgur hittati per master</h5>
     <div class="chart-wrapper">
         <canvas baseChart
                 height="250%"
-                [data]="barGraphData"
-                [labels]="barGraphLabels"
+                [data]="barChart.data"
+                [labels]="barChart.labels"
                 [chartType]="'bar'"
-                [colors]="[{backgroundColor: barChartColors}]"
-                [options]="barChartOptions">
+                [colors]="[{backgroundColor: barChart.colors}]"
+                [options]="barChart.options">
         </canvas>
     </div>
 </ng-container>

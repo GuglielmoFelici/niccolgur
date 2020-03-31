@@ -3,7 +3,7 @@ export class TypeObject {
     desc?: string;
     data?: string;
 
-    constructor(id: string, desc?: string, data?: string) {
+    constructor(id: string, desc?: string, data?: any) {
         this.id = id;
         this.desc = desc;
         this.data = data;

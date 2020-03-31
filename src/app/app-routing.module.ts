@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {QueueComponent} from './components/pages/queue/queue.component';
 import {SeasonComponent} from './components/pages/season/season.component';
 import {UserProfileComponent} from './components/pages/user-profile/user-profile.component';
+import {ClassificaComponent} from './components/pages/classifica/classifica.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
     {
         path: 'season',
         component: SeasonComponent,
+        pathMatch: 'full',
+    },
+    {
+        path: 'classifica',
+        component: ClassificaComponent,
         pathMatch: 'full',
     },
     {

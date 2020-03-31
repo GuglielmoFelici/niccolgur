@@ -3,9 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {Season, User} from '../../../ts/domain';
 import {images} from 'src/app/ts/env';
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-import {Context} from 'chartjs-plugin-datalabels/types/context';
-import {totalMastered, totalPresences} from '../../../ts/util';
 
 @Component({
     selector: 'app-user-profile',

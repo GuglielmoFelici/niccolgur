@@ -1,13 +1,13 @@
 <ng-container *ngIf="seasons && user && users">
     <div>
-        <img [src]="images + user.img" alt="X">
+        <img [src]="images + user.img" alt="X" class="pp">
         <h2> {{user.nickname}}</h2>
         <p> {{user.bio}} <br> <br></p>
     </div>
     <mat-tab-group>
 
         <mat-tab>
-            <ng-template mat-tab-label>Presenze</ng-template>
+            <ng-template mat-tab-label>Stats</ng-template>
             <app-user-stats [user]="user"
                             [users]="users"
                             [seasons]="seasons">
