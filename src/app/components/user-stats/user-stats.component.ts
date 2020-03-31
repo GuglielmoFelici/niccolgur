@@ -45,7 +45,9 @@ export class UserStatsComponent implements OnInit {
     barChart = {
         ...this.IChart,
         options: {
-            legend: undefined,
+            legend: {
+                display: false,
+            },
             scales: {
                 yAxes: [{
                     ticks: {
@@ -67,8 +69,11 @@ export class UserStatsComponent implements OnInit {
 
     horizontalChart = {
         ...this.IChart,
+        labels: [''],
         options: {
-            legend: undefined,
+            legend: {
+                display: false,
+            },
             scales: {
                 xAxes: [{
                     ticks: {
