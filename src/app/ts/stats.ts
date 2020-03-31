@@ -32,7 +32,6 @@ export const getUserSR = (id: string, seasons: Season[]) =>
     (presencesPercentage(id, seasons) + masteredPercentage(id, seasons)) / 2;
 
 export const getUserRank = (id: string, users: User[], seasons: Season[], userSR?: number) => {
-    console.log(userSR);
     const userScore = userSR || getUserSR(id, seasons);
     return users
         .map(user => getUserSR(user.id, seasons))
@@ -41,13 +40,13 @@ export const getUserRank = (id: string, users: User[], seasons: Season[], userSR
 };
 
 const tiers = [
-    new TypeObject('bronze', 'bronze.png', 20),
-    new TypeObject('silver', 'silver.png', 25),
-    new TypeObject('gold', 'gold.png', 30),
-    new TypeObject('platinum', 'platinum.png', 35),
-    new TypeObject('master', 'master.png', 40),
+    new TypeObject('bronze', 'bronze.png', 35),
+    new TypeObject('silver', 'silver.png', 40),
+    new TypeObject('gold', 'gold.png', 45),
+    new TypeObject('platinum', 'platinum.png', 50),
+    new TypeObject('master', 'master.png', 55),
     new TypeObject('grandmaster', 'grandmaster.png', Infinity),
 ];
 
 export const getSRImage = (sr: number) =>
-    ranks + tiers.find(tier => sr < parseInt(tier.data, 10)).desc;
+    ranks + tiers.find(tier => sr < tier.data).desc;

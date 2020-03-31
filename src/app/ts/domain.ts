@@ -1,7 +1,7 @@
 export class TypeObject {
     id: string;
     desc?: string;
-    data?: string;
+    data?: any;
 
     constructor(id: string, desc?: string, data?: any) {
         this.id = id;

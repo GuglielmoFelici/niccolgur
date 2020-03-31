@@ -47,7 +47,6 @@ export class QueueComponent implements OnInit {
         if (!this.selected || this.selected.id !== user.id) {
             this.selected = user;
         } else {
-            console.log('canio')
             this.router.navigate([`/users/${user.id}`]);
         }
     }
