@@ -16,6 +16,7 @@ export class UserProfileComponent implements OnInit {
     users: User[];
     images = images;
     notFound = false;
+    loading = true;
 
     constructor(private route: ActivatedRoute,
                 private manager: NiccolgurManagerService) {
@@ -39,6 +40,7 @@ export class UserProfileComponent implements OnInit {
             })
             .then(users => {
                 this.users = users;
+                this.loading = false;
             });
     }
 }

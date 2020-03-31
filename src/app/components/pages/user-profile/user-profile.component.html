@@ -1,4 +1,7 @@
-<ng-container *ngIf="seasons && user && users">
+<ng-container *ngIf="loading">
+    <h2>Caricamento...</h2>
+</ng-container>
+<ng-container *ngIf="!loading && seasons && user && users">
     <div>
         <img [src]="images + user.img" alt="X" class="pp">
         <h2> {{user.nickname}}</h2>
