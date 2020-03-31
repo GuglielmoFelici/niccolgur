@@ -43,8 +43,8 @@ const tiers = [
     new TypeObject('bronze', 'bronze.png', 30),
     new TypeObject('silver', 'silver.png', 35),
     new TypeObject('gold', 'gold.png', 40),
-    new TypeObject('diamond', 'diamond.png', 45),
-    new TypeObject('platinum', 'platinum.png', 50),
+    new TypeObject('platinum', 'platinum.png', 45),
+    new TypeObject('diamond', 'diamond.png', 50),
     new TypeObject('master', 'master.png', 55),
     new TypeObject('grandmaster', 'grandmaster.png', Infinity),
 ];
