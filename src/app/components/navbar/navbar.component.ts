@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TypeObject} from '../../../ts/domain';
+import {TypeObject} from '../../ts/domain';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        // se il path prevede parametri, si potrebbero usare le regex
         this.current =
             this.tabs.find(tab => tab.data === window.location.href.split('/').pop());
     }

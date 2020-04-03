@@ -2,29 +2,32 @@
 
 @media only screen and (max-width: 799px) {
 
-    /* Foto */
-    img {
+    /* Foto profilo */
+    .pp {
         margin: 0 5px 0 5px;
-        max-height: 90px;
-        max-width: 90px;
+        max-height: 100px;
+        max-width: 100px;
         float: left;
     }
 
     /* Nome */
     h2 {
+        margin-left: 110px;
+        text-align: center;
         font-size: larger;
     }
 
     /* Bio */
     p {
-        display: block;
+        text-align: center;
+        margin: 0 0 30px 110px;
     }
 
     .marginBtm {
         margin-bottom: 20px;
     }
 
-    .marginBtm {
+    .marginTop {
         margin-top: 60px;
     }
 

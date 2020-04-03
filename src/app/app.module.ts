@@ -4,8 +4,7 @@ import {ChartsModule} from 'ng2-charts';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {QueueComponent} from './components/pages/queue/queue.component';
-import {QueueElementComponent} from './components/pages/queue/queue-element/queue-element.component';
-import {NavbarComponent} from './components/pages/navbar/navbar.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
 import {SeasonComponent} from './components/pages/season/season.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
@@ -23,16 +22,19 @@ import {
 import {MatListModule} from '@angular/material';
 import { UserProfileComponent } from './components/pages/user-profile/user-profile.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { UserStatsComponent } from './components/user-stats/user-stats.component';
+import { ClassificaComponent } from './components/pages/classifica/classifica.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         QueueComponent,
-        QueueElementComponent,
         NavbarComponent,
         SeasonComponent,
         UserProfileComponent,
-        MovieCardComponent
+        MovieCardComponent,
+        UserStatsComponent,
+        ClassificaComponent,
     ],
     imports: [
         BrowserModule,
