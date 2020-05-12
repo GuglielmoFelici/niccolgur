@@ -1,5 +1,4 @@
-#!/usr/bin/python
-
+import redis
 import time
 from myQueue import *
 import json
@@ -20,12 +19,13 @@ UNDERLINE = '\033[4m'
 # da implementare: aggiungi membri a posizione definita della queue
 
 
-class Manager(object):
+class RedisManager(object):
 
     def __init__(self):
         self.queue = MyQueue()
         self.hangouts = []
         self.allSeasons = []
+        self.redis = redis.Redis()
 
     def get_members(self):
         return self.queue.elements
@@ -36,12 +36,12 @@ class Manager(object):
     def rm_member(self, member):
         self.queue.remove(member)
 
-    def add_hangout(self, master, movie, attendants, date, offers=""):
+    def add_hangout(self, master, movie, participants, date, offers=""):
         self.hangouts += [
             {
                 "master": master,
                 "movie_id": movie,
-                "members": attendants,
+                "members": participants,
                 "date": date,
                 "offers": offers,
             }
@@ -53,8 +53,8 @@ class Manager(object):
     '''
     Scorre la queue a seconda dei presenti.
     '''
-    def shift_queue(self, attendants, absentShift=DEFAULT_SHIFT):
-        absents = [x for x in self.queue.elements if x not in attendants]
+    def shift_queue(self, participants, absentShift=DEFAULT_SHIFT):
+        absents = [x for x in self.queue.elements if x not in participants]
         self.queue.shift()
         for item in reversed(absents):
             self.queue.shift_el(item, absentShift)
@@ -97,12 +97,12 @@ class Manager(object):
         return "Queue: " + str(self.queue) + "\nUscite:\n" + "\n".join([str(x) for x in self.hangouts])
 
     class Hangout:
-        def __init__(self, master, movie, attendants, date, offers=""):
+        def __init__(self, master, movie, participants, date, offers=""):
             self.master = master
             self.movie_id = movie
-            self.members = attendants
+            self.members = participants
             self.date = date
             self.offers = offers
 
         def __str__(self):
-            return OKBLUE+"Data: "+ENDC + self.date + " | "+OKBLUE+"Master: "+ENDC+self.master+" | "+OKBLUE+"Film: "+ENDC+self.movie+" | "+OKBLUE+"Partecipanti: "+ENDC+", ".join(self.attendants) + " | " + OKBLUE + "Offerte: "+ENDC + self.offers
+            return OKBLUE+"Data: "+ENDC + self.date + " | "+OKBLUE+"Master: "+ENDC+self.master+" | "+OKBLUE+"Film: "+ENDC+self.movie+" | "+OKBLUE+"Partecipanti: "+ENDC+", ".join(self.participants) + " | " + OKBLUE + "Offerte: "+ENDC + self.offers

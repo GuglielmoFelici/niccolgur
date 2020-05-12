@@ -72,9 +72,9 @@ def clear():
 ###############################
 
 
-'''Menu di gestione dell\'apertura dei file. Ritorna il path del file se l'operazione ha successo, EXIT se viene dato il rispettivo comando di uscita o False se si verifica un errore.'''
-
-
+'''
+Menu di gestione dell\'apertura dei file. Ritorna il path del file se l'operazione ha successo, EXIT se viene dato il rispettivo comando di uscita o False se si verifica un errore.
+'''
 def file_menu(manager, mode):
     while True:
         print(OKBLUE+"Main menu -> Choose season"+ENDC)
@@ -109,9 +109,9 @@ def file_menu(manager, mode):
             return path
 
 
-'''Menu visualizzato dopo la riuscita apertura di un file. '''
-
-
+'''
+Menu visualizzato dopo la riuscita apertura di un file. 
+'''
 def opened_menu(manager, ssnNo):
     while True:
         print(OKBLUE+"Main menu -> Niccolgur menu"+ENDC)
@@ -155,9 +155,9 @@ def opened_menu(manager, ssnNo):
             print(phrases["comm_err"])
 
 
-'''Menu di gestione dei membri.'''
-
-
+'''
+Menu di gestione dei membri.
+'''
 def members_menu(manager, path):
     while True:
         print(OKBLUE+"Main menu -> Niccolgur menu -> Members menu"+ENDC)
@@ -194,9 +194,9 @@ def members_menu(manager, path):
             print(phrases["comm_err"])
 
 
-'''Menu di gestione dei ritrovi.'''
-
-
+'''
+Menu di gestione dei ritrovi.
+'''
 def hangouts_menu(manager, path):
     while True:
         print(OKBLUE+"Main menu -> Niccolgur menu -> Hangouts menu"+ENDC)
@@ -231,9 +231,9 @@ def hangouts_menu(manager, path):
             print(phrases["comm_err"])
 
 
-'''Interfaccia di inserimento ritrovi.'''
-
-
+'''
+Interfaccia di inserimento ritrovi.
+'''
 def add_input_hangout(manager):
     print(OKBLUE+"Main menu -> Niccolgur menu -> Hangouts menu -> Add Hangout"+ENDC)
     print(HEADER+"Queue attuale: "+str(manager.queue)+ENDC)
@@ -309,9 +309,9 @@ def add_input_hangout(manager):
         manager.shift_queue(attendants)
 
 
-'''Menu di gestione della queue'''
-
-
+'''
+Menu di gestione della queue
+'''
 def queue_menu(manager, path):
     while True:
         print(OKBLUE+"Main menu -> Niccolgur menu -> Queue menu"+ENDC)
@@ -353,7 +353,9 @@ def queue_menu(manager, path):
             print(phrases["comm_err"])
 
 
-'''Main menu.'''
+'''
+Main menu
+'''
 manager = Manager()
 clear()
 while True:
