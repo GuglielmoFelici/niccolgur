@@ -72,18 +72,19 @@ def members_menu(manager, path):
         print_header("Membri attuali: " +", ".join(manager.get_members()) + "\n") # TODO
         command = input(phrases["members"]).strip()
         if command == NEW:
-            members = input("Inserire i nuovi membri separati da uno spazio, " + EXIT + " per annullare:\n").strip()
-            while not re.match(SPACED_ALNUM, members) and members != EXIT:
-                members = input_err("\nStringa non valida. Riprovare.\n\n").strip()
-            if members == EXIT:
-                clear()
-                print_warning(phrases["aborted"])
-                continue
-            manager.add_members(members.split(" ")) # TODO
-            clear()
-            print_green("Membri aggiunti con successo.\n")
+            # members = input("Inserire i nuovi membri separati da uno spazio, " + EXIT + " per annullare:\n").strip()
+            # while not re.match(SPACED_ALNUM, members) and members != EXIT:
+            #     members = input_err("\nStringa non valida. Riprovare.\n\n").strip()
+            # if members == EXIT:
+            #     clear()
+            #     print_warning(phrases["aborted"])
+            #     continue
+            # manager.add_members(members.split(" ")) # TODO
+            # clear()
+            # print_green("Membri aggiunti con successo.\n")
+            print_err(phrases["todo"])
         elif command == REMOVE:
-            remove = input("Inserire il nome del membro da rimuovere, " + EXIT + " per annullare:\n").strip()
+            remove = input("Inserire l'id del membro da rimuovere, " + EXIT + " per annullare:\n").strip()
             if remove not in manager.get_members():
                 clear()
                 print_err("Membro non presente.\n")
