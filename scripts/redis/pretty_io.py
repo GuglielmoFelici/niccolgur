@@ -30,22 +30,22 @@ def print_underline(string):
     print(UNDERLINE, string, ENDC, sep="")
 
 def input_header(string):
-    return input(HEADER, string, ENDC, sep="").strip()
+    return input(HEADER + string + ENDC).strip()
 
 def input_blue(string):
-    return input(OKBLUE, string, ENDC, sep="").strip()
+    return input(OKBLUE + string + ENDC).strip()
 
 def input_green(string):
-    return input(OKGREEN, string, ENDC, sep="").strip()
+    return input(OKGREEN + string + ENDC).strip()
 
 def input_warning(string):
-    return input(WARNING, string, ENDC, sep="").strip()
+    return input(WARNING + string + ENDC).strip()
 
 def input_err(string):
-    return input(FAIL, string, ENDC, sep="").strip()
+    return input(FAIL + string + ENDC).strip()
 
 def input_bold(string):
-    return input(BOLD, string, ENDC, sep="").strip()
+    return input(BOLD + string + ENDC).strip()
 
 def print_underline(string):
-    return input(UNDERLINE, string, ENDC, sep="").strip()
+    return input(UNDERLINE + string + ENDC).strip()

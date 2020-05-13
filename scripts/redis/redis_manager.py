@@ -2,7 +2,7 @@ import redis
 import time
 import json
 
-
+''' Determina di quanto shiftano gli assenti '''
 DEFAULT_SHIFT = -2
 
 ### KEYS ###
@@ -12,7 +12,7 @@ QUEUE = "queue"
 INDEX = "index"
 NICCOLGUR = "niccolgur"
 SEASON = "season"
-NEXT = "next"
+ID = "id"
 MASTER = "master"
 MOVIE = "movie"
 DATE = "date"
@@ -39,19 +39,44 @@ class RedisManager(object):
 
     ### Users ###
 
-    def users(self, id=None):
-        return decode_set(self.redis.smembers("%s:%s" %(USER, INDEX)))
-
-
-    def users_full(self, id=None):
+    def users(self):
+        return list(decode_set(self.redis.smembers("%s:%s" %(USER, INDEX))))
+    
+    def users_to_string(self):
+        return ", ".join(
+            ["#" + x + " " + self.user_name(x) for x in self.users()]
+        )
+    
+    def __users_attr(self, attr, id=None):
         if (id):
-            return [decode_dict(self.redis.hgetall("%s:%s" %(USER, id)))]
-        else: 
+            return decode_bin(self.redis.hget("%s:%s" %(USER, id), attr))
+        else:
             return [
                 decode_dict(
-                    self.redis.hgetall("%s:%s" %(USER, decode_bin(x)))
+                    self.redis.hget("%s:%s" %(USER, decode_bin(x)), attr)
                 ) for x in self.redis.smembers("%s:%s" %(USER, INDEX))
             ]
+    
+    def user_id(self, nickname):
+        for id in self.users:
+            if self.user.user_name(id) == nickname:
+                return id
+
+    def user_name(self, id):
+        return self.__users_attr("nickname", id)
+
+    def users_name(self):
+        return self.__users_attr("nickname")
+
+    def user_full(self, id):
+        return [decode_dict(self.redis.hgetall("%s:%s" %(USER, id)))]
+
+    def users_full(self, id=None): 
+        return [
+            decode_dict(
+                self.redis.hgetall("%s:%s" %(USER, decode_bin(x)))
+            ) for x in self.redis.smembers("%s:%s" %(USER, INDEX))
+        ]
 
     def users_add(self):
         return # TODO
@@ -63,27 +88,31 @@ class RedisManager(object):
 
     def niccolgurs(self, id=None):
         return decode_set(self.redis.smembers("%s:%s" %(NICCOLGUR, INDEX)))
+    
+    def niccolgurs_count(self):
+        return self.redis.scard("%s:%s" %(NICCOLGUR, INDEX))
 
-    def niccolgurs_full(self, id=None):
-        if (id):
-            return [decode_dict(self.redis.hgetall("%s:%s" %(NICCOLGUR, id)))]
-        else: 
-            return [
-                decode_dict(
-                    self.redis.hgetall("%s:%s" %(NICCOLGUR, decode_bin(x)))
-                ) for x in self.redis.smembers("%s:%s" %(NICCOLGUR, INDEX))
-            ]
+    def niccolgur_full(self, id):
+        return [decode_dict(self.redis.hgetall("%s:%s" %(NICCOLGUR, id)))]
 
-    def niccolgurs_add(self, master, movie, participants, date):
-        idx = self.redis.incr("%s:%s" %(NEXT, NICCOLGUR))
+    def niccolgurs_full(self):
+        return [
+            decode_dict(
+                self.redis.hgetall("%s:%s" %(NICCOLGUR, decode_bin(x)))
+            ) for x in self.redis.smembers("%s:%s" %(NICCOLGUR, INDEX))
+        ]
+
+    def niccolgur_add(self, master, movie, participants, date):
+        idx = self.redis.incr("%s:%s" %(NICCOLGUR, ID))
         new = {
                 "master": master,
                 "movie": movie,
                 "date": date
             }
         self.redis.hmset("%s:%s" %(NICCOLGUR, idx), new)
+        self.redis.sadd("%s:%s" %(NICCOLGUR, INDEX), idx)
         self.redis.sadd("%s:%s" %(MEMBERS, idx), *participants)
-        ssn_idx = self.redis.get("%s:%s" %(NEXT, SEASON))
+        ssn_idx = self.redis.get("%s:%s" %(SEASON, ID))
         self.redis.rpush("%s:%s" %(SEASON, ssn_idx), idx)
 
     def rm_by_date(self, date):
@@ -94,6 +123,11 @@ class RedisManager(object):
 
     def queue(self):
         return decode_list(self.redis.lrange(QUEUE, 0, -1))
+
+    def queue_to_string(self):
+        return ", ".join(
+            [str(idx+1) + ") " + x + "#" + self.user_name(x) for idx, x in enumerate(self.queue())]
+        )
 
     def queue_shift(self, pos=1):
         queue = self.queue()
@@ -125,56 +159,8 @@ class RedisManager(object):
     '''
     Scorre la queue a seconda dei presenti.
     '''
-    def shift_queue(self, participants, absentShift=DEFAULT_SHIFT):
-        absents = [x for x in self.queue.elements if x not in participants]
-        self.queue.shift()
-        for item in reversed(absents):
-            self.queue.shift_el(item, absentShift)
-
-    '''
-    Carica dati da file.
-    '''
-    def load(self, ssnNo):
-        try:
-            with open("queue.json") as queueFile:
-                self.queue = MyQueue(json.load(queueFile))
-            with open("niccolgurs.json", "r") as source:
-                self.allSeasons = json.load(source)
-                self.hangouts = self.allSeasons[ssnNo-1]
-            return True
-        except IOError as e:
-            return False
-
-    '''
-    Scrive dati su file.
-    '''
-    def save(self, ssnNo):
-        try:
-            with open("queue.json", "w") as queueFile:
-                queueFile.write(json.dumps(self.queue.elements))
-            with open("niccolgurs.json", "w") as niccolFile:
-                self.allSeasons[ssnNo-1] = self.hangouts
-                niccolFile.write(json.dumps(self.allSeasons))
-            return True
-        except IOError as e:
-            return False
-
-    def clear(self):
-        self.queue = MyQueue()
-        self.hangouts = []
-
-    def __str__(self):
-        if not self.hangouts:
-            return "Non si sono ancora svolti raduni."
-        return "Queue: " + str(self.queue) + "\nUscite:\n" + "\n".join([str(x) for x in self.hangouts])
-
-    class Hangout:
-        def __init__(self, master, movie, participants, date, offers=""):
-            self.master = master
-            self.movie_id = movie
-            self.members = participants
-            self.date = date
-            self.offers = offers
-
-        def __str__(self):
-            return OKBLUE+"Data: "+ENDC + self.date + " | "+OKBLUE+"Master: "+ENDC+self.master+" | "+OKBLUE+"Film: "+ENDC+self.movie+" | "+OKBLUE+"Partecipanti: "+ENDC+", ".join(self.participants) + " | " + OKBLUE + "Offerte: "+ENDC + self.offers
+    def queue_autoshift(self, participants, absentShift=DEFAULT_SHIFT):
+        self.queue_shift()
+        absents = [x for x in self.queue() if x not in participants]
+        for elem in reversed(absents):
+            self.queue_shift_el(elem, absentShift)
