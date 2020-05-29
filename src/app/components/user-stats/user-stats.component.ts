@@ -2,8 +2,16 @@ import {Component, Input, OnInit} from '@angular/core';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {Context} from 'chartjs-plugin-datalabels/types/context';
 import {Season, User} from '../../ts/domain';
-import {getSRImage, getUserRank, getUserSR, masteredPercentage, niccolgursCount, totalMastered, totalPresences} from '../../ts/stats';
-import {BaseChartDirective, ChartsModule} from 'ng2-charts';
+import {
+    getSRImage,
+    getUserRank,
+    getUserSR,
+    masteredPercentage,
+    niccolgursCount,
+    totalMastered,
+    totalPresences
+} from '../../ts/stats';
+import {BaseChartDirective} from 'ng2-charts';
 
 @Component({
     selector: 'app-user-stats',

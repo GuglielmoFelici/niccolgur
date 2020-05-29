@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {catchError} from 'rxjs/operators';
-import {Observable, of} from 'rxjs';
-import {Season, TmdbConfig, User} from '../ts/domain';
-import {apiKey, config, movie, niccolgurs, queue, users} from '../ts/env';
+import {Observable} from 'rxjs';
+import {Season, User} from '../ts/domain';
+import {apiKey, movie, niccolgurs, queue, users} from '../ts/env';
 
 @Injectable({
     providedIn: 'root'
