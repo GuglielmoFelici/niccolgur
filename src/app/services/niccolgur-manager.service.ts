@@ -25,6 +25,10 @@ export class NiccolgurManagerService {
             )).toPromise();
     }
 
+    async getUsersQueue(): Promise<User[]> {
+        return this.niccolgurService.getUsersQueue().toPromise()
+    }
+
     async getSeasonsCount(): Promise<number> {
         return this.niccolgurService.getSeasons()
             .pipe(

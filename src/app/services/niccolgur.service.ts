@@ -16,6 +16,11 @@ export class NiccolgurService {
         return this.http.get<string[]>(queue);
     }
 
+    getUsersQueue(): Observable<User[]> {
+        // TODO
+        return undefined
+    }
+
     getUser(id: string): Observable<User> {
         return this.http.get<User>(users + `/id/${id}`);
     }

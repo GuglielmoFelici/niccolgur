@@ -22,7 +22,6 @@ export class QueueComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log("abc")
         this.niccolgurManager.getUsers().then(
             users => {
                 this.elements = users;
