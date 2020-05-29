@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {Season, User} from '../../../ts/domain';
-import {images} from 'src/app/ts/env';
+import { images } from 'src/environments/environment';
 
 @Component({
     selector: 'app-user-profile',

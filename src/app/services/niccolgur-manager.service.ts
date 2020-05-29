@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
-import {Niccolgur, Season, User} from '../ts/domain';
-import {map, tap} from 'rxjs/operators';
+import {Season, User} from '../ts/domain';
+import {map} from 'rxjs/operators';
+import {addImageUrl} from "../ts/util";
 
 @Injectable({
     providedIn: 'root'
@@ -12,16 +13,16 @@ export class NiccolgurManagerService {
     }
 
     async getUser(userId): Promise<User> {
-        const users = await this.niccolgurService.getUsers().toPromise();
-        return users.find(el => el.id === userId);
+        return this.niccolgurService.getUser(userId).pipe(
+            map(addImageUrl)
+        ).toPromise();
     }
 
     async getUsers(): Promise<User[]> {
-        const queue = await this.niccolgurService.getQueue().toPromise();
-        const users = await this.niccolgurService.getUsers().toPromise();
-        return queue.map(u =>
-            users.find(el => el.id === u)
-        );
+        return this.niccolgurService.getUsers().pipe(
+            map(
+                list => list.map(addImageUrl)
+            )).toPromise();
     }
 
     async getSeasonsCount(): Promise<number> {
@@ -31,7 +32,7 @@ export class NiccolgurManagerService {
             ).toPromise();
     }
 
-    async getSeason(seasonNumber: number, getFullMasterObj= false): Promise<Season> {
+    async getSeason(seasonNumber: number, getFullMasterObj = false): Promise<Season> {
         const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
         if (getFullMasterObj) {
             season.forEach((niccolgur, i, ssn) => {

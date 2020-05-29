@@ -11,18 +11,11 @@ export class TypeObject {
 
 }
 
-export class User {
+export interface User {
     id: string;
     nickname: string;
-    img: string;
     bio?: string;
-
-    constructor(id: string, nickname: string, img: string, bio?: string) {
-        this.id = id;
-        this.nickname = nickname;
-        this.img = img;
-        this.bio = bio;
-    }
+    img?: string;
 
 }
 

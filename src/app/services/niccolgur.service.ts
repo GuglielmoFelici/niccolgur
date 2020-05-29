@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Season, User} from '../ts/domain';
-import {apiKey, movie, niccolgurs, queue, users} from '../ts/env';
+import {apiKey, movie, niccolgurs, queue, users} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -16,8 +16,12 @@ export class NiccolgurService {
         return this.http.get<string[]>(queue);
     }
 
+    getUser(id: string): Observable<User> {
+        return this.http.get<User>(users + `/id/${id}`);
+    }
+
     getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(users);
+        return this.http.get<User[]>(users + '/full');
     }
 
     getSeasons(): Observable<Season[]> {

@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Niccolgur} from '../../ts/domain';
-import {movieTMDBPage, images} from '../../ts/env';
 import {StorageService} from '../../services/storage-service.service';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
+import {images, movieTMDBPage} from 'src/environments/environment';
 
 @Component({
     selector: 'app-movie-card',

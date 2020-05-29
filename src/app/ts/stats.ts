@@ -1,6 +1,5 @@
 import {Niccolgur, Season, TypeObject, User} from './domain';
-import {images, ranks} from './env';
-
+import {ranks} from "../../environments/environment";
 export const niccolgursCount = (seasons: Season[]) => seasons.reduce(
     (tot, current) => tot + current.length,
     0);
