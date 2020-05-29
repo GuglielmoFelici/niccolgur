@@ -22,12 +22,11 @@ export class QueueComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.niccolgurManager.getUsers().then(
+        this.niccolgurManager.getUsersQueue().then(
             users => {
                 this.elements = users;
                 this.master = this.elements[0];
                 this.selected = this.elements[0];
-                console.log(users)
             }, err => {
                 this.error = err;
             });

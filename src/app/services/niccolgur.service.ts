@@ -17,8 +17,7 @@ export class NiccolgurService {
     }
 
     getUsersQueue(): Observable<User[]> {
-        // TODO
-        return undefined
+        return this.http.get<User[]>(queue + '/full');
     }
 
     getUser(id: string): Observable<User> {

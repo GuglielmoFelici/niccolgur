@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
 import {Season, User} from '../ts/domain';
 import {map} from 'rxjs/operators';
-import {addImageUrl} from "../ts/util";
+import {addImageUrl, pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
 
 @Injectable({
     providedIn: 'root'
@@ -13,20 +13,15 @@ export class NiccolgurManagerService {
     }
 
     async getUser(userId): Promise<User> {
-        return this.niccolgurService.getUser(userId).pipe(
-            map(addImageUrl)
-        ).toPromise();
+        return pipeUserWithImage(this.niccolgurService.getUser(userId)).toPromise();
     }
 
     async getUsers(): Promise<User[]> {
-        return this.niccolgurService.getUsers().pipe(
-            map(
-                list => list.map(addImageUrl)
-            )).toPromise();
+        return pipeUsersWithImage(this.niccolgurService.getUsers()).toPromise();
     }
 
     async getUsersQueue(): Promise<User[]> {
-        return this.niccolgurService.getUsersQueue().toPromise()
+        return pipeUsersWithImage(this.niccolgurService.getUsersQueue()).toPromise();
     }
 
     async getSeasonsCount(): Promise<number> {
