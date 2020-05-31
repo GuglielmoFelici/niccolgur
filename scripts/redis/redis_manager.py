@@ -16,7 +16,7 @@ ID = "id"
 MASTER = "master"
 MOVIE = "movie"
 DATE = "date"
-MEMBERS = "members"
+PARTICIPANTS = "participants"
 
 ############
 
@@ -33,7 +33,7 @@ def decode_dict(dic):
     return {decode_bin(key): decode_bin(dic[key]) for key in dic.keys()}
 
 class RedisManager(object):
-    
+
     def __init__(self):
         self.redis = redis.Redis()
 
@@ -41,12 +41,12 @@ class RedisManager(object):
 
     def users(self):
         return list(decode_set(self.redis.smembers("%s:%s" %(USER, INDEX))))
-    
+
     def users_to_string(self):
         return ", ".join(
             ["#" + x + " " + self.user_name(x) for x in self.users()]
         )
-    
+
     def __users_attr(self, attr, id=None):
         if (id):
             return decode_bin(self.redis.hget("%s:%s" %(USER, id), attr))
@@ -56,7 +56,7 @@ class RedisManager(object):
                     self.redis.hget("%s:%s" %(USER, decode_bin(x)), attr)
                 ) for x in self.redis.smembers("%s:%s" %(USER, INDEX))
             ]
-    
+
     def user_id(self, nickname):
         for id in self.users:
             if self.user.user_name(id) == nickname:
@@ -71,7 +71,7 @@ class RedisManager(object):
     def user_full(self, id):
         return [decode_dict(self.redis.hgetall("%s:%s" %(USER, id)))]
 
-    def users_full(self, id=None): 
+    def users_full(self, id=None):
         return [
             decode_dict(
                 self.redis.hgetall("%s:%s" %(USER, decode_bin(x)))
@@ -88,7 +88,7 @@ class RedisManager(object):
 
     def niccolgurs(self, id=None):
         return decode_set(self.redis.smembers("%s:%s" %(NICCOLGUR, INDEX)))
-    
+
     def niccolgurs_count(self):
         return self.redis.scard("%s:%s" %(NICCOLGUR, INDEX))
 
@@ -140,7 +140,7 @@ class RedisManager(object):
         if user not in queue: return
         index = queue.index(user)
         for _ in range(abs(pos)):
-            next_idx = index + int(pos / abs(pos)) 
+            next_idx = index + int(pos / abs(pos))
             if next_idx < 0 or next_idx > len(queue) - 1: break
             queue[index], queue[next_idx] = queue[next_idx], queue[index]
             index = next_idx
