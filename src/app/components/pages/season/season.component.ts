@@ -1,8 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Niccolgur, Season} from '../../../ts/domain';
+import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {MatOptionSelectionChange} from '@angular/material';
-import { images } from 'src/environments/environment';
+import {images} from 'src/environments/environment';
 
 @Component({
     selector: 'app-season',
