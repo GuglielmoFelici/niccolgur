@@ -2,12 +2,14 @@
     <mat-card-header>
         <mat-card-title class="movie-title">{{niccolgur.movie_data?.title}}</mat-card-title>
         <mat-card-subtitle>{{niccolgur.date}}</mat-card-subtitle>
-        <img mat-card-avatar [src]="images + niccolgur.masterFull.img" alt="X">
+        <img mat-card-avatar [src]="niccolgur?.masterFull?.img" alt="">
     </mat-card-header>
-    <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="X">
+<!--    TODO immagine alternativa -->
+    <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)"  alt="">
     <mat-card-content>
         <p>
-            {{niccolgur.movie_data?.tagline || niccolgur.masterFull.nickname + " è leso in cannula"}}
+<!--            TODO randomizzare insulto-->
+            {{niccolgur.movie_data?.tagline || niccolgur?.masterFull?.nickname + " è leso in cannula"}}
         </p>
     </mat-card-content>
 </mat-card>

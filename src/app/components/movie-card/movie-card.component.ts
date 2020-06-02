@@ -31,9 +31,8 @@ export class MovieCardComponent implements OnInit {
             .then(
                 tagline => this.niccolgur.movie_data.tagline = tagline
             )
-            .catch(err => {
-                this.niccolgur.movie_data = undefined;
-                throw err;
+            .catch(_ => {
+                this.niccolgur.movie_data = {title: 'C\'è stato un errore del porco dio'};
             });
         this.manager.getUser(this.niccolgur.master).then(user => this.niccolgur.masterFull = user);
     }
@@ -42,7 +41,7 @@ export class MovieCardComponent implements OnInit {
         window.open(`${movieTMDBPage}/${niccolgur.movie_id}`, '_blank');
 
     getImageUrl(niccolgur: Niccolgur): string {
-        if (this.config && niccolgur.movie_data) {
+        if (this.config && niccolgur.movie_data && niccolgur.movie_data.poster_path) {
             return `${this.config.images.base_url}/w500/${niccolgur.movie_data.poster_path}`;
         } else {
             return 'https://www.artranked.com/images/3b/3be9d9fcc7e4e8f433893ef020168598.jpg';

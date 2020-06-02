@@ -49,4 +49,4 @@ const tiers = [
 ];
 
 export const getSRImage = (sr: number) =>
-    ranks + tiers.find(tier => sr < tier.data).desc;
+    `${ranks}/${tiers.find(tier => sr < tier.data).desc}`;

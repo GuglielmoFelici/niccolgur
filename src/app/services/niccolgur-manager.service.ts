@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
 import {Season, User} from '../ts/domain';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {addImageUrl, pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
 
 @Injectable({
@@ -24,33 +24,38 @@ export class NiccolgurManagerService {
         return pipeUsersWithImage(this.niccolgurService.getUsersQueue()).toPromise();
     }
 
-    async getSeasonsCount(): Promise<number> {
-        return this.niccolgurService.getSeasons()
-            .pipe(
-                map(seasons => seasons.length)
-            ).toPromise();
+    /********************************************* Seasons *********************************************
+     ***************************************************************************************************/
+
+    // TODO performance di questo metodo?
+    getSsnFullMaster = (ssn: Season) =>
+        ssn.forEach(async nicc =>
+            nicc.masterFull = await this.getUser(nicc.master)
+        );
+
+    async getSeasonsCount(): Promise<string> {
+        return this.niccolgurService.getSeasonsCount().toPromise();
     }
 
-    async getSeason(seasonNumber: number, getFullMasterObj = false): Promise<Season> {
-        const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
-        if (getFullMasterObj) {
-            season.forEach((niccolgur, i, ssn) => {
-                this.getUser(niccolgur.master).then(
-                    user => {
-                        ssn[i].masterFull = user;
-                    }, err => {
-                        throw err;
-                    });
-            });
-        }
-        return season;
+    async getSeason(seasonNumber: string): Promise<Season> {
+        return this.niccolgurService.getSeason(seasonNumber).toPromise();
+            // .pipe(
+            //     tap(ssn => getFullMasterObj ? this.getSsnFullMaster(ssn) : (_) => {})
+            // ).toPromise();
+    }
+
+    async getSeasonLast(getFullMasterObj = false): Promise<Season> {
+        return this.niccolgurService.getSeasonLast().toPromise();
+            // .pipe(
+            //     tap(ssn => getFullMasterObj ? this.getSsnFullMaster(ssn) : (_) => {})
+            // ).toPromise();
     }
 
     async getSeasons(): Promise<Season[]> {
         const seasons = [];
         const count = await this.getSeasonsCount();
-        for (let i = 1; i <= count; i++) {
-            seasons.push(await this.getSeason(i));
+        for (let i = 1; i <= parseInt(count); i++) {
+            seasons.push(await this.getSeason(i.toString()));
         }
         return seasons;
     }
