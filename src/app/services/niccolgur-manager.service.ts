@@ -41,11 +41,11 @@ export class NiccolgurManagerService {
 
     async getSeasons(): Promise<Season[]> {
         const seasons = [];
-        const count = await this.getSeasonsCount();
-        for (let i = 1; i <= parseInt(count); i++) {
-            seasons.push(await this.getSeason(i.toString()));
-        }
-        return seasons;
+        const count = parseInt(await this.getSeasonsCount());
+        return Promise.all(
+            Array(count).fill(null)
+                .map((_, i) => this.getSeason(((i+1).toString())))
+        )
     }
 
     async getTagline(movieId): Promise<string> {
