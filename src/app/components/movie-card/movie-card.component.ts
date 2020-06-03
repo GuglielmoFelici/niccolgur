@@ -13,9 +13,31 @@ export class MovieCardComponent implements OnInit {
 
     @Input()
     niccolgur: Niccolgur;
+    randomSlur = '';
 
     images = images;
     config;
+
+    what = [
+        'leso',
+        'down',
+        'frocio',
+        'dumb',
+        'retarded',
+        'trash',
+        'napoletano',
+
+    ];
+    where = [
+        'in cannula',
+        'in culo',
+        'in capa',
+        'nel cranio',
+        'nell\'anima',
+        'dentro',
+        'sempre e comunque',
+        ', ahimè',
+    ];
 
     constructor(private storage: StorageService,
                 private manager: NiccolgurManagerService) {
@@ -34,7 +56,10 @@ export class MovieCardComponent implements OnInit {
             .catch(_ => {
                 this.niccolgur.movie_data = {title: 'C\'è stato un errore del porco dio'};
             });
-        this.manager.getUser(this.niccolgur.master).then(user => this.niccolgur.masterFull = user);
+        this.manager.getUser(this.niccolgur.master).then(user => {
+            this.niccolgur.masterFull = user;
+            this.randomSlur = this.niccolgur.masterFull.nickname + ' è ' + this.what[Math.round(Math.random()*(this.what.length-1))] + ' ' + this.where[Math.round(Math.random()*(this.what.length-1))]
+        });
     }
 
     openMovie = (niccolgur: Niccolgur) =>

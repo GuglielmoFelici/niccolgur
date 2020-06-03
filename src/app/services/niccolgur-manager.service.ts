@@ -27,28 +27,16 @@ export class NiccolgurManagerService {
     /********************************************* Seasons *********************************************
      ***************************************************************************************************/
 
-    // TODO performance di questo metodo?
-    getSsnFullMaster = (ssn: Season) =>
-        ssn.forEach(async nicc =>
-            nicc.masterFull = await this.getUser(nicc.master)
-        );
-
     async getSeasonsCount(): Promise<string> {
         return this.niccolgurService.getSeasonsCount().toPromise();
     }
 
     async getSeason(seasonNumber: string): Promise<Season> {
         return this.niccolgurService.getSeason(seasonNumber).toPromise();
-            // .pipe(
-            //     tap(ssn => getFullMasterObj ? this.getSsnFullMaster(ssn) : (_) => {})
-            // ).toPromise();
     }
 
-    async getSeasonLast(getFullMasterObj = false): Promise<Season> {
+    async getSeasonLast(): Promise<Season> {
         return this.niccolgurService.getSeasonLast().toPromise();
-            // .pipe(
-            //     tap(ssn => getFullMasterObj ? this.getSsnFullMaster(ssn) : (_) => {})
-            // ).toPromise();
     }
 
     async getSeasons(): Promise<Season[]> {
