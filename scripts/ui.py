@@ -1,6 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 
-from manager import *
+from redis_manager import *
+from pretty_io import *
 import os
 import re
 import time
@@ -25,17 +26,8 @@ SHIFT = "sh"
 YES = "s"
 NO = "n"
 
-# Terminal colors ############
-HEADER = '\033[95m'
-OKBLUE = '\033[94m'
-OKGREEN = '\033[92m'
-WARNING = '\033[93m'
-FAIL = '\033[91m'
-ENDC = '\033[0m'
-BOLD = '\033[1m'
-UNDERLINE = '\033[4m'
-
 # regexes ############
+
 # Matches date in format dd/mm/yyyy
 DATE_FORMAT = re.compile("\d\d/\d\d/\d\d\d\d")
 # Matches alphanumeric strings separated by space
@@ -44,24 +36,20 @@ SPACES = re.compile(" +")
 INTEGER = re.compile("^-?\d+$")
 
 # Constants ##########
-DEFAULT_NEWNAME = "myNiccolgur"
-DEFAULT_MEMBERS = ["caciotta", "dano", "fosk",
-                   "iRoli", "paglia", "jala", "ceccherini", "pogre"]
 DEFAULT_PHRASE = BOLD+"Cosa si desidera fare? Digitare un comando e premere invio.\n"+ENDC
 
 # Phrases ##########
 phrases = {
-    "main": DEFAULT_PHRASE + OPEN+" - Apri file\n"+NEW+" - Crea nuovo\n"+EXIT+" - Esci\n",
-    "opened": DEFAULT_PHRASE + HANGOUTS+" - Gestisci i ritrovi\n" + MEMBERS+" - Gestisci i membri\n"+QUEUE+" - Gestisci la queue\n"+SAVE+" - Salva file\n"+SAVEAS+" - Salva con nome\n"+EXIT+" - Indietro\n",
+    "main": DEFAULT_PHRASE + HANGOUTS + " - Gestisci i ritrovi\n" + MEMBERS+" - Gestisci i membri\n"+QUEUE+" - Gestisci la queue\n" + EXIT + " - Indietro\n",
     "hangouts": DEFAULT_PHRASE + LIST + " - Mostra tutti i raduni\n" + NEW + " - Aggiungi un raduno\n" + REMOVE + " - Rimuovi un raduno\n" + EXIT + " - Indietro\n",
     "members": DEFAULT_PHRASE + NEW + " - Aggiungi membri\n" + REMOVE + " - Rimuovi un membro\n" + EXIT + " - Indietro\n",
     "queue": DEFAULT_PHRASE+SHIFT+" - Scorri la queue\n" + MEMBERS+" - Scorri membro specifico\n"+EXIT+" - Indietro\n",
-    "comm_err": FAIL+"Comando non valido. Riprovare.\n"+ENDC,
-    "aborted":  FAIL+"Operazione annullata.\n"+ENDC
+    "comm_err": "Comando non valido. Riprovare.\n",
+    "aborted":  "Operazione annullata.\n",
+    "todo": "Funzione non ancora implementata.\n"
 }
 
-# System-related functions #######
-
+# System functions #######
 
 def clear():
     if os.name == 'nt':
@@ -73,315 +61,226 @@ def clear():
 
 
 '''
-Menu di gestione dell\'apertura dei file. Ritorna il path del file se l'operazione ha successo, EXIT se viene dato il rispettivo comando di uscita o False se si verifica un errore.
-'''
-def file_menu(manager, mode):
-    while True:
-        print(OKBLUE+"Main menu -> Choose season"+ENDC)
-        if mode == OPEN:
-            ssnList = json.load(open("niccolgurs.json"))
-            ssnList = [x for x in range(1, len(ssnList)+1)]
-            for i in range(len(ssnList)):
-                print(HEADER, i+1, ") ", ssnList[i], ENDC, sep="")
-            ssnNo = input(
-                "Scegliere la season da aprire (digitando un numero) o digita "+EXIT+" per annullare.\n")
-            while (ssnNo != EXIT and (not ssnNo.isdigit() or int(ssnNo) > len(ssnList))):
-                ssnNo = input(FAIL+"Inserire un numero compreso tra 1 e " +
-                              str(len(ssnList))+", o "+EXIT + " per annullare.\n"+ENDC)
-            if ssnNo == EXIT:
-                clear()
-                return EXIT
-            clear()
-            if not manager.load(int(ssnNo)):
-                return False
-            return ssnNo
-        elif mode == SAVE:
-            path = input("Inserire il nome con cui salvare il file. Digitare " +
-                         EXIT+" per annullare.\n").strip()
-            if path == EXIT:
-                return EXIT
-            if os.path.isfile(path+".ncg"):
-                if input(WARNING+"Sovrascrivere "+path+"? "+YES+"/"+NO+"\n"+ENDC).strip() != YES:
-                    return EXIT
-            clear()
-            if not manager.save(path):
-                return False
-            return path
-
-
-'''
-Menu visualizzato dopo la riuscita apertura di un file. 
-'''
-def opened_menu(manager, ssnNo):
-    while True:
-        print(OKBLUE+"Main menu -> Niccolgur menu"+ENDC)
-        command = input(HEADER+ssnNo+" - Queue attuale: " +
-                        str(manager.queue)+ENDC+"\n"+phrases["opened"]).strip()
-        if command == HANGOUTS:
-            clear()
-            hangouts_menu(manager, ssnNo)
-        elif command == MEMBERS:
-            clear()
-            members_menu(manager, ssnNo)
-        elif command == QUEUE:
-            clear()
-            queue_menu(manager, ssnNo)
-        elif command == SAVE:
-            confirm = input(WARNING+"Salvare? "+YES+"/"+NO+"\n"+ENDC).strip()
-            if confirm == YES and manager.save(int(ssnNo)):
-                clear()
-                print(OKGREEN, "File salvato correttamente.\n", ENDC, sep="")
-        elif command == SAVEAS:
-            saved = file_menu(manager, SAVE)
-            while not saved:
-                clear()
-                print(FAIL, "Errore nel salvare il file.\n", ENDC, sep="")
-                saved = file_menu(manager, "s")
-            if saved == EXIT:
-                clear()
-                print(phrases["aborted"])
-            else:
-                clear()
-                print(OKGREEN, "File salvato correttamente.\n", ENDC, sep="")
-                ssnNo = saved
-        elif command == EXIT:
-            confirm = input(
-                WARNING+"Sicuro? Eventuali progressi non salvati andranno persi. "+YES+"/"+NO+"\n"+ENDC).strip()
-            if confirm == YES:
-                clear()
-                break
-        else:
-            clear()
-            print(phrases["comm_err"])
-
-
-'''
 Menu di gestione dei membri.
 '''
-def members_menu(manager, path):
+def members_menu():
+    # TODO
+    print_err(phrases["todo"])
+    return
     while True:
-        print(OKBLUE+"Main menu -> Niccolgur menu -> Members menu"+ENDC)
-        command = input(HEADER+path+" - Membri attuali: " +
-                        ", ".join(manager.get_members())+ENDC+"\n"+phrases["members"]).strip()
+        print_blue("Main menu -> Members menu")
+        print_header("Membri attuali: " +", ".join(manager.users_name()) + "\n") # TODO
+        command = input(phrases["members"]).strip()
         if command == NEW:
-            members = input(
-                "Inserire i nuovi membri separati da uno spazio, "+EXIT+" per annullare:\n").strip()
-            while not re.match(SPACED_ALNUM, members) and members != EXIT:
-                members = input(
-                    FAIL+"\nStringa non valida. Riprovare.\n\n"+ENDC).strip()
-            if members == EXIT:
-                clear()
-                print(phrases["aborted"])
-                continue
-            manager.add_members(members.split(" "))
-            clear()
-            print(OKGREEN, "Membri aggiunti con successo.\n", ENDC, sep="")
+            # members = input("Inserire i nuovi membri separati da uno spazio, " + EXIT + " per annullare:\n").strip()
+            # while not re.match(SPACED_ALNUM, members) and members != EXIT:
+            #     members = input_err("\nStringa non valida. Riprovare.\n\n").strip()
+            # if members == EXIT:
+            #     clear()
+            #     print_warning(phrases["aborted"])
+            #     continue
+            # manager.add_members(members.split(" ")) # TODO
+            # clear()
+            # print_green("Membri aggiunti con successo.\n")
+            print_err(phrases["todo"])
         elif command == REMOVE:
-            remove = input(
-                "Inserire il nome del membro da rimuovere, "+EXIT+" per annullare:\n").strip()
+            remove = input("Inserire l'id del membro da rimuovere, " + EXIT + " per annullare:\n").strip()
             if remove not in manager.get_members():
                 clear()
-                print(FAIL, "Membro non presente.\n", ENDC, sep="")
+                print_err("Membro non presente.\n")
             else:
-                manager.rm_member(remove)
+                manager.rm_member(remove) # TODO
                 clear()
-                print(OKGREEN, "Membro rimosso con successo.\n", ENDC, sep="")
+                print_green("Membro rimosso con successo.\n")
         elif command == EXIT:
             clear()
-            break
+            return
         else:
             clear()
-            print(phrases["comm_err"])
+            print_warning(phrases["comm_err"])
 
 
 '''
 Menu di gestione dei ritrovi.
 '''
-def hangouts_menu(manager, path):
+def hangouts_menu():
     while True:
-        print(OKBLUE+"Main menu -> Niccolgur menu -> Hangouts menu"+ENDC)
-        command = input(HEADER+path+" - Numero di ritrovi: "+str(len(manager.hangouts)) +
-                        " - Queue attuale: "+str(manager.queue)+ENDC+"\n"+phrases["hangouts"]).strip()
+        print_blue("Main menu -> Hangouts menu")
+        print_header("Numero di ritrovi: "+ str(manager.niccolgurs_count()) + " - Queue attuale: "+ manager.queue_to_string() + "\n")
+        command = input(phrases["hangouts"]).strip()
         if command == LIST:
             clear()
-            print(HEADER, "\n\n".join(
-                [str(x) for x in manager.hangouts])+"\n", ENDC, sep="")
-            input("Premi invio per uscire.\n")
-            clear()
+            # TODO
+            # print(HEADER, "\n\n".join(
+            #     [str(x) for x in manager.hangouts])+"\n", ENDC, sep="")
+            # input("Premi invio per uscire.\n")
+            print(phrases["todo"])
         elif command == NEW:
             clear()
-            add_input_hangout(manager)
+            add_input_hangout()
         elif command == REMOVE:
-            date = input(
-                "Inserire la data del ritrovo da cancellare, nel formato gg/mm/aaaa o "+EXIT+" per uscire.\n").strip()
+            clear()
+            print(phrases["todo"]) # TODO
+            continue
+            date = input("Inserire la data del ritrovo da cancellare, nel formato gg/mm/aaaa o "+EXIT+" per uscire.\n").strip()
             while not (re.match(DATE_FORMAT, date) or date == EXIT):
-                date = input(
-                    FAIL+"\nLa data dev'essere nel formato gg/mm/aaaa\n\n"+ENDC).strip()
+                date = input_err("\nLa data dev'essere nel formato gg/mm/aaaa\n\n")
             clear()
             if date == EXIT:
-                print(phrases["aborted"])
+                print_warning(phrases["aborted"])
             else:
-                manager.rm_by_date(date)
-                print(OKGREEN+"Ritrovi eliminati con successo.\n"+ENDC)
+                manager.rm_by_date(date) # TODO
+                print_green("Ritrovi eliminati con successo.\n")
         elif command == EXIT:
             clear()
-            break
+            return
         else:
             clear()
-            print(phrases["comm_err"])
+            print_warning(phrases["comm_err"])
 
 
 '''
 Interfaccia di inserimento ritrovi.
 '''
-def add_input_hangout(manager):
-    print(OKBLUE+"Main menu -> Niccolgur menu -> Hangouts menu -> Add Hangout"+ENDC)
-    print(HEADER+"Queue attuale: "+str(manager.queue)+ENDC)
-    master = input("Inserire il nome del master, " +
-                   EXIT+" per uscire:\n").strip()
-    while master not in manager.get_members():
+def add_input_hangout():
+    print_blue("Main menu -> Hangouts menu -> Add Hangout")
+    queue = manager.queue()
+    print_header("Queue attuale: " + manager.queue_to_string())
+    users = manager.users()
+    # MASTER
+    master = input("Inserire l'id del master, " + EXIT + " per uscire:\n").strip()
+    while master not in users:
         if master == EXIT:
             clear()
-            print(phrases["aborted"])
+            print_warning(phrases["aborted"])
             return
-        master = input(
-            FAIL+"\nIl master dev'essere un membro della queue. Riprovare.\n\n"+ENDC).strip()
-    if master != manager.queue.first():
-        print(WARNING, "Il master non corrisponde al primo membro della queue ("+manager.queue.first() +
-              "). Il ritrovo verra' aggiunto, ma la queue rimarra' invariata.", ENDC, sep="")
+        master = input_err("\nIl master dev'essere un membro della queue. Riprovare.\n\n")
+    first = manager.queue()[0]
+    if master != first:
+        print_warning("Il master non corrisponde al primo membro della queue ("+ first \
+            + "). Il ritrovo verra' aggiunto, ma la queue rimarra' invariata.")
+    # MOVIE
     movie = ""
     while not movie:
-        movie = input("\nInserire il nome del film, " +
-                      EXIT + " per uscire:\n").strip()
+        movie = input("\nInserire l'ID TMDB del film, " + EXIT + " per uscire:\n").strip()
     if movie == EXIT:
         clear()
-        print(phrases["aborted"])
+        print_warning(phrases["aborted"])
         return
-    attendants = input("\nInserire l'elenco dei presenti separati da uno spazio o premere semplicemente invio se sono tutti presenti. Digitare " +
-                       EXIT + " per uscire. Membri attuali:\n"+HEADER+", ".join(manager.get_members())+ENDC+"\n"+master+" ").strip()
-    if not attendants:
-        print(WARNING, "Selezionati tutti i membri.", ENDC, sep="")
-        attendants = manager.get_members()
-    elif attendants != EXIT:
-        attendants = re.split(SPACES, attendants)
-        while not set(attendants).issubset(set(manager.get_members())):
-            attendants = input(FAIL+"\nI seguenti nomi non sono validi o non sono membri della queue:\n" +
-                               ENDC+", ".join(set(attendants)-set(manager.get_members()))+FAIL+"\nRiprovare.\n\n"+ENDC).strip()
-            if attendants == EXIT:
-                print(phrases["aborted"])
+    # PARTICIPANTS
+    print("\nInserire l'elenco dei presenti separati da uno spazio o premere semplicemente invio se sono tutti presenti. Digitare " \
+        + EXIT + " per uscire. Membri attuali:\n")
+    print_header(manager.users_to_string())
+    participants = input("\n" + master + " ").strip()
+    if not participants:
+        print_warning("Selezionati tutti i membri.")
+        participants = manager.users()
+    elif participants != EXIT:
+        participants = re.split(SPACES, participants)
+        while not set(participants).issubset(set(users)):
+            print_err("\nI seguenti id non sono validi:\n")
+            print(", ".join(set(participants) - set(users)))
+            print_err("Riprovare.\n\n")
+            participants = input(master + " ").strip()
+            if participants == EXIT:
+                print_warning(phrases["aborted"])
                 return
-            if not attendants:
-                print(WARNING, "Selezionati tutti i membri.", ENDC, sep="")
-                attendants = manager.get_members()
+            elif not participants:
+                print_warning("Selezionati tutti i membri.")
+                participants = manager.users()
             else:
-                attendants = re.split(SPACES, attendants)
-        attendants += [master]
-    elif attendants == EXIT:
-        print(phrases["aborted"])
+                participants = re.split(SPACES, participants)
+        participants += [master]
+    else:
+        print_warning(phrases["aborted"])
         return
-    date = input("\nInserire la data nel formato gg/mm/aaaa, o premi semplicemente invio per inserire la data odierna. Digita " +
-                 EXIT+" per uscire:\n").strip()
+    # DATE
+    date = input("\nInserire la data nel formato gg/mm/aaaa, o premi semplicemente invio per inserire la data odierna. Digita " \
+        + EXIT+" per uscire:\n").strip()
     if not date:
         date = time.strftime("%d/%m/%Y")
     elif date != EXIT:
         while not re.match(DATE_FORMAT, date):
-            date = input(FAIL+"\nLa data dev'essere nel formato gg/mm/aaaa. Riprovare o digitare " +
-                         EXIT+" per uscire.\n\n"+ENDC).strip()
+            date = input_err("\nLa data dev'essere nel formato gg/mm/aaaa. Riprovare o digitare " \
+                + EXIT + " per uscire.\n\n")
             if date == EXIT:
                 clear()
-                print(phrases["aborted"])
+                print_warning(phrases["aborted"])
                 return
     else:
         clear()
-        print(phrases["aborted"])
+        print_warning(phrases["aborted"])
         return
-    offers = input("\nInserire le offerte se ci sono state, premere invio altrimenti. Digitare " +
-                   EXIT+" per uscire.\n").strip()
-    if offers == EXIT:
-        clear()
-        print(phrases["aborted"])
-        return
-    manager.add_hangout(master, movie, list(
-        set(attendants)), date, offers)  # only set?
+    manager.niccolgur_add(master, movie, list(set(participants)), date)
     clear()
-    print(OKGREEN, "Ritrovo del ", date, " aggiunto con successo", ENDC, sep="")
-    if master == manager.queue.first():
-        manager.shift_queue(attendants)
+    print_green("Ritrovo del " + date + " aggiunto con successo")
+    if master == first:
+        manager.queue_autoshift(participants)
 
 
 '''
 Menu di gestione della queue
 '''
-def queue_menu(manager, path):
+def queue_menu():
     while True:
-        print(OKBLUE+"Main menu -> Niccolgur menu -> Queue menu"+ENDC)
-        command = input(HEADER+path+"\nQueue attuale: " +
-                        str(manager.queue)+"\n"+ENDC+phrases["queue"]).strip()
+        print_blue("Main menu -> Queue menu\n")
+        print_header("Queue attuale: " + str(manager.queue_to_string())+"\n")
+        command = input(phrases["queue"]).strip()
         if command == SHIFT or command == MEMBERS:
             if command == MEMBERS:
-                member = input("Inserire il membro da spostare, " +
-                               EXIT+" per annullare.\n").strip()
-                while member not in manager.get_members() and member != EXIT:
-                    member = input(
-                        FAIL+"Membro non trovato. Riprovare.\n"+ENDC).strip()
+                member = input("Inserire l'id dell'utente da spostare, " + EXIT + " per annullare.\n").strip()
+                while member not in manager.users() and member != EXIT:
+                    member = input_err("Membro non trovato. Riprovare.\n").strip()
                 if member == EXIT:
                     clear()
-                    print(phrases["aborted"])
+                    print_warning(phrases["aborted"])
                     continue
-            positions = input(
-                "Di quante posizioni (Un numero positivo fa progredire nella queue)? Digitare "+EXIT+" per annullare.\n").strip()
+            positions = input("Di quante posizioni (Un numero positivo fa scalare nella queue)? Digitare "+EXIT+" per annullare.\n").strip()
             while positions != EXIT and not re.search(INTEGER, positions):
-                positions = input("Inserire un numero, o " +
-                                  EXIT+" per annullare.\n").strip()
-            positions = int(positions)
+                positions = input_warning("Inserire un numero, o " + EXIT +" per annullare.\n")
             if positions == EXIT:
                 clear()
-                print(phrases["aborted"])
+                print_warning(phrases["aborted"])
                 continue
             else:
+                positions = int(positions)
                 clear()
                 if command == MEMBERS:
-                    manager.queue.shift_el(member, positions)
+                    manager.queue_shift_el(member, positions)
                 else:
-                    manager.queue.shift(positions)
-                print(OKGREEN, "Queue shiftata correttamente.\n", ENDC, sep="")
+                    manager.queue_shift(positions)
+                print_green("Queue shiftata correttamente.\n")
         elif command == EXIT:
             clear()
-            break
+            return
         else:
             clear()
-            print(phrases["comm_err"])
-
+            print_warning(phrases["comm_err"])
 
 '''
-Main menu
+Main menu. 
 '''
-manager = Manager()
+manager = RedisManager()
 clear()
 while True:
-    manager.clear()
-    print(OKBLUE+"Main menu"+ENDC)
+    print_blue("Main menu")
+    print_header("Queue attuale: " + str(manager.queue_to_string())) # TODO
     command = input(phrases["main"]).strip()
-    if command == OPEN:
+    if command == HANGOUTS:
         clear()
-        path = file_menu(manager, OPEN)
-        if path == EXIT:
-            clear()
-            print(phrases["aborted"])
-        else:
-            opened_menu(manager, path)
-    elif command == NEW:
-        name = DEFAULT_NEWNAME
-        version = 0
-        while os.path.isfile(name+".json"):
-            version += 1
-            name = DEFAULT_NEWNAME+"("+str(version)+")"
-        manager.add_members(DEFAULT_MEMBERS)
-        opened_menu(manager, name)
+        hangouts_menu()
+    elif command == MEMBERS:
+        clear()
+        members_menu()
+    elif command == QUEUE:
+        clear()
+        queue_menu()
     elif command == EXIT:
+        confirm = input_warning("Sicuro? "+YES+"/"+NO+"\n")
         clear()
-        print(OKBLUE, "Arrivederci!\n", ENDC, sep="")
-        break
+        if confirm == YES:
+            print_blue("Arrivederci!\n")
+            exit(0)
     else:
         clear()
-        print(phrases["comm_err"])
+        print_err(phrases["comm_err"])

@@ -3,7 +3,7 @@ import time
 import json
 
 ''' Determina di quanto shiftano gli assenti '''
-DEFAULT_SHIFT = -2
+DEFAULT_SHIFT = 2
 
 ### KEYS ###
 
@@ -160,7 +160,8 @@ class RedisManager(object):
     Scorre la queue a seconda dei presenti.
     '''
     def queue_autoshift(self, participants, absentShift=DEFAULT_SHIFT):
-        self.queue_shift()
         absents = [x for x in self.queue() if x not in participants]
+        print(absents)
         for elem in reversed(absents):
             self.queue_shift_el(elem, absentShift)
+        self.queue_shift()
