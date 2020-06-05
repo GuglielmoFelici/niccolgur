@@ -5,7 +5,7 @@ export const environment = {
 export const apiKey = '8dd0d0ce432b75b532e9fb563fa8fded';
 
 /******************************************* Endpoints *************************************************/
-export const main = 'https://niccolgur.guglielmofelici.com/api'
+export const main = 'https://api.guglielmofelici.com/niccolgur'
 
 /* Niccolgur */
 export const queue = main + '/queue';
