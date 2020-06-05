@@ -40,7 +40,6 @@ export class NiccolgurManagerService {
     }
 
     async getSeasons(): Promise<Season[]> {
-        const seasons = [];
         const count = parseInt(await this.getSeasonsCount());
         return Promise.all(
             Array(count).fill(null)
