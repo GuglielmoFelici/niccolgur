@@ -2,7 +2,7 @@ export const apiKey = '8dd0d0ce432b75b532e9fb563fa8fded';
 
 /******************************************* Endpoints *************************************************/
 /* Niccolgur */
-export const queue = 'https://guglielmofelici.github.io/niccolgur/data/queue.json';
+export const queue = '93.48.175.17';
 export const users = 'https://guglielmofelici.github.io/niccolgur/data/users.json';
 export const niccolgurs = 'https://guglielmofelici.github.io/niccolgur/data/niccolgurs.json';
 export const images = 'https://guglielmofelici.github.io/niccolgur/data/images/';
