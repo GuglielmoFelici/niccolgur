@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
-import {Niccolgur, Season, User} from '../ts/domain';
+import {Season, User} from '../ts/domain';
 import {map, tap} from 'rxjs/operators';
+import {addImageUrl, pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
 
 @Injectable({
     providedIn: 'root'
@@ -12,47 +13,38 @@ export class NiccolgurManagerService {
     }
 
     async getUser(userId): Promise<User> {
-        const users = await this.niccolgurService.getUsers().toPromise();
-        return users.find(el => el.id === userId);
+        return pipeUserWithImage(this.niccolgurService.getUser(userId)).toPromise();
     }
 
     async getUsers(): Promise<User[]> {
-        const queue = await this.niccolgurService.getQueue().toPromise();
-        const users = await this.niccolgurService.getUsers().toPromise();
-        return queue.map(u =>
-            users.find(el => el.id === u)
-        );
+        return pipeUsersWithImage(this.niccolgurService.getUsers()).toPromise();
     }
 
-    async getSeasonsCount(): Promise<number> {
-        return this.niccolgurService.getSeasons()
-            .pipe(
-                map(seasons => seasons.length)
-            ).toPromise();
+    async getUsersQueue(): Promise<User[]> {
+        return pipeUsersWithImage(this.niccolgurService.getUsersQueue()).toPromise();
     }
 
-    async getSeason(seasonNumber: number, getFullMasterObj= false): Promise<Season> {
-        const season = (await this.niccolgurService.getSeasons().toPromise())[seasonNumber - 1];
-        if (getFullMasterObj) {
-            season.forEach((niccolgur, i, ssn) => {
-                this.getUser(niccolgur.master).then(
-                    user => {
-                        ssn[i].masterFull = user;
-                    }, err => {
-                        throw err;
-                    });
-            });
-        }
-        return season;
+    /********************************************* Seasons *********************************************
+     ***************************************************************************************************/
+
+    async getSeasonsCount(): Promise<string> {
+        return this.niccolgurService.getSeasonsCount().toPromise();
+    }
+
+    async getSeason(seasonNumber: string): Promise<Season> {
+        return this.niccolgurService.getSeason(seasonNumber).toPromise();
+    }
+
+    async getSeasonLast(): Promise<Season> {
+        return this.niccolgurService.getSeasonLast().toPromise();
     }
 
     async getSeasons(): Promise<Season[]> {
-        const seasons = [];
-        const count = await this.getSeasonsCount();
-        for (let i = 1; i <= count; i++) {
-            seasons.push(await this.getSeason(i));
-        }
-        return seasons;
+        const count = parseInt(await this.getSeasonsCount());
+        return Promise.all(
+            Array(count).fill(null)
+                .map((_, i) => this.getSeason(((i+1).toString())))
+        )
     }
 
     async getTagline(movieId): Promise<string> {

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
-import {images} from '../../../ts/env';
 import {User} from '../../../ts/domain';
 import {Router} from '@angular/router';
+import { images } from 'src/environments/environment';
 
 @Component({
     selector: 'app-queue',
@@ -22,7 +22,7 @@ export class QueueComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.niccolgurManager.getUsers().then(
+        this.niccolgurManager.getUsersQueue().then(
             users => {
                 this.elements = users;
                 this.master = this.elements[0];

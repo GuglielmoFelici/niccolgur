@@ -1,9 +1,7 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {Niccolgur, Season} from '../../../ts/domain';
+import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
-import {StorageService} from '../../../services/storage-service.service';
-import {images, movieTMDBPage} from '../../../ts/env';
 import {MatOptionSelectionChange} from '@angular/material';
+import {images} from 'src/environments/environment';
 
 @Component({
     selector: 'app-season',
@@ -13,7 +11,8 @@ import {MatOptionSelectionChange} from '@angular/material';
 export class SeasonComponent implements OnInit {
 
     seasonNumber;
-    seasonsCount;
+    seasonsCount = "0";
+    seasonsOptions = [];
     season = [];
     error;
     images = images;
@@ -21,26 +20,29 @@ export class SeasonComponent implements OnInit {
     constructor(private niccolgurManager: NiccolgurManagerService) {
     }
 
+    catchErr = (e) => this.error = e;
+
     ngOnInit() {
+        this.niccolgurManager.getSeasonLast().then(
+            ssn => this.season = ssn, this.catchErr
+        )
         this.niccolgurManager.getSeasonsCount().then(
             n => {
                 this.seasonsCount = n;
-                this.changeSeason(n);
-            }, err => {
-                this.error = err;
-            });
+                this.seasonsOptions = new Array(parseInt(n));
+            }, this.catchErr
+        )
     }
 
     changeSeason(n) {
         this.seasonNumber = n;
         this.niccolgurManager.getSeason(n).then(
             season => {
+                /* This is needed to trigger change detection */
                 this.season = [];
                 season.forEach(e => this.season.push(e));
                 this.season.reverse();
-            }, err => {
-                this.error = err;
-            });
+            }, this.catchErr);
     }
 
     /* Handlers */
@@ -49,15 +51,6 @@ export class SeasonComponent implements OnInit {
         if (event.source.selected) {
             this.changeSeason(option);
         }
-    }
-
-    getSeasonsOptions() {
-        return new Array(this.seasonsCount);
-        // const ret = [];
-        // for (let i = 1; i <= this.seasonsCount; i++) {
-        //     ret.push(i);
-        // }
-        // return ret;
     }
 
 }

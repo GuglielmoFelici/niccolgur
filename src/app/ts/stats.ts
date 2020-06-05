@@ -1,6 +1,5 @@
 import {Niccolgur, Season, TypeObject, User} from './domain';
-import {images, ranks} from './env';
-
+import {ranks} from "../../environments/environment";
 export const niccolgursCount = (seasons: Season[]) => seasons.reduce(
     (tot, current) => tot + current.length,
     0);
@@ -50,4 +49,4 @@ const tiers = [
 ];
 
 export const getSRImage = (sr: number) =>
-    ranks + tiers.find(tier => sr < tier.data).desc;
+    `${ranks}/${tiers.find(tier => sr < tier.data).desc}`;

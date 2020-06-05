@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {TmdbConfig} from '../ts/domain';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {apiKey, config} from '../ts/env';
 import {share, tap} from 'rxjs/operators';
+import {apiKey, config} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'

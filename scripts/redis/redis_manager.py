@@ -111,7 +111,7 @@ class RedisManager(object):
             }
         self.redis.hmset("%s:%s" %(NICCOLGUR, idx), new)
         self.redis.sadd("%s:%s" %(NICCOLGUR, INDEX), idx)
-        self.redis.sadd("%s:%s" %(MEMBERS, idx), *participants)
+        self.redis.sadd("%s:%s" %(PARTICIPANTS, idx), *participants)
         ssn_idx = self.redis.get("%s:%s" %(SEASON, ID))
         self.redis.rpush("%s:%s" %(SEASON, ssn_idx), idx)
 
