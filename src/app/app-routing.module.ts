@@ -6,7 +6,7 @@ import {UserProfileComponent} from './components/pages/user-profile/user-profile
 import {ClassificaComponent} from './components/pages/classifica/classifica.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
     {
         path: '',
         redirectTo: 'queue',

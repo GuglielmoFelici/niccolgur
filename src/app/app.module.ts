@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ChartsModule} from 'ng2-charts';
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule, routes} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {QueueComponent} from './components/pages/queue/queue.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
@@ -24,6 +24,7 @@ import { UserProfileComponent } from './components/pages/user-profile/user-profi
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { UserStatsComponent } from './components/user-stats/user-stats.component';
 import { ClassificaComponent } from './components/pages/classifica/classifica.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { ClassificaComponent } from './components/pages/classifica/classifica.co
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
+        RouterModule.forRoot(routes, {useHash: true}),
         FormsModule,
         BrowserAnimationsModule,
         MatSliderModule,
