@@ -3,6 +3,8 @@ import {User} from "./domain";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 
+export const scrollToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+
 export const addImageUrl = (usr: User) => ({
     img: images + `/id/${usr.id}`,
     ...usr

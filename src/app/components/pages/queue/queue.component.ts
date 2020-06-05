@@ -3,6 +3,7 @@ import {NiccolgurManagerService} from '../../../services/niccolgur-manager.servi
 import {User} from '../../../ts/domain';
 import {Router} from '@angular/router';
 import { images } from 'src/environments/environment';
+import {scrollToTop} from "../../../ts/util";
 
 @Component({
     selector: 'app-queue',
@@ -47,7 +48,7 @@ export class QueueComponent implements OnInit {
         if (!this.selected || this.selected.id !== user.id) {
             this.selected = user;
         } else {
-            this.router.navigate([`/users/${user.id}`]);
+            this.router.navigate([`/users/${user.id}`]).then(scrollToTop);
         }
     }
 

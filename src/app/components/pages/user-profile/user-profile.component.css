@@ -40,4 +40,12 @@
 /* DESKTOP */
 
 @media only screen and (min-width: 800px) {
+
+    /* Foto profilo */
+    .pp {
+        margin: 0 5px 0 5px;
+        max-height: 100px;
+        max-width: 100px;
+        float: left;
+    }
 }

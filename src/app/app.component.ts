@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {StorageService} from './services/storage-service.service';
+import {scrollToTop} from "./ts/util";
 
 @Component({
     selector: 'app-root',
@@ -11,13 +12,11 @@ export class AppComponent {
 
     title = 'fe-ng';
 
+    scrollToTop = scrollToTop;
+
     constructor(private titleService: Title,
                 private storage: StorageService) {
         this.titleService.setTitle('Niccolgur');
-    }
-
-    scrollToTop() {
-        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }
 
 }
