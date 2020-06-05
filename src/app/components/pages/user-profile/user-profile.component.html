@@ -3,7 +3,7 @@
 </ng-container>
 <ng-container *ngIf="!loading && seasons && user && users">
     <div>
-<!--   TODO     <img [src]="images + user.img" alt="X" class="pp">-->
+    <img [src]="user.img" alt="X" class="pp">
         <h2> {{user.nickname}}</h2>
         <p> {{user.bio}} <br> <br></p>
     </div>
