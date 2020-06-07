@@ -3,7 +3,7 @@
         <img [src]="user.img" alt="X">
         <h2> {{user.nickname}}</h2>
         <p *ngIf="!isSelected(user)"> {{user.bio}} </p>
-        <p *ngIf="isSelected(user)">Tocca per andare al profilo</p>
+        <p *ngIf="isSelected(user)">Vai al profilo</p>
     </li>
 </ul>
 
