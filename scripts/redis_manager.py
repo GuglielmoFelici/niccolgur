@@ -35,7 +35,7 @@ def decode_dict(dic):
 class RedisManager(object):
 
     def __init__(self):
-        self.redis = redis.Redis()
+        self.redis = redis.Redis(host = '192.168.1.186')
 
     ### Users ###
 
@@ -161,7 +161,6 @@ class RedisManager(object):
     '''
     def queue_autoshift(self, participants, absentShift=DEFAULT_SHIFT):
         absents = [x for x in self.queue() if x not in participants]
-        print(absents)
         for elem in reversed(absents):
             self.queue_shift_el(elem, absentShift)
         self.queue_shift()

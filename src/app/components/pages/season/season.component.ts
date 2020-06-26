@@ -41,7 +41,7 @@ export class SeasonComponent implements OnInit {
                 /* This is needed to trigger change detection */
                 this.season = [];
                 season.forEach(e => this.season.push(e));
-                this.season.reverse();
+                // this.season.reverse();
             }, this.catchErr);
     }
 
