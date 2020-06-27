@@ -67,7 +67,7 @@ export class MovieCardComponent implements OnInit {
 
     getImageUrl(niccolgur: Niccolgur): string {
         if (this.config && niccolgur.movie_data && niccolgur.movie_data.poster_path) {
-            return `${this.config.images.base_url}/w500/${niccolgur.movie_data.poster_path}`;
+            return `${this.config.images.secure_base_url}/w500/${niccolgur.movie_data.poster_path}`;
         } else {
             return 'https://c2.staticflickr.com/8/7008/6704700965_96a13faed8_b.jpg';
         }
