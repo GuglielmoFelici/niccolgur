@@ -24,7 +24,7 @@ export class SeasonComponent implements OnInit {
 
     ngOnInit() {
         this.niccolgurManager.getSeasonLast().then(
-            ssn => this.season = ssn, this.catchErr
+            ssn => this.season = ssn.reverse(), this.catchErr
         )
         this.niccolgurManager.getSeasonsCount().then(
             n => {
@@ -41,7 +41,7 @@ export class SeasonComponent implements OnInit {
                 /* This is needed to trigger change detection */
                 this.season = [];
                 season.forEach(e => this.season.push(e));
-                // this.season.reverse();
+                this.season.reverse();
             }, this.catchErr);
     }
 
