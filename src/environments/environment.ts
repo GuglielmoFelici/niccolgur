@@ -30,6 +30,7 @@ export const seasons = main + '/seasons';
 // export const niccolgurs = 'https://guglielmofelici.github.io/niccolgur/data/niccolgurs.json';
 export const images = main + '/images';
 export const ranks = '../assets/images/ranks';
+export const badges = '../assets/images/badges';
 /* TMDB */
 export const config = 'https://api.themoviedb.org/3/configuration';
 export const movie = 'https://api.themoviedb.org/3/movie';

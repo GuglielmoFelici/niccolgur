@@ -21,11 +21,20 @@
     }
 
     /* Foto */
-    img {
+    .pp {
         margin: 0 5px 0 5px;
         max-height: 30px;
         max-width: 30px;
         float: left;
+        transition: 500ms;
+    }
+
+    /* Badge */
+    .badge {
+        margin: 0 5px 0 5px;
+        max-height: 10px;
+        max-width: 10px;
+        float: right;
         transition: 500ms;
     }
 

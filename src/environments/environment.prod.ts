@@ -14,6 +14,7 @@ export const users = main + '/users';
 export const seasons = main + '/seasons';
 export const images = main + '/images';
 export const ranks = '../assets/images/ranks';
+export const badges = '../assets/images/badges';
 /* TMDB */
 export const config = 'https://api.themoviedb.org/3/configuration';
 export const movie = 'https://api.themoviedb.org/3/movie';

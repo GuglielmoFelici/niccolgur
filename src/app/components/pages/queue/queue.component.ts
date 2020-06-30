@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {User} from '../../../ts/domain';
 import {Router} from '@angular/router';
-import { images } from 'src/environments/environment';
+import {badges, images} from 'src/environments/environment';
 import {scrollToTop} from "../../../ts/util";
 
 @Component({
@@ -15,6 +15,7 @@ export class QueueComponent implements OnInit {
     elements: User[] = [];
     error;
     images = images;
+    badges = badges;
     selected: User;
     master: User;
 
