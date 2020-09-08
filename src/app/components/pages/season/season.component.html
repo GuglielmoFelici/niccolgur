@@ -1,7 +1,11 @@
 <div *ngIf="season">
     <mat-form-field class="season-select">
         <mat-select placeholder="Cambia season" [value]="'asdasd'">
-            <mat-option *ngFor="let opt of seasonsOptions; let i = index" [value]="i+1" (onSelectionChange)="selectionChange($event, i+1)">Season {{i+1}}</mat-option>
+            <mat-option *ngFor="let opt of seasonsOptions; let i = index"
+                        [value]="seasonsOptions.length - i"
+                        (onSelectionChange)="selectionChange($event, seasonsOptions.length - i)">
+                Season {{seasonsOptions.length - i}}
+            </mat-option>
         </mat-select>
     </mat-form-field>
     <ng-container *ngFor="let niccolgur of season">
