@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {Season, User} from '../../../ts/domain';
 import { images } from 'src/environments/environment';
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
     selector: 'app-user-profile',
@@ -43,4 +44,5 @@ export class UserProfileComponent implements OnInit {
                 this.loading = false;
             });
     }
+
 }

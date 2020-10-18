@@ -150,7 +150,7 @@ export class UserStatsComponent implements OnInit {
                 );
                 return Math.round((presences * 100) / totalMastered(user.id, this.seasons));
             });
-        this.barChart.labels = this.users.map(user => user.nickname);
+        this.barChart.labels = this.users.map(user => user.username);
         this.barChart.colors = this.randomColorPerUser();
     }
 

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Season, User} from '../ts/domain';
-import {apiKey, movie, queue, seasons, users} from "../../environments/environment";
+import {Season, Token, User} from '../ts/domain';
+import {apiKey, main, movie, queue, seasons, users} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'

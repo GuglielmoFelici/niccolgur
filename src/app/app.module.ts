@@ -25,6 +25,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 import { UserStatsComponent } from './components/user-stats/user-stats.component';
 import { ClassificaComponent } from './components/pages/classifica/classifica.component';
 import {RouterModule} from "@angular/router";
+import { LoginComponent } from './components/pages/login/login.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +37,7 @@ import {RouterModule} from "@angular/router";
         MovieCardComponent,
         UserStatsComponent,
         ClassificaComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,

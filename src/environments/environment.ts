@@ -19,8 +19,8 @@ export const apiKey = '8dd0d0ce432b75b532e9fb563fa8fded';
 
 /******************************************* Endpoints *************************************************/
 // export const main = 'http://192.168.1.185/api'
-// export const main = 'http://localhost:8000'
-export const main = 'https://api.guglielmofelici.com/niccolgur'
+export const main = 'http://localhost:8000'
+// export const main = 'https://api.guglielmofelici.com/niccolgur'
 
 /* Niccolgur */
 export const queue = main + '/queue';

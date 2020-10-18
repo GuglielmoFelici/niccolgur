@@ -58,7 +58,7 @@ export class MovieCardComponent implements OnInit {
             });
         this.manager.getUser(this.niccolgur.master).then(user => {
             this.niccolgur.masterFull = user;
-            this.randomSlur = this.niccolgur.masterFull.nickname + ' è ' + this.what[Math.round(Math.random()*(this.what.length-1))] + ' ' + this.where[Math.round(Math.random()*(this.what.length-1))]
+            this.randomSlur = this.niccolgur.masterFull.username + ' è ' + this.what[Math.round(Math.random()*(this.what.length-1))] + ' ' + this.where[Math.round(Math.random()*(this.what.length-1))]
         });
     }
 

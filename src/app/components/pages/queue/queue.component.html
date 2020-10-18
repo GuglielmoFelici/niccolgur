@@ -1,7 +1,7 @@
 <ul id="queue">
     <li *ngFor="let user of elements" [ngClass]="getClassList(user)" (click)="userOnClick(user)">
         <img class="pp" [src]="user.img" alt="X">
-        <h2> {{user.nickname}}</h2>
+        <h2> {{user.username}}</h2>
         <p *ngIf="!isSelected(user)"> {{user.bio}} </p>
         <p *ngIf="isSelected(user)">Vai al profilo</p>
 <!--        <img class="badge" [src]="badges + '/first.png'">-->
