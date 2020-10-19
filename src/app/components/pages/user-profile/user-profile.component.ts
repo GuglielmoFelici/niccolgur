@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {Season, User} from '../../../ts/domain';
-import { images } from 'src/environments/environment';
+import {images} from 'src/environments/environment';
 import {AuthService} from "../../../services/auth.service";
 
 @Component({
@@ -24,25 +24,28 @@ export class UserProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        const id = this.route.snapshot.paramMap.get('id');
-        if (!id) {
-            this.notFound = true;
-            return;
-        }
-        this.manager.getUser(id)
-            .then(user => {
-                this.user = user;
-                this.notFound = !!user;
-                return this.manager.getSeasons();
-            })
-            .then(seasons => {
-                this.seasons = seasons;
-                return this.manager.getUsers();
-            })
-            .then(users => {
-                this.users = users;
-                this.loading = false;
-            });
+        this.route.paramMap.subscribe(map => {
+                const id = map.get('id');
+                if (!id) {
+                    this.notFound = true;
+                    return;
+                }
+                this.manager.getUser(id)
+                    .then(user => {
+                        this.user = user;
+                        this.notFound = !!user;
+                        return this.manager.getSeasons();
+                    })
+                    .then(seasons => {
+                        this.seasons = seasons;
+                        return this.manager.getUsers();
+                    })
+                    .then(users => {
+                        this.users = users;
+                        this.loading = false;
+                    });
+            }
+        )
     }
 
 }

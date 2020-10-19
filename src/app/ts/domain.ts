@@ -19,7 +19,7 @@ export interface User {
 }
 
 export interface Token {
-    token: string,
+    payload: string,
     expiration: number,
 }
 
