@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {assetsImages} from "../../../environments/environment";
-import {Router} from "@angular/router";
-import {StorageService} from "../../services/storage-service.service";
-import {AuthService} from "../../services/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { assetsImages } from "../../../environments/environment";
+import { Router } from "@angular/router";
+import { StorageService } from "../../services/storage-service.service";
+import { AuthService } from "../../services/auth.service";
 
 @Component({
     selector: 'app-login-handler',
@@ -12,11 +12,12 @@ import {AuthService} from "../../services/auth.service";
 export class LoginHandlerComponent implements OnInit {
 
     constructor(private router: Router,
-                private storage: StorageService,
-                private auth: AuthService) {
+        private storage: StorageService,
+        private auth: AuthService) {
     }
 
     ngOnInit(): void {
+
     }
 
 
