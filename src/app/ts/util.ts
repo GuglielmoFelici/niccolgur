@@ -14,5 +14,11 @@ export const pipeUserWithImage = (usr: Observable<User>) => usr.pipe(map(addImag
 
 export const pipeUsersWithImage = (usr: Observable<User[]>) => usr.pipe(map(list => list.map(addImageUrl)))
 
-
-
+export const decryptToken = (jwt: string): { sub: string, exp: string } => {
+    let decodedJwtJson = window.atob(jwt.split('.')[1]);
+    let decodedJwt = decodedJwtJson && JSON.parse(decodedJwtJson);
+    return {
+        sub: decodedJwt.sub,
+        exp: decodedJwt.exp,
+    }
+}

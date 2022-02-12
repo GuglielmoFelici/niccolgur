@@ -13,10 +13,14 @@ export class TypeObject {
 
 export interface User {
     id: string;
-    nickname: string;
+    username: string;
     bio?: string;
     img?: string;
+}
 
+export interface Token {
+    payload: string,
+    expiration: number,
 }
 
 export interface Niccolgur {

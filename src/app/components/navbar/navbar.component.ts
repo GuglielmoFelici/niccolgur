@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TypeObject} from '../../ts/domain';
-import {ActivatedRoute, Router} from '@angular/router';
-import {AppComponent} from "../../app.component";
+import {Router} from '@angular/router';
 import {scrollToTop} from "../../ts/util";
+import {StorageService} from "../../services/storage-service.service";
+import {assetsImages} from "../../../environments/environment";
 
 @Component({
     selector: 'app-navbar',
@@ -18,7 +19,8 @@ export class NavbarComponent implements OnInit {
         new TypeObject('2', 'Season', 'season'),
     ];
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private storage: StorageService) {
     }
 
     ngOnInit() {
@@ -36,5 +38,6 @@ export class NavbarComponent implements OnInit {
         this.current = tab;
         this.router.navigate([tab.data]).then(scrollToTop);
     }
+
 
 }

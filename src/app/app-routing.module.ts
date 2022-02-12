@@ -4,6 +4,7 @@ import {QueueComponent} from './components/pages/queue/queue.component';
 import {SeasonComponent} from './components/pages/season/season.component';
 import {UserProfileComponent} from './components/pages/user-profile/user-profile.component';
 import {ClassificaComponent} from './components/pages/classifica/classifica.component';
+import {LoginComponent} from "./components/pages/login/login.component";
 
 
 export const routes: Routes = [
@@ -25,6 +26,11 @@ export const routes: Routes = [
     {
         path: 'classifica',
         component: ClassificaComponent,
+        pathMatch: 'full',
+    },
+    {
+        path: 'login',
+        component: LoginComponent,
         pathMatch: 'full',
     },
     {
