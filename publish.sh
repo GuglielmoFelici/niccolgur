@@ -4,4 +4,4 @@ cp docs/index.html docs/404.html
 cp CNAME docs/
 git add .
 git commit -m "pages"
-git push
+git push github/master
