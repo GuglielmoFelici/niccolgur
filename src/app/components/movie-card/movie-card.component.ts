@@ -13,31 +13,10 @@ export class MovieCardComponent implements OnInit {
 
     @Input()
     niccolgur: Niccolgur;
-    randomSlur = '';
 
     images = images;
     config;
 
-    what = [
-        'leso',
-        'down',
-        'frocio',
-        'dumb',
-        'retarded',
-        'trash',
-        'napoletano',
-
-    ];
-    where = [
-        'in cannula',
-        'in culo',
-        'in capa',
-        'nel cranio',
-        'nell\'anima',
-        'dentro',
-        'sempre e comunque',
-        ', ahimè',
-    ];
 
     constructor(private storage: StorageService,
                 private manager: NiccolgurManagerService) {
@@ -54,11 +33,10 @@ export class MovieCardComponent implements OnInit {
                 tagline => this.niccolgur.movie_data.tagline = tagline
             )
             .catch(_ => {
-                this.niccolgur.movie_data = {title: 'C\'è stato un errore del porco dio'};
+                this.niccolgur.movie_data = {title: 'C\'è stato un errore'};
             });
         this.manager.getUser(this.niccolgur.master).then(user => {
             this.niccolgur.masterFull = user;
-            this.randomSlur = this.niccolgur.masterFull.username + ' è ' + this.what[Math.round(Math.random()*(this.what.length-1))] + ' ' + this.where[Math.round(Math.random()*(this.what.length-1))]
         });
     }
 
@@ -69,7 +47,7 @@ export class MovieCardComponent implements OnInit {
         if (this.config && niccolgur.movie_data && niccolgur.movie_data.poster_path) {
             return `${this.config.images.secure_base_url}/w500/${niccolgur.movie_data.poster_path}`;
         } else {
-            return 'https://c2.staticflickr.com/8/7008/6704700965_96a13faed8_b.jpg';
+            return 'https://coolbackgrounds.io/images/backgrounds/white/white-radial-gradient-a5802da1.jpg';
         }
     }
 
