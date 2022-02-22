@@ -3,6 +3,7 @@ from manager import Manager
 import os
 import sys
 
+
 if len(sys.argv) != 2 or sys.argv[1] != "yes":
     print("WARNING: this script imports all the data in niccolgurs.json in redis. Do NOT use it if you already have niccolgurs data. "\
         +"Run the script again as \"<script_name> yes\" to proceed.")
