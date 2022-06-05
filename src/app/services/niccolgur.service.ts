@@ -16,29 +16,30 @@ export class NiccolgurService {
      ***************************************************************************************************/
 
     getUsersQueue(): Observable<User[]> {
-        return this.http.get<User[]>(queue);
+        return this.http.get<User[]>(`${queue}/`);
     }
 
     /********************************************* Users ***********************************************
      ***************************************************************************************************/
 
+    getUsers(): Observable<User[]> {
+        return this.http.get<User[]>(`${users}/`);
+    }
+
     getUser(id: string): Observable<User> {
         return this.http.get<User>(`${users}/${id}`);
     }
 
-    getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(users);
-    }
 
     /********************************************* Seasons *********************************************
      ***************************************************************************************************/
 
     getSeason(id: string) {
-        return this.http.get<Season>(seasons + `/id/${id}/full`);
+        return this.http.get<Season>(`${seasons}/${id}`);
     }
 
     getSeasonLast() {
-        return this.http.get<Season>(seasons + '/last/full');
+        return this.http.get<Season>(`${seasons}/-1`);
     }
 
     // getSeasons(): Observable<Season[]> {
@@ -46,7 +47,7 @@ export class NiccolgurService {
     // }
 
     getSeasonsCount(): Observable<string> {
-        return this.http.get<string>(seasons + '/count')
+        return this.http.get<string>(`${seasons}/count`)
     }
 
     /********************************************* TMDB ***********************************************
