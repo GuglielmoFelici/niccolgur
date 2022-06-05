@@ -14,6 +14,7 @@ export class TypeObject {
 export interface User {
     id: string;
     username: string;
+    nickname: string;
     bio?: string;
     img?: string;
 }
