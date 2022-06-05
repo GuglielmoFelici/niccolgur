@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Season, Token, User} from '../ts/domain';
-import {apiKey, main, movie, queue, seasons, users} from "../../environments/environment";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Season, Token, User } from '../ts/domain';
+import { apiKey, main, movie, queue, seasons, users } from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -15,23 +15,19 @@ export class NiccolgurService {
     /********************************************* Queue ***********************************************
      ***************************************************************************************************/
 
-    getQueue(): Observable<string[]> {
-        return this.http.get<string[]>(queue);
-    }
-
     getUsersQueue(): Observable<User[]> {
-        return this.http.get<User[]>(queue + '/full');
+        return this.http.get<User[]>(queue);
     }
 
     /********************************************* Users ***********************************************
      ***************************************************************************************************/
 
     getUser(id: string): Observable<User> {
-        return this.http.get<User>(users + `/id/${id}`);
+        return this.http.get<User>(`${users}/${id}`);
     }
 
     getUsers(): Observable<User[]> {
-        return this.http.get<User[]>(users + '/full');
+        return this.http.get<User[]>(users);
     }
 
     /********************************************* Seasons *********************************************
@@ -58,6 +54,6 @@ export class NiccolgurService {
 
     getMovie(movieId: string, lang: string): Observable<any> {
         const params = new HttpParams().set('api_key', apiKey).set('language', lang);
-        return this.http.get(`${movie}/${movieId}`, {params});
+        return this.http.get(`${movie}/${movieId}`, { params });
     }
 }
