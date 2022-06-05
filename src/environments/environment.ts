@@ -23,11 +23,11 @@ export const main = 'http://localhost:8000'
 // export const main = 'https://api.guglielmofelici.com/niccolgur'
 
 /* Niccolgur */
-export const queue = main + '/queue';
-export const users = main + '/users';
+export const queue = main + '/queue/';
+export const users = main + '/users/';
 // TODO restanti
-export const seasons = main + '/seasons';
-export const images = main + '/images';
+export const seasons = main + '/seasons/';
+export const images = main + '/images/';
 // export const niccolgurs = 'https://guglielmofelici.github.io/niccolgur/data/niccolgurs.json';
 /* Assets  */
 export const assetsImages = "assets/images"
