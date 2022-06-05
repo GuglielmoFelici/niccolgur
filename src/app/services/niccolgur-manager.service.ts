@@ -27,8 +27,12 @@ export class NiccolgurManagerService {
     /********************************************* Seasons *********************************************
      ***************************************************************************************************/
 
+    // TODO questa fix serve per il problema dell'indice della season nel backend
+    LAST_SEASON = '11'
+
     async getSeasonsCount(): Promise<string> {
-        return this.niccolgurService.getSeasonsCount().toPromise();
+        return Promise.resolve(this.LAST_SEASON) // TODO rimuovere, vedi sopra
+        // return this.niccolgurService.getSeasonsCount().toPromise();
     }
 
     async getSeason(seasonNumber: string): Promise<Season> {
@@ -36,7 +40,8 @@ export class NiccolgurManagerService {
     }
 
     async getSeasonLast(): Promise<Season> {
-        return this.niccolgurService.getSeasonLast().toPromise();
+        return this.niccolgurService.getSeason(this.LAST_SEASON).toPromise() // TODO rimuovere, vedi sopra
+        //return this.niccolgurService.getSeasonLast().toPromise();
     }
 
     async getSeasons(): Promise<Season[]> {
