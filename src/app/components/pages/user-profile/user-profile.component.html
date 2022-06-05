@@ -3,17 +3,15 @@
 </ng-container>
 <ng-container *ngIf="!loading && seasons && user && users">
     <div>
-    <img [src]="user.img" alt="X" class="pp">
-        <h2> {{user.username}}</h2>
+        <img [src]="user.img" alt="X" class="pp">
+        <h2> {{user.nickname}}</h2>
         <p> {{user.bio}} <br> <br></p>
     </div>
     <mat-tab-group>
 
         <mat-tab>
             <ng-template mat-tab-label>Stats</ng-template>
-            <app-user-stats [user]="user"
-                            [users]="users"
-                            [seasons]="seasons">
+            <app-user-stats [user]="user" [users]="users" [seasons]="seasons">
             </app-user-stats>
         </mat-tab>
 
@@ -22,8 +20,7 @@
             <ng-template matTabContent>
                 <ng-container *ngFor="let season of seasons">
                     <ng-container *ngFor="let niccolgur of season">
-                        <app-movie-card *ngIf="niccolgur.master === user.id"
-                                        [niccolgur]="niccolgur"></app-movie-card>
+                        <app-movie-card *ngIf="niccolgur.master === user.id" [niccolgur]="niccolgur"></app-movie-card>
                     </ng-container>
                 </ng-container>
             </ng-template>
