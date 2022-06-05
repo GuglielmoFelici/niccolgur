@@ -27,7 +27,7 @@ export class NiccolgurService {
     }
 
     getUser(id: string): Observable<User> {
-        return this.http.get<User>(`${users}/${id}`);
+        return this.http.get<User>(`${users}/${id}/`);
     }
 
 
@@ -35,11 +35,11 @@ export class NiccolgurService {
      ***************************************************************************************************/
 
     getSeason(id: string) {
-        return this.http.get<Season>(`${seasons}/${id}`);
+        return this.http.get<Season>(`${seasons}/${id}/`);
     }
 
     getSeasonLast() {
-        return this.http.get<Season>(`${seasons}/-1`);
+        return this.http.get<Season>(`${seasons}/-1/`);
     }
 
     // getSeasons(): Observable<Season[]> {
