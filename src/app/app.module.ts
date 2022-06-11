@@ -29,6 +29,7 @@ import { LoginComponent } from './components/pages/login/login.component';
 import {AuthInterceptor} from "./services/auth-interceptor.service";
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import { LoginHandlerComponent } from './components/login-handler/login-handler.component';
+import { AddMovieComponent } from './components/pages/add-movie/add-movie.component';
 
 @NgModule({
     declarations: [
@@ -42,6 +43,7 @@ import { LoginHandlerComponent } from './components/login-handler/login-handler.
         ClassificaComponent,
         LoginComponent,
         LoginHandlerComponent,
+        AddMovieComponent,
     ],
     imports: [
         BrowserModule,
