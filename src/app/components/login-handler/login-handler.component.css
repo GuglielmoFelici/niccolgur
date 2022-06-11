@@ -10,3 +10,7 @@ img {
 mat-menu {
     padding: 0;
 }
+
+.logout-btn {
+    color: red;
+}

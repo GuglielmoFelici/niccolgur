@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {Season, User} from '../../../ts/domain';
-import {images} from 'src/environments/environment';
-import {AuthService} from "../../../services/auth.service";
+import {profile_pics} from "../../../../environments/environment";
 
 @Component({
     selector: 'app-user-profile',
@@ -15,7 +14,7 @@ export class UserProfileComponent implements OnInit {
     user: User;
     seasons: Season[];
     users: User[];
-    images = images;
+    images = profile_pics;
     notFound = false;
     loading = true;
 

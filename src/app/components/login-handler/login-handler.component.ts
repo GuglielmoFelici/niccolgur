@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { assetsImages } from "../../../environments/environment";
+import {assetsImages, profile_pics} from "../../../environments/environment";
 import { Router } from "@angular/router";
 import { StorageService } from "../../services/storage-service.service";
 import { AuthService } from "../../services/auth.service";
@@ -21,13 +21,13 @@ export class LoginHandlerComponent implements OnInit {
     }
 
 
+    isUserLoggedIn = () => this.storage.isLoggedIn
+
     getLoggedUser = () => this.storage.loggedUser
 
     getLoginImage = () => this.isUserLoggedIn()
-        ? this.storage.loggedUser && this.storage.loggedUser.img
+        ? this.storage.loggedUser && `${profile_pics}/${this.storage.loggedUser.id}.jpg`
         : assetsImages + '/login.png'
-
-    isUserLoggedIn = () => this.storage.isLoggedIn
 
     login() {
         this.router.navigate(

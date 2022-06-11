@@ -9,11 +9,11 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = localStorage.getItem("jwt") // TODO const key
+        const token = localStorage.getItem('token') || sessionStorage.getItem('token')
         return next.handle(
             token
                 ? request.clone({
-                    headers: request.headers.set("Authorization", `Bearer ${token}` )
+                    headers: request.headers.set("Authorization", `Token ${token}` )
                 })
                 : request
         );

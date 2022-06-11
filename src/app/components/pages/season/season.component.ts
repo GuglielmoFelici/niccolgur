@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NiccolgurManagerService} from '../../../services/niccolgur-manager.service';
 import {MatOptionSelectionChange} from '@angular/material';
-import {images} from 'src/environments/environment';
+import {profile_pics} from "../../../../environments/environment";
 
 @Component({
     selector: 'app-season',
@@ -15,7 +15,7 @@ export class SeasonComponent implements OnInit {
     seasonsOptions = [];
     season = [];
     error;
-    images = images;
+    images = profile_pics;
 
     constructor(private niccolgurManager: NiccolgurManagerService) {
     }

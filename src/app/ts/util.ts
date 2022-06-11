@@ -1,4 +1,4 @@
-import {images} from "../../environments/environment";
+import {profile_pics} from "../../environments/environment";
 import {User} from "./domain";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
@@ -6,7 +6,7 @@ import {map} from "rxjs/operators";
 export const scrollToTop = () => window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
 
 export const addImageUrl = (usr: User) => ({
-    img: images + `/id/${usr.id}`,
+    img: `${profile_pics}/${usr.id}.jpg`,
     ...usr
 })
 

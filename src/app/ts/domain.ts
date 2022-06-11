@@ -19,9 +19,9 @@ export interface User {
     img?: string;
 }
 
-export interface Token {
-    payload: string,
-    expiration: number,
+export interface AuthData {
+    token: string,
+    user: User
 }
 
 export interface Niccolgur {

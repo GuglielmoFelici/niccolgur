@@ -1,13 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Token} from "../ts/domain";
+import {AuthData} from "../ts/domain";
 import {main} from "../../environments/environment";
 import {HttpClient} from "@angular/common/http";
-import * as moment from "moment";
+import {StorageService} from "./storage-service.service";
 import {tap} from "rxjs/operators";
-import {NiccolgurManagerService} from "./niccolgur-manager.service";
-import {TOKEN_EXPIRATION_KEY, TOKEN_PAYLOAD_KEY, USER_KEY} from "./storage-service.service";
-import {decryptToken} from "../ts/util";
 
 
 @Injectable({
@@ -16,30 +13,20 @@ import {decryptToken} from "../ts/util";
 export class AuthService {
 
     constructor(private http: HttpClient,
-                private niccService: NiccolgurManagerService) {
+                private storage: StorageService) {
     }
 
-    login(username: string, password: string): Observable<Token> {
+    login(username: string, password: string, store = false): Observable<AuthData> {
         return this.http
-            .post<Token>(main + '/login', {username, password}) // TODO estrarre endpoint
+            .post<AuthData>(main + '/api-token-auth/', {username, password})
             .pipe(
-                tap((tkn) => this.saveLogin(tkn, this.niccService))
-            );
-    }
-
-    saveLogin(token: Token, niccService: NiccolgurManagerService) {
-        const expiresAt = moment().add(token.expiration, 'second');
-        localStorage.setItem(TOKEN_PAYLOAD_KEY, token.payload)
-        localStorage.setItem(TOKEN_EXPIRATION_KEY, JSON.stringify(expiresAt.valueOf()));
-        niccService.getUser(decryptToken(token.payload).sub)
-            .then(usr =>
-                localStorage.setItem(USER_KEY, JSON.stringify(usr)))
+                tap(authData =>
+                    this.storage.setItem('auth_data', authData, store ? localStorage : sessionStorage)));
     }
 
     logout() {
-        localStorage.removeItem(TOKEN_PAYLOAD_KEY);
-        localStorage.removeItem(TOKEN_EXPIRATION_KEY);
-        localStorage.removeItem(USER_KEY);
+        localStorage.removeItem('auth_data');
+        sessionStorage.removeItem('auth_data');
     }
 
 }

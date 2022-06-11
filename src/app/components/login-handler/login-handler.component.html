@@ -2,5 +2,5 @@
 <mat-menu #menu>
     <button *ngIf="!isUserLoggedIn()" mat-menu-item (click)="login()">Login</button>
     <button *ngIf="isUserLoggedIn()" mat-menu-item (click)="profilo()">Profilo</button>
-    <button *ngIf="isUserLoggedIn()" mat-menu-item (click)="logout()">Logout</button>
+    <button *ngIf="isUserLoggedIn()" mat-menu-item (click)="logout()" class="logout-btn">Logout</button>
 </mat-menu>

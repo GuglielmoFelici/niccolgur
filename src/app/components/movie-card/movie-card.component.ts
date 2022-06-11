@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Niccolgur} from '../../ts/domain';
 import {StorageService} from '../../services/storage-service.service';
 import {NiccolgurManagerService} from '../../services/niccolgur-manager.service';
-import {images, movieTMDBPage} from 'src/environments/environment';
+import {movieTMDBPage, profile_pics} from 'src/environments/environment';
 
 @Component({
     selector: 'app-movie-card',
@@ -14,7 +14,7 @@ export class MovieCardComponent implements OnInit {
     @Input()
     niccolgur: Niccolgur;
 
-    images = images;
+    images = profile_pics;
     config;
 
 

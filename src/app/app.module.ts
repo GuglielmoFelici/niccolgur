@@ -30,6 +30,7 @@ import {AuthInterceptor} from "./services/auth-interceptor.service";
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import { LoginHandlerComponent } from './components/login-handler/login-handler.component';
 import { AddMovieComponent } from './components/pages/add-movie/add-movie.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { AddMovieComponent } from './components/pages/add-movie/add-movie.compon
         MatTableModule,
         _MatMenuDirectivesModule,
         MatMenuModule,
+        MatCheckboxModule,
     ],
     providers: [
         {

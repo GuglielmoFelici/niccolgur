@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Season, Token, User } from '../ts/domain';
+import { Season, AuthData, User } from '../ts/domain';
 import { apiKey, main, movie, queue, seasons, users } from "../../environments/environment";
 
 @Injectable({
