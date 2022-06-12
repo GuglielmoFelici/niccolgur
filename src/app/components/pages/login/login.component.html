@@ -1,14 +1,14 @@
-<form action="action_page.php" method="post">
+<form>
 <!--    <div class="imgcontainer">-->
 <!--        <img src="img_avatar2.png" alt="Avatar" class="avatar">-->
 <!--    </div>-->
 
     <div class="container">
-        <input [(ngModel)]="username" type="text" placeholder="Enter Username" name="uname" required >
+        <input [(ngModel)]="username" type="text" placeholder="Username" name="uname" required >
 
-        <input [(ngModel)]="pw" type="password" placeholder="Enter Password" name="psw" required>
+        <input [(ngModel)]="pw" type="password" placeholder="Password" name="psw" required>
 
-        <mat-checkbox (change)="toggleStore($event)">Keep me logged in</mat-checkbox>
+        <mat-checkbox (change)="toggleStore($event)">Ricordami su questo dispositivo</mat-checkbox>
 
         <button (click)="doLogin()">Login</button>
 <!--        <label>-->
