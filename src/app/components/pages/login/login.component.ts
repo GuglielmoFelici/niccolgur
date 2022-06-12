@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     username: string;
     pw: string;
     store: boolean;
+    error = '';
 
     constructor(private service: AuthService,
                 private router: Router,
@@ -32,7 +33,8 @@ export class LoginComponent implements OnInit {
                         ? history.state.previous
                         : ''
                 ])
-            }
+            },
+            err => this.error = err.status === 400 ? 'Username e/o password errati' : 'Errore sconosciuto'
         )
     }
 

@@ -4,6 +4,9 @@
 <!--    </div>-->
 
     <div class="container">
+
+        <p class="error" *ngIf="error">{{error}}</p>
+
         <input [(ngModel)]="username" type="text" placeholder="Username" name="uname" required >
 
         <input [(ngModel)]="pw" type="password" placeholder="Password" name="psw" required>
