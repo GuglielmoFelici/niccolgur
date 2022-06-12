@@ -5,6 +5,7 @@ import {SeasonComponent} from './components/pages/season/season.component';
 import {UserProfileComponent} from './components/pages/user-profile/user-profile.component';
 import {ClassificaComponent} from './components/pages/classifica/classifica.component';
 import {LoginComponent} from "./components/pages/login/login.component";
+import {NiccuscarComponent} from "./components/pages/niccuscar/niccuscar.component";
 
 
 export const routes: Routes = [
@@ -26,6 +27,12 @@ export const routes: Routes = [
     {
         path: 'classifica',
         component: ClassificaComponent,
+        pathMatch: 'full',
+    },
+    {
+        path: 'niccuscar',
+        component: NiccuscarComponent,
+        canActivate: ['canActivateLoggedIn'],
         pathMatch: 'full',
     },
     {

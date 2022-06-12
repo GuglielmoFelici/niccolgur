@@ -15,8 +15,9 @@ export class NavbarComponent implements OnInit {
     current: TypeObject;
 
     tabs = [
-        new TypeObject('1', 'Queue', 'queue'),
-        new TypeObject('2', 'Season', 'season'),
+        {id: '1', desc: 'Queue', route: 'queue', show: () => true},
+        {id: '2', desc: 'Season', route: 'season', show: () => true},
+        {id: '3', desc: 'Niccuscar', route: 'niccuscar', show: () => true},
     ];
 
     constructor(private router: Router,
@@ -27,16 +28,16 @@ export class NavbarComponent implements OnInit {
         // se il path prevede parametri, si potrebbero usare le regex
         // TODO non funziona se viene omesso il path relativo all'inizio
         setTimeout(() => this.current =
-            this.tabs.find(tab => tab.data === window.location.href.split('/').pop()));
+            this.tabs.find(tab => tab.route === window.location.href.split('/').pop()));
     }
 
-    isCurrent(tab: TypeObject) {
+    isCurrent(tab) {
         return this.current && this.current.id === tab.id ? 'current' : '';
     }
 
-    tabOnClick(tab: TypeObject) {
+    tabOnClick(tab) {
         this.current = tab;
-        this.router.navigate([tab.data]).then(scrollToTop);
+        this.router.navigate([tab.route]).then(scrollToTop);
     }
 
 

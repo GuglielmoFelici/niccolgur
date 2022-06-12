@@ -24,13 +24,18 @@ import { UserProfileComponent } from './components/pages/user-profile/user-profi
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { UserStatsComponent } from './components/user-stats/user-stats.component';
 import { ClassificaComponent } from './components/pages/classifica/classifica.component';
-import {RouterModule} from "@angular/router";
+import {ActivatedRouteSnapshot, Router, RouterModule} from "@angular/router";
 import { LoginComponent } from './components/pages/login/login.component';
 import {AuthInterceptor} from "./services/auth-interceptor.service";
 import {_MatMenuDirectivesModule, MatMenuModule} from "@angular/material/menu";
 import { LoginHandlerComponent } from './components/login-handler/login-handler.component';
 import { AddMovieComponent } from './components/pages/add-movie/add-movie.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { NiccuscarComponent } from './components/pages/niccuscar/niccuscar.component';
+import {StorageService} from "./services/storage-service.service";
+import {CanActivateLoggedGuard} from "./services/can-activate-logged.guard";
+import { UserHeaderComponent } from './components/user-header/user-header.component';
+import { NiccuscarMovieCardComponent } from './components/pages/niccuscar/niccuscar-movie-card/niccuscar-movie-card.component';
 
 @NgModule({
     declarations: [
@@ -45,6 +50,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         LoginComponent,
         LoginHandlerComponent,
         AddMovieComponent,
+        NiccuscarComponent,
+        UserHeaderComponent,
+        NiccuscarMovieCardComponent,
     ],
     imports: [
         BrowserModule,
@@ -73,6 +81,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true,
+        },
+       {
+            provide: 'canActivateLoggedIn',
+            useClass: CanActivateLoggedGuard
         }
     ],
     bootstrap: [AppComponent]

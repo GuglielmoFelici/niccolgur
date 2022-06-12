@@ -1,0 +1,12 @@
+.grouping-select {
+    margin-top: 2%;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}

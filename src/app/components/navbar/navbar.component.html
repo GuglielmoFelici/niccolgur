@@ -1,11 +1,13 @@
 <div>
     <ul id="navbar">
-        <li *ngFor="let tab of tabs">
-            <a [className]="isCurrent(tab)"
-               (click)="tabOnClick(tab)">
-                {{tab.desc}}
-            </a>
-        </li>
+        <ng-container *ngFor="let tab of tabs" >
+            <li *ngIf="tab.show()">
+                <a [className]="isCurrent(tab)"
+                   (click)="tabOnClick(tab)">
+                    {{tab.desc}}
+                </a>
+            </li>
+        </ng-container>
         <li class="user">
             <app-login-handler></app-login-handler>
         </li>

@@ -1,0 +1,45 @@
+<mat-card class="movie-card card">
+    <mat-card-header>
+        <mat-card-title class="movie-title">{{niccolgur.movie_data?.title}}</mat-card-title>
+        <mat-card-subtitle>{{niccolgur.date}}</mat-card-subtitle>
+        <img mat-card-avatar [src]="niccolgur?.masterFull?.img" alt="">
+    </mat-card-header>
+    <!--    TODO immagine alternativa -->
+    <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)"  alt="">
+    <mat-card-content>
+
+        <div>
+            <mat-form-field >
+                <mat-select placeholder="Top 5 miglior film" [value]="'asdasd'">
+                    <mat-option *ngFor="let i of [1,2,3,4,5]"
+                                [value]="i"
+                                (onSelectionChange)="topFiveBest(i)">
+                        #{{i}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field >
+                <mat-select placeholder="Top 5 peggior film" [value]="'asdasd'">
+                    <mat-option *ngFor="let i of [1,2,3,4,5]"
+                                [value]="i"
+                                (onSelectionChange)="topFiveWorst(i)">
+                        #{{i}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div><mat-checkbox [checked]="votes.bestFromMaster?[niccolgur.masterFull.nickname] === niccolgur.movie_id"> Miglior film di {{niccolgur.masterFull.nickname}}</mat-checkbox></div>
+        <div><mat-checkbox> Peggior film di {{niccolgur.masterFull.nickname}}</mat-checkbox></div>
+        <div><mat-checkbox> Miglior tette/culo/fica</mat-checkbox></div>
+        <div><mat-checkbox> Miglior throw</mat-checkbox></div>
+        <div><mat-checkbox> Migliori memes</mat-checkbox></div>
+        <div><mat-checkbox> Film più difficile da guardare</mat-checkbox></div>
+        <div><mat-checkbox> Premio Cheguerini</mat-checkbox></div>
+        <div><mat-checkbox> Corona di Alloro</mat-checkbox></div>
+       <div> <mat-checkbox> Film più unexpected</mat-checkbox></div>
+<!--        Qua vanno le categorie-->
+    </mat-card-content>
+</mat-card>

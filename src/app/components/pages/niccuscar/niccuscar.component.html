@@ -1,0 +1,53 @@
+<ng-container *ngIf="!user">
+    <p>Caricamento...</p>
+</ng-container>
+<ng-container *ngIf="user">
+    <app-user-header [user]="user"></app-user-header>
+    <mat-tab-group>
+        <mat-tab>
+            <ng-template mat-tab-label>Vota</ng-template>
+            <mat-form-field class="grouping-select">
+                <mat-select placeholder="Cerca per season" [value]="'asdasd'">
+                    <mat-option *ngFor="let grouping of groupings"
+                                [value]="grouping.id"
+                                (onSelectionChange)="groupingChange($event, grouping.id)">
+                        {{grouping.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <div>
+                <mat-form-field class="season-select" *ngIf="selectedGrouping === 0">
+                    <mat-select [placeholder]="selectedSeason" [value]="'asdasd'">
+                        <mat-option *ngFor="let season of seasons"
+                                    [value]="season + 1"
+                                    (onSelectionChange)="seasonChange($event, season + 1)">
+                            Season {{season + 1}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field class="master-select" *ngIf="selectedGrouping === 1">
+                    <mat-select [placeholder]="selectedMaster.nickname" [value]="'asdasd'">
+                        <mat-option *ngFor="let master of masters"
+                                    [value]="master.id"
+                                    (onSelectionChange)="masterChange($event, master)">
+                            {{master.nickname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selectedGrouping === 2">
+                <input type="text" placeholder="Inizia a digitare...">
+            </div>
+
+            <app-niccuscar-movie-card *ngFor="let niccolgur of niccolgurs" [niccolgur]="niccolgur" [votes]="votes"></app-niccuscar-movie-card>
+
+        </mat-tab>
+        <mat-tab>
+            <ng-template mat-tab-label>Recap</ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</ng-container>

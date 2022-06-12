@@ -2,11 +2,7 @@
     <h2>Caricamento...</h2>
 </ng-container>
 <ng-container *ngIf="!loading && seasons && user && users">
-    <div>
-        <img [src]="user.img" alt="X" class="pp">
-        <h2> {{user.nickname}}</h2>
-        <p> {{user.bio}} <br> <br></p>
-    </div>
+    <app-user-header [user]="user"></app-user-header>
     <mat-tab-group>
 
         <mat-tab>

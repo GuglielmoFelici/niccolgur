@@ -14,7 +14,6 @@ export class UserProfileComponent implements OnInit {
     user: User;
     seasons: Season[];
     users: User[];
-    images = profile_pics;
     notFound = false;
     loading = true;
 
