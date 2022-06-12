@@ -32,4 +32,18 @@
 /* DESKTOP */
 
 @media only screen and (min-width: 800px) {
+
+    .charts {
+        max-width: 45%;
+        margin-top: 2%;
+        display: flex;
+    }
+
+
+    .hitvsmiss-chart {
+    }
+
+    .hit-by-master-chart {
+    }
+
 }

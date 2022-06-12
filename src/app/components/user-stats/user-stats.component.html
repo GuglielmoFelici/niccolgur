@@ -1,12 +1,13 @@
 <ng-container *ngIf="loading">
     <h2>Caricamento...</h2>
 </ng-container>
-<ng-container *ngIf="!loading">
+<div *ngIf="!loading" >
 
     <mat-card class="stats-card card">
         <mat-card-header>
             <mat-card-title class="movie-title">RANK: {{userRank}}</mat-card-title>
             <mat-card-subtitle>Skill rating: {{userSR}}</mat-card-subtitle>
+
             <img mat-card-avatar
                  class=""
                  [src]="userStatsData.srImage"
@@ -14,10 +15,10 @@
         </mat-card-header>
     </mat-card>
 
-    <h5>Niccolgur hittati</h5>
     <div class="chart-wrapper">
         <canvas baseChart
-                height="40%"
+                class="hitrate"
+                height="25%"
                 [data]="horizontalChart.data"
                 [chartType]="'horizontalBar'"
                 [labels]="horizontalChart.labels"
@@ -26,8 +27,11 @@
                 [options]="horizontalChart.options">
         </canvas>
     </div>
-    <div class="chart-wrapper marginBtm">
+
+    <div class="charts">
+
         <canvas baseChart
+                class="hitvsmiss-chart"
                 [data]="doughnutChart.data"
                 [labels]="doughnutChart.labels"
                 [chartType]="'doughnut'"
@@ -35,12 +39,9 @@
                 [plugins]="[chartLabels]"
                 [options]="doughnutChart.options">
         </canvas>
-    </div>
 
-    <h5>Percentuale Niccolgur hittati per master</h5>
-    <div class="chart-wrapper">
         <canvas baseChart
-                height="250%"
+                class="hit-by-master-chart"
                 [data]="barChart.data"
                 [labels]="barChart.labels"
                 [chartType]="'bar'"
@@ -48,4 +49,4 @@
                 [options]="barChart.options">
         </canvas>
     </div>
-</ng-container>
+</div>
