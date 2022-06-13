@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Season, AuthData, User } from '../ts/domain';
-import { apiKey, main, movie, queue, seasons, users } from "../../environments/environment";
+import {Season, AuthData, User, Niccolgur} from '../ts/domain';
+import {apiKey, main, movie, niccolgurs, queue, seasons, users} from "../../environments/environment";
 
 @Injectable({
     providedIn: 'root'
@@ -30,6 +30,14 @@ export class NiccolgurService {
         return this.http.get<User>(`${users}/${id}/`);
     }
 
+
+    /********************************************* Niccolgurs *********************************************
+     ***************************************************************************************************/
+
+
+    getNiccolgurs(userId: string) {
+        return this.http.get<Niccolgur[]>(`${niccolgurs}?user=${userId}`);
+    }
 
     /********************************************* Seasons *********************************************
      ***************************************************************************************************/

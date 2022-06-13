@@ -35,10 +35,6 @@ export class NiccuscarComponent implements OnInit {
             id: 1,
             name: "Cerca per master"
         },
-        {
-            id: 2,
-            name: "Cerca per nome"
-        },
     ];
 
     votes = {
@@ -51,9 +47,11 @@ export class NiccuscarComponent implements OnInit {
         bestMemes: '',
         hardest: '',
         cheguerini: '',
-        laurum: '',
+        virgilio: '',
         unexpected: '',
     }
+
+    movieCache = {}
 
     constructor(
         private manager: NiccolgurManagerService,
@@ -65,7 +63,7 @@ export class NiccuscarComponent implements OnInit {
             .then(
                 user => this.user = user
             ).catch(
-                e => this.error = 'Errore sconosciuto.'
+            e => this.error = 'Errore sconosciuto.'
         )
 
         this.manager.getSeasonsCount().then(
@@ -89,20 +87,41 @@ export class NiccuscarComponent implements OnInit {
     groupingChange(event: MatOptionSelectionChange, option) {
         if (event.source.selected) {
             this.selectedGrouping = option;
+            console.log(option);
+            if (option === 0) {
+                this.seasonChange(this.selectedSeason)
+            } else {
+                this.masterChange(this.selectedMaster)
+            }
         }
     }
 
-    seasonChange(event: MatOptionSelectionChange, option) {
-        if (event.source.selected) {
-            this.selectedSeason = option;
-        }
+    seasonChange(option) {
+        this.selectedSeason = option;
+        this.manager.getSeason(option)
+            .then(ssn => this.niccolgurs = ssn)
     }
 
-    masterChange(event: MatOptionSelectionChange, option) {
-        if (event.source.selected) {
-            this.selectedMaster = option;
-            this.manager.getSeason(option)
-                .then(ssn => this.niccolgurs = ssn)
+    masterChange(option) {
+        this.selectedMaster = option;
+        this.manager.getNiccolgurs(option)
+            .then(ssn => this.niccolgurs = ssn)
+    }
+
+    getMovie(id: string) {
+        if (!id) return
+        const movie = this.movieCache[id]
+        if (!movie) {
+            this.movieCache[id] = 'caching'
+            this.manager.getMovie(movie).then(
+                this.movieCache[id] = movie
+            )
+            return
+        }
+         else if (movie === 'caching') {
+            return
+        } else {
+            return movie
         }
     }
 

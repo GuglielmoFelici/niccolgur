@@ -2,6 +2,10 @@
     margin-top: 2%;
 }
 
+.grouping-select, .season-select, .master-select {
+    margin-right: 20px;
+}
+
 /* Full-width inputs */
 input[type=text], input[type=password] {
     padding: 12px 20px;

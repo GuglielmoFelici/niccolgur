@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
-import {Season, User} from '../ts/domain';
+import {Niccolgur, Season, User} from '../ts/domain';
 import {map, tap} from 'rxjs/operators';
 import {addImageUrl, pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
 
@@ -22,6 +22,11 @@ export class NiccolgurManagerService {
 
     async getUsersQueue(): Promise<User[]> {
         return pipeUsersWithImage(this.niccolgurService.getUsersQueue()).toPromise();
+    }
+
+    async getNiccolgurs(user: User): Promise<Niccolgur[]> {
+        return this.niccolgurService.getNiccolgurs(user.id).toPromise();
+
     }
 
     /********************************************* Seasons *********************************************

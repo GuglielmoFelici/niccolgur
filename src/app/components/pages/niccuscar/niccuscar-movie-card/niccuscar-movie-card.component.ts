@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Niccolgur} from "../../../../ts/domain";
 import {StorageService} from "../../../../services/storage-service.service";
 import {NiccolgurManagerService} from "../../../../services/niccolgur-manager.service";
+import {MatCheckboxChange} from "@angular/material/checkbox";
 
 @Component({
     selector: 'app-niccuscar-movie-card',
@@ -18,6 +19,7 @@ export class NiccuscarMovieCardComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log(this.niccolgur)
         this.storage.config.subscribe(config => this.config = config);
         this.manager.getMovie(this.niccolgur.movie_id, 'it').then(
             movie => {
@@ -49,5 +51,13 @@ export class NiccuscarMovieCardComponent implements OnInit {
 
     topFiveWorst(i: number) {
 
+    }
+
+    checkChange(categ: string, $event: MatCheckboxChange) {
+        if ($event.checked) {
+            this.votes[categ] = this.niccolgur.movie_id
+        } else {
+            this.votes[categ] = ''
+        }
     }
 }

@@ -25,6 +25,7 @@ export const main = 'http://localhost:8000'
 /* Niccolgur */
 export const queue = main + '/queue';
 export const users = main + '/users';
+export const niccolgurs = main + '/niccolgurs';
 // TODO restanti
 export const seasons = main + '/seasons';
 // export const niccolgurs = 'https://guglielmofelici.github.io/niccolgur/data/niccolgurs.json';

@@ -25,14 +25,12 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        // se il path prevede parametri, si potrebbero usare le regex
-        // TODO non funziona se viene omesso il path relativo all'inizio
-        setTimeout(() => this.current =
-            this.tabs.find(tab => tab.route === window.location.href.split('/').pop()));
     }
 
     isCurrent(tab) {
-        return this.current && this.current.id === tab.id ? 'current' : '';
+        // se il path prevede parametri, si dovrebbero usare le regex
+        const current = this.tabs.find(tab => tab.route === window.location.href.split('/').pop());
+        return current && current.id === tab.id ? 'current' : '';
     }
 
     tabOnClick(tab) {
