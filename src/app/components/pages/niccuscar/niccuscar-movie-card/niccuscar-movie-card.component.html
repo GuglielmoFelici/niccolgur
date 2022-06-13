@@ -6,81 +6,42 @@
             <img mat-card-avatar [src]="niccolgur?.masterFull?.img" alt="">
         </mat-card-header>
         <!--    TODO immagine alternativa -->
-        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="">
+<!--        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="">-->
         <mat-card-content>
 
-            <div>
+            <div *ngFor="let vote of votesAsArray('TOP5')">
                 <mat-form-field>
-                    <mat-select placeholder="Top 5 miglior film" [value]="'asdasd'">
+                    <mat-select [placeholder]="vote.name" [value]="'asdasd'">
                         <mat-option *ngFor="let i of [1,2,3,4,5]"
                                     [value]="i"
-                                    (onSelectionChange)="topFiveBest(i)">
+                                    (onSelectionChange)="topFiveChange(vote.key, i)">
                             #{{i}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
 
-            <div>
-                <mat-form-field>
-                    <mat-select placeholder="Top 5 peggior film" [value]="'asdasd'">
-                        <mat-option *ngFor="let i of [1,2,3,4,5]"
-                                    [value]="i"
-                                    (onSelectionChange)="topFiveWorst(i)">
-                            #{{i}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+            <div *ngFor="let vote of votesAsArray('MASTER')">
+
+                <div>
+                    <mat-checkbox [checked]="votes[vote.key]?.masterValues[niccolgur.master] === niccolgur"  (change)="masterChange(vote.key, $event)"
+                                  [disabled]="votes[vote.key]?.masterValues[niccolgur.master] && votes[vote.key]?.masterValues[niccolgur.master] !== niccolgur">
+                        {{vote.name}} {{niccolgur.masterFull.nickname}}</mat-checkbox>
+                </div>
+
             </div>
-            <div>
-                <mat-checkbox [checked]="votes.bestFromMaster[niccolgur.masterFull.nickname] === niccolgur.movie_id">
-                    Miglior film di {{niccolgur.masterFull.nickname}}</mat-checkbox>
+
+            <div *ngFor="let vote of votesAsArray('BINARY')">
+
+                <div>
+                    <mat-checkbox [checked]="votes[vote.key].values[0] === niccolgur"
+                                  [disabled]="votes[vote.key].values[0] && votes[vote.key].values[0] !== niccolgur"
+                                  (change)="checkChange(vote.key, $event)" >
+                        {{vote.name}}</mat-checkbox>
+                </div>
+
             </div>
-            <div>
-                <mat-checkbox [checked]="votes.worstFromMaster[niccolgur.masterFull.nickname] === niccolgur.movie_id">
-                    Peggior film di {{niccolgur.masterFull.nickname}}</mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.bestTits === niccolgur.movie_id"
-                              (change)="checkChange('bestTits', $event)"> Miglior tette/culo/fica
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.bestThrow === niccolgur.movie_id"
-                              (change)="checkChange('bestThrow', $event)"
-                > Miglior throw
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.bestMemes === niccolgur.movie_id"
-                              (change)="checkChange('bestMemes', $event)"
-                > Migliori memes
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.hardest === niccolgur.movie_id"
-                              (change)="checkChange('hardest', $event)"
-                > Film più difficile da guardare
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.cheguerini === niccolgur.movie_id"
-                              (change)="checkChange('cheguerini', $event)"
-                > Premio Cheguerini
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.virgilio === niccolgur.movie_id"
-                              (change)="checkChange('virgilio', $event)"
-                > Premio Virgilio
-                </mat-checkbox>
-            </div>
-            <div>
-                <mat-checkbox [checked]="votes.unexpected === niccolgur.movie_id"
-                              (change)="checkChange('unexpected', $event)"
-                > Film più unexpected
-                </mat-checkbox>
-            </div>
+
         </mat-card-content>
     </mat-card>
 </ng-container>

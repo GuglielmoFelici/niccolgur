@@ -1,8 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Niccolgur} from "../../../../ts/domain";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Niccolgur, User} from "../../../../ts/domain";
 import {StorageService} from "../../../../services/storage-service.service";
 import {NiccolgurManagerService} from "../../../../services/niccolgur-manager.service";
 import {MatCheckboxChange} from "@angular/material/checkbox";
+import {NiccuscarVote} from "../niccuscar.component";
+
 
 @Component({
     selector: 'app-niccuscar-movie-card',
@@ -13,17 +15,18 @@ export class NiccuscarMovieCardComponent implements OnInit {
 
     @Input() niccolgur: Niccolgur
     config;
-    @Input() votes;
+    @Input() votes: { [key: string] : NiccuscarVote};
+    @Output() votesChange = new EventEmitter<{ [key: string] : NiccuscarVote}>();
 
     constructor(private storage: StorageService, private manager: NiccolgurManagerService) {
     }
 
     ngOnInit(): void {
-        console.log(this.niccolgur)
         this.storage.config.subscribe(config => this.config = config);
         this.manager.getMovie(this.niccolgur.movie_id, 'it').then(
             movie => {
                 this.niccolgur.movie_data = movie;
+                console.log(this.niccolgur.movie_data);
                 return this.manager.getTagline(this.niccolgur.movie_id);
             })
             .then(
@@ -37,6 +40,10 @@ export class NiccuscarMovieCardComponent implements OnInit {
         });
     }
 
+    votesAsArray(typeFilter? : 'BINARY' | 'TOP5' | 'MASTER') {
+        return Object.entries(this.votes).map(val => val[1]).filter(v => v.type === typeFilter)
+    }
+
     getImageUrl(niccolgur: Niccolgur): string {
         if (this.config && niccolgur.movie_data && niccolgur.movie_data.poster_path) {
             return `${this.config.images.secure_base_url}/w500/${niccolgur.movie_data.poster_path}`;
@@ -45,19 +52,27 @@ export class NiccuscarMovieCardComponent implements OnInit {
         }
     }
 
-    topFiveBest(i: number) {
-
+    topFiveChange(key: string, i: number) {
+        this.votes[key].values[i] = this.niccolgur
+        this.votesChange.emit(this.votes)
     }
 
-    topFiveWorst(i: number) {
-
-    }
-
-    checkChange(categ: string, $event: MatCheckboxChange) {
+    masterChange(key: string, $event: MatCheckboxChange) {
         if ($event.checked) {
-            this.votes[categ] = this.niccolgur.movie_id
+            this.votes[key].masterValues[this.niccolgur.master] = this.niccolgur
         } else {
-            this.votes[categ] = ''
+            this.votes[key].masterValues[this.niccolgur.master] = undefined
         }
+        this.votesChange.emit(this.votes)
     }
+
+    checkChange(key: string, $event: MatCheckboxChange) {
+        if ($event.checked) {
+            this.votes[key].values[0] = this.niccolgur
+        } else {
+            this.votes[key].values = []
+        }
+        this.votesChange.emit(this.votes)
+    }
+
 }

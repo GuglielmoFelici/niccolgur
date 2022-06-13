@@ -1,9 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from "../../../ts/domain";
+import {Niccolgur, User} from "../../../ts/domain";
 import {StorageService} from "../../../services/storage-service.service";
 import {NiccolgurManagerService} from "../../../services/niccolgur-manager.service";
 import {MatOptionSelectionChange} from "@angular/material/core";
 
+export type NiccuscarVote = {
+    key: string,
+    name: string,
+    type: 'BINARY' | 'TOP5' | 'MASTER',
+    values: Niccolgur[]
+    masterValues?: {[key:string] : Niccolgur}
+}
 
 @Component({
     selector: 'app-niccuscar',
@@ -37,18 +44,75 @@ export class NiccuscarComponent implements OnInit {
         },
     ];
 
-    votes = {
-        bestMovie: {},
-        worstMovie: {},
-        bestFromMaster: {},
-        worstFromMaster: {},
-        bestTits: '',
-        bestThrow: '',
-        bestMemes: '',
-        hardest: '',
-        cheguerini: '',
-        virgilio: '',
-        unexpected: '',
+    votes: { [key: string] : NiccuscarVote} = {
+        bestMovie: {
+            key: 'bestMovie',
+            name: 'Miglior film',
+            type: 'TOP5',
+            values: [],
+        },
+        worstMovie: {
+            key: 'worstMovie',
+            name: 'Peggior film',
+            type: 'TOP5',
+            values: []
+        },
+        bestFromMaster: {
+            key: 'bestFromMaster',
+            name: 'Miglior film di ',
+            type: 'MASTER',
+            values: [],
+            masterValues: {},
+        },
+        worstFromMaster: {
+            key: 'worstFromMaster',
+            name: 'Peggior film di ',
+            type: 'MASTER',
+            values: [],
+            masterValues: {}
+        },
+        bestTits: {
+            key: 'bestTits',
+            name: 'Miglior tette/culo/fica',
+            type: 'BINARY',
+            values: []
+        },
+        bestThrow: {
+            key: 'bestThrow',
+            name: 'Miglior throw',
+            type: 'BINARY',
+            values: []
+        },
+        bestMemes: {
+            key: 'bestMemes',
+            name: 'Migliori memes',
+            type: 'BINARY',
+            values: []
+        },
+        hardest: {
+            key: 'hardest',
+            name: 'Film più difficile da guardare',
+            type: 'BINARY',
+            values: []
+        },
+        cheguerini: {
+            key: 'cheguerini',
+            name: 'Premio Cheguerini',
+            type: 'BINARY',
+            values: []
+        },
+        virgilio: {
+            key: 'virgilio',
+            name: 'Premio Virgilio',
+            type: 'BINARY',
+            values: []
+        },
+        unexpected: {
+            key: 'unexpected',
+            name: 'Film più unexpected',
+            type: 'BINARY',
+            values: []
+        },
     }
 
     movieCache = {}
@@ -81,8 +145,12 @@ export class NiccuscarComponent implements OnInit {
                 this.selectedMaster = users[0]
             }
         )
-
     }
+
+    votesAsArray(typeFilter? : 'BINARY' | 'TOP5' | 'MASTER') {
+        return Object.entries(this.votes).map(val => val[1]).filter(v => v.type === typeFilter)
+    }
+
 
     groupingChange(event: MatOptionSelectionChange, option) {
         if (event.source.selected) {
@@ -125,4 +193,8 @@ export class NiccuscarComponent implements OnInit {
         }
     }
 
+    votesChange(votes: { [p: string]: NiccuscarVote }) {
+        this.votes = votes;
+        // TODO send to server
+    }
 }

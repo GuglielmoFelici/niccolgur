@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     }
 
     doLogin() {
-        this.service.login(this.username, this.pw).subscribe(
+        this.service.login(this.username, this.pw, this.store).subscribe(
             _ => {
                 this.router.navigate([
                     history.state.previous

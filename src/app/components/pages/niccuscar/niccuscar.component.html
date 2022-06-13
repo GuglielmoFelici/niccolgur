@@ -7,15 +7,15 @@
         <mat-tab>
             <ng-template mat-tab-label>Vota</ng-template>
             <div>
-            <mat-form-field class="grouping-select">
-                <mat-select placeholder="Cerca per season" [value]="'asdasd'">
-                    <mat-option *ngFor="let grouping of groupings"
-                                [value]="grouping.id"
-                                (onSelectionChange)="groupingChange($event, grouping.id)">
-                        {{grouping.name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+                <mat-form-field class="grouping-select">
+                    <mat-select placeholder="Cerca per season" [value]="'asdasd'">
+                        <mat-option *ngFor="let grouping of groupings"
+                                    [value]="grouping.id"
+                                    (onSelectionChange)="groupingChange($event, grouping.id)">
+                            {{grouping.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <mat-form-field class="season-select" *ngIf="selectedGrouping === 0">
                     <mat-select [placeholder]="selectedSeason" [value]="'asdasd'">
@@ -40,43 +40,99 @@
                 <input type="text" placeholder="Inizia a digitare...">
             </div>
 
-            <app-niccuscar-movie-card *ngFor="let niccolgur of niccolgurs" [niccolgur]="niccolgur" [votes]="votes"></app-niccuscar-movie-card>
+            <app-niccuscar-movie-card *ngFor="let niccolgur of niccolgurs" [niccolgur]="niccolgur"
+                                      [votes]="votes"
+                                      (votesChange)="votesChange($event)"
+            ></app-niccuscar-movie-card>
 
         </mat-tab>
         <mat-tab>
             <ng-template mat-tab-label>Recap</ng-template>
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Miglior culo/tette/fica</td>
-                        <td *ngIf="votes.bestTits">{{getMovie(votes.bestTits)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Miglior throw</td>
-                        <td>{{getMovie(votes.bestThrow)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Migliori memes</td>
-                        <td>{{getMovie(votes.bestMemes)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Film più difficile da guardare</td>
-                        <td>{{getMovie(votes.hardest)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Film più unexpected</td>
-                        <td>{{getMovie(votes.unexpected)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Premio Cheguerini</td>
-                        <td>{{getMovie(votes.cheguerini)}}</td>
-                    </tr>
-                    <tr>
-                        <td>Premio Virgilio</td>
-                        <td>{{getMovie(votes.virgilio)}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+
+            <!--            VOTI TOP 5-->
+
+            <ng-container *ngFor="let vote of votesAsArray('TOP5')">
+                <h3>{{vote.name}}</h3>
+                <mat-table *ngIf="vote.type === 'TOP5'" [dataSource]="[1,2,3,4,5]">
+                    <ng-container matColumnDef="position">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let position">#{{position}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="votedMovie">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let position"> {{vote[position - 1]?.movie_data?.title || '-'}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="controls">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let position">
+                            <ng-container *ngIf="vote[position-1]">
+                                <mat-icon class="icon" [ngClass]="['icon', position===1 ? 'disabled' : '']">
+                                    arrow_upward
+                                </mat-icon>
+                                <mat-icon></mat-icon>
+                                <mat-icon class="icon" [ngClass]="['icon', position===5 ? 'disabled' : '']">
+                                    arrow_downward
+                                </mat-icon>
+                                <mat-icon></mat-icon>
+                                <mat-icon class="icon trash-icon">delete</mat-icon>
+                            </ng-container>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="['position', 'votedMovie', 'controls']"></mat-header-row>
+                    <mat-row *matRowDef="let myRowData; columns: ['position', 'votedMovie', 'controls']"></mat-row>
+
+
+                </mat-table>
+            </ng-container>
+
+
+            <!--            VOTI PER MASTER-->
+
+            <ng-container *ngFor="let vote of votesAsArray('MASTER')">
+                <h3>{{vote.name}}</h3>
+                <mat-table *ngIf="vote.type === 'MASTER'" [dataSource]="masters">
+                    <ng-container matColumnDef="master">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let master">{{master.nickname}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="votedMovie">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let master"> {{vote.masterValues[master.id]?.movie_data?.title || '-'}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="controls">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let master">
+                            <mat-icon class="icon trash-icon" *ngIf="vote.masterValues[master.id]">delete</mat-icon>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="['master', 'votedMovie', 'controls']"></mat-header-row>
+                    <mat-row *matRowDef="let myRowData; columns: ['master', 'votedMovie', 'controls']"></mat-row>
+                </mat-table>
+            </ng-container>
+
+            <!--            VOTI BINARI-->
+
+            <h3>Altre categorie</h3>
+            <mat-table [dataSource]="votesAsArray('BINARY')">
+                <ng-container matColumnDef="voteName">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let vote">{{vote.name}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="votedMovie">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let vote"> {{vote.values[0]?.movie_data?.title || '-'}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="controls">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let vote">
+                        <mat-icon class="icon trash-icon" *ngIf="vote.values[0]">delete</mat-icon>
+                    </mat-cell>
+                </ng-container>
+                <mat-header-row *matHeaderRowDef="['voteName', 'votedMovie', 'controls']"></mat-header-row>
+                <mat-row *matRowDef="let myRowData; columns: ['voteName', 'votedMovie', 'controls']"></mat-row>
+            </mat-table>
+
 
         </mat-tab>
     </mat-tab-group>
