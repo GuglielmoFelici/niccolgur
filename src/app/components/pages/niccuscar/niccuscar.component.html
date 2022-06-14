@@ -18,7 +18,7 @@
                 </mat-form-field>
 
                 <mat-form-field class="season-select" *ngIf="selectedGrouping === 0">
-                    <mat-select [placeholder]="selectedSeason" [value]="'asdasd'">
+                    <mat-select [placeholder]="selectedSeason" [value]="selectedSeason || ''">
                         <mat-option *ngFor="let season of seasons"
                                     [value]="season + 1"
                                     (onSelectionChange)="seasonChange(season + 1)">
