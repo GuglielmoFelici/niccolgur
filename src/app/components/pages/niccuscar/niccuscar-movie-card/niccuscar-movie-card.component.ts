@@ -26,7 +26,6 @@ export class NiccuscarMovieCardComponent implements OnInit {
         this.manager.getMovie(this.niccolgur.movie_id, 'it').then(
             movie => {
                 this.niccolgur.movie_data = movie;
-                console.log(this.niccolgur.movie_data);
                 return this.manager.getTagline(this.niccolgur.movie_id);
             })
             .then(
@@ -40,7 +39,7 @@ export class NiccuscarMovieCardComponent implements OnInit {
         });
     }
 
-    votesAsArray(typeFilter? : 'BINARY' | 'TOP5' | 'MASTER') {
+    votesAsArray(typeFilter? : 'TOP5' | 'MASTER') {
         return Object.entries(this.votes).map(val => val[1]).filter(v => v.type === typeFilter)
     }
 
@@ -52,27 +51,37 @@ export class NiccuscarMovieCardComponent implements OnInit {
         }
     }
 
-    topFiveChange(key: string, i: number) {
-        this.votes[key].values[i] = this.niccolgur
-        this.votesChange.emit(this.votes)
+
+    isCandidate(key:string, niccolgur: Niccolgur) {
+        return this.votes[key].candidates.includes(niccolgur)
     }
 
-    masterChange(key: string, $event: MatCheckboxChange) {
-        if ($event.checked) {
-            this.votes[key].masterValues[this.niccolgur.master] = this.niccolgur
+    addOrRemoveCandidate(key:string, niccolgur: Niccolgur, add: boolean) {
+        if (add) {
+            if (!this.votes[key].candidates.includes(niccolgur) ) {
+                this.votes[key].candidates.push(niccolgur)
+            }
         } else {
-            this.votes[key].masterValues[this.niccolgur.master] = undefined
+            this.votes[key].candidates = this.votes[key].candidates.filter(n => n !== niccolgur)
         }
         this.votesChange.emit(this.votes)
     }
 
-    checkChange(key: string, $event: MatCheckboxChange) {
-        if ($event.checked) {
-            this.votes[key].values[0] = this.niccolgur
+    isMasterCandidate(key:string, master: string, niccolgur: Niccolgur) {
+        return this.votes[key].masterCandidates[master]?.includes(niccolgur)
+    }
+
+    addOrRemoveMasterCandidate(key:string, master: string, niccolgur: Niccolgur, add: boolean) {
+        // bruttina questa logica ma per ora va bene
+        if (add) {
+            if (this.votes[key].masterCandidates[master] && !this.votes[key].masterCandidates[master].includes(niccolgur) ) {
+                this.votes[key].masterCandidates[master].push(niccolgur)
+            } else {
+                this.votes[key].masterCandidates[master] = [niccolgur]
+            }
         } else {
-            this.votes[key].values = []
+            this.votes[key].masterCandidates[master] = this.votes[key].masterCandidates[master].filter(n => n !== niccolgur)
         }
         this.votesChange.emit(this.votes)
     }
-
 }

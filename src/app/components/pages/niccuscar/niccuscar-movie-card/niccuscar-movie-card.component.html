@@ -8,39 +8,28 @@
         <!--    TODO immagine alternativa -->
 <!--        <img mat-card-image class="movie-img" [src]="getImageUrl(niccolgur)" alt="">-->
         <mat-card-content>
-
+            <h4>Candida per:</h4>
             <div *ngFor="let vote of votesAsArray('TOP5')">
-                <mat-form-field>
-                    <mat-select [placeholder]="vote.name" [value]="'asdasd'">
-                        <mat-option *ngFor="let i of [1,2,3,4,5]"
-                                    [value]="i"
-                                    (onSelectionChange)="topFiveChange(vote.key, i)">
-                            #{{i}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div>
+                    <mat-checkbox [checked]="isCandidate(vote.key, niccolgur)"
+                                  (change)="addOrRemoveCandidate(vote.key, niccolgur, $event.checked)" >
+                        {{vote.name}}
+                    </mat-checkbox>
+                </div>
+
             </div>
 
             <div *ngFor="let vote of votesAsArray('MASTER')">
 
                 <div>
-                    <mat-checkbox [checked]="votes[vote.key]?.masterValues[niccolgur.master] === niccolgur"  (change)="masterChange(vote.key, $event)"
-                                  [disabled]="votes[vote.key]?.masterValues[niccolgur.master] && votes[vote.key]?.masterValues[niccolgur.master] !== niccolgur">
+                    <mat-checkbox [checked]="isMasterCandidate(vote.key, niccolgur.master, niccolgur)"
+                                  (change)="addOrRemoveMasterCandidate(vote.key, niccolgur.master, niccolgur, $event.checked)">
                         {{vote.name}} {{niccolgur.masterFull.nickname}}</mat-checkbox>
                 </div>
 
             </div>
 
-            <div *ngFor="let vote of votesAsArray('BINARY')">
 
-                <div>
-                    <mat-checkbox [checked]="votes[vote.key].values[0] === niccolgur"
-                                  [disabled]="votes[vote.key].values[0] && votes[vote.key].values[0] !== niccolgur"
-                                  (change)="checkChange(vote.key, $event)" >
-                        {{vote.name}}</mat-checkbox>
-                </div>
-
-            </div>
 
         </mat-card-content>
     </mat-card>

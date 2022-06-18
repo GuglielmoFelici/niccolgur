@@ -1,0 +1,58 @@
+.disabled {
+    color: lightgray;
+}
+
+.icon:hover:not(.disabled) {
+    cursor: pointer;
+}
+
+.trash-icon {
+    color: darkred;
+}
+
+.selected {
+    color: green;
+}
+
+/* DESKTOP */
+
+@media only screen and (min-width: 800px) {
+
+
+    .card {
+        display: inline-block;
+        box-shadow: -2px -2px 3px -1px rgb(100, 100, 100);
+        vertical-align: top;
+        margin: 20px 0 0 10px;
+        width: 1000px;
+        min-height: 200px;
+    }
+
+    .card:hover {
+        box-shadow: -2px -2px 3px 4px rgb(100, 100, 100);
+        /*background: #eee;*/
+    }
+
+}
+
+/* MOBILE */
+
+@media only screen and (max-width: 799px) {
+
+    .card {
+        vertical-align: top;
+        margin: 20px 0 0 10px;
+        min-height: 170px;
+    }
+
+}
+
+.mat-column-position {
+    flex: 0 0 10%;
+}
+.mat-column-voted-movie {
+    flex: 0 0 70%;
+}
+.mat-column-controls {
+    flex: 0 0 20%;
+}

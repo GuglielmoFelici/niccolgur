@@ -1,0 +1,45 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>{{vote.name}}
+            <mat-form-field class="master-select" *ngIf="isMasterTable()">
+                <mat-select [placeholder]="selectedMaster?.nickname" [(value)]="selectedMaster">
+                    <mat-option *ngFor="let master of masters"
+                                [value]="master"
+                                (onSelectionChange)="masterChange(master, $event)">
+                        {{master.nickname}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-table *ngIf="hasData()" [dataSource]="datasource">
+            <ng-container matColumnDef="position">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let _; let i = index" [ngClass]="i < 5 ? 'selected' : ''">#{{i+1}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="votedMovie">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let candidate"> {{candidate?.movie_data?.title || '-'}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="controls">
+                <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                <mat-cell *matCellDef="let candidate; let i = index">
+                    <mat-icon class="icon" [ngClass]="['icon', i===0 ? 'disabled' : '']" (click)="moveCandidate(i, true)">
+                        arrow_drop_up
+                    </mat-icon>
+                    <mat-icon></mat-icon>
+                    <mat-icon class="icon" [ngClass]="['icon', i===vote.candidates.length-1 ? 'disabled' : '']" (click)="moveCandidate(i, false)">
+                        arrow_drop_down
+                    </mat-icon>
+                    <mat-icon></mat-icon>
+                    <mat-icon class="icon trash-icon" (click)="deleteCandidate(candidate)">delete</mat-icon>
+                </mat-cell>
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="['position', 'votedMovie', 'controls']"></mat-header-row>
+            <mat-row *matRowDef="let myRowData; columns: ['position', 'votedMovie', 'controls']"></mat-row>
+
+        </mat-table>
+        <p *ngIf="!hasData()">Nessun film candidato.</p>
+    </mat-card-content>
+</mat-card>

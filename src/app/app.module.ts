@@ -36,6 +36,7 @@ import {StorageService} from "./services/storage-service.service";
 import {CanActivateLoggedGuard} from "./services/can-activate-logged.guard";
 import { UserHeaderComponent } from './components/user-header/user-header.component';
 import { NiccuscarMovieCardComponent } from './components/pages/niccuscar/niccuscar-movie-card/niccuscar-movie-card.component';
+import { VoteTableComponent } from './components/pages/niccuscar/vote-table/vote-table.component';
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { NiccuscarMovieCardComponent } from './components/pages/niccuscar/niccus
         NiccuscarComponent,
         UserHeaderComponent,
         NiccuscarMovieCardComponent,
+        VoteTableComponent,
     ],
     imports: [
         BrowserModule,

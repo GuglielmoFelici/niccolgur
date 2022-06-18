@@ -7,9 +7,11 @@ import {MatOptionSelectionChange} from "@angular/material/core";
 export type NiccuscarVote = {
     key: string,
     name: string,
-    type: 'BINARY' | 'TOP5' | 'MASTER',
-    values: Niccolgur[]
-    masterValues?: {[key:string] : Niccolgur}
+    type: 'TOP5' | 'MASTER',
+    values: Niccolgur[],
+    masterValues?: { [key: string]: Niccolgur },
+    candidates: Niccolgur[],
+    masterCandidates?: { [key: string]: Niccolgur[] },
 }
 
 @Component({
@@ -33,6 +35,7 @@ export class NiccuscarComponent implements OnInit {
 
     selectedMaster;
 
+
     groupings = [
         {
             id: 0,
@@ -44,18 +47,20 @@ export class NiccuscarComponent implements OnInit {
         },
     ];
 
-    votes: { [key: string] : NiccuscarVote} = {
+    votes: { [key: string]: NiccuscarVote } = {
         bestMovie: {
             key: 'bestMovie',
             name: 'Miglior film',
             type: 'TOP5',
             values: [],
+            candidates: [],
         },
         worstMovie: {
             key: 'worstMovie',
             name: 'Peggior film',
             type: 'TOP5',
-            values: []
+            values: [],
+            candidates: [],
         },
         bestFromMaster: {
             key: 'bestFromMaster',
@@ -63,55 +68,66 @@ export class NiccuscarComponent implements OnInit {
             type: 'MASTER',
             values: [],
             masterValues: {},
+            candidates: [],
+            masterCandidates: {},
         },
         worstFromMaster: {
             key: 'worstFromMaster',
             name: 'Peggior film di ',
             type: 'MASTER',
             values: [],
-            masterValues: {}
+            masterValues: {},
+            candidates: [],
+            masterCandidates: {},
         },
         bestTits: {
             key: 'bestTits',
             name: 'Miglior tette/culo/fica',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         bestThrow: {
             key: 'bestThrow',
             name: 'Miglior throw',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         bestMemes: {
             key: 'bestMemes',
             name: 'Migliori memes',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         hardest: {
             key: 'hardest',
             name: 'Film più difficile da guardare',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         cheguerini: {
             key: 'cheguerini',
             name: 'Premio Cheguerini',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         virgilio: {
             key: 'virgilio',
             name: 'Premio Virgilio',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
         unexpected: {
             key: 'unexpected',
             name: 'Film più unexpected',
-            type: 'BINARY',
-            values: []
+            type: 'TOP5',
+            values: [],
+            candidates: [],
         },
     }
 
@@ -147,15 +163,17 @@ export class NiccuscarComponent implements OnInit {
         )
     }
 
-    votesAsArray(typeFilter? : 'BINARY' | 'TOP5' | 'MASTER') {
-        return Object.entries(this.votes).map(val => val[1]).filter(v => v.type === typeFilter)
+    votesAsArray(typeFilter?: 'TOP5' | 'TOP5' | 'MASTER') {
+        const votes = Object.entries(this.votes).map(val => val[1])
+        return typeFilter
+            ? votes.filter(v => v.type === typeFilter)
+            : votes
     }
 
 
     groupingChange(event: MatOptionSelectionChange, option) {
         if (event.source.selected) {
             this.selectedGrouping = option;
-            console.log(option);
             if (option === 0) {
                 this.seasonChange(this.selectedSeason)
             } else {
@@ -164,16 +182,20 @@ export class NiccuscarComponent implements OnInit {
         }
     }
 
-    seasonChange(option) {
-        this.selectedSeason = option;
-        this.manager.getSeason(option)
-            .then(ssn => this.niccolgurs = ssn)
+    seasonChange(option, event?) {
+        if (!event || event.source.selected) {
+            this.selectedSeason = option;
+            this.manager.getSeason(option)
+                .then(ssn => this.niccolgurs = ssn)
+        }
     }
 
-    masterChange(option) {
-        this.selectedMaster = option;
-        this.manager.getNiccolgurs(option)
-            .then(ssn => this.niccolgurs = ssn)
+    masterChange(option, event?) {
+        if (!event || event.source.selected) {
+            this.selectedMaster = option;
+            this.manager.getNiccolgurs(option)
+                .then(ssn => this.niccolgurs = ssn)
+        }
     }
 
     getMovie(id: string) {
@@ -185,8 +207,7 @@ export class NiccuscarComponent implements OnInit {
                 this.movieCache[id] = movie
             )
             return
-        }
-         else if (movie === 'caching') {
+        } else if (movie === 'caching') {
             return
         } else {
             return movie
@@ -197,4 +218,5 @@ export class NiccuscarComponent implements OnInit {
         this.votes = votes;
         // TODO send to server
     }
+
 }

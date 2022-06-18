@@ -15,14 +15,6 @@ input[type=text], input[type=password] {
     box-sizing: border-box;
 }
 
-.disabled {
-    color: lightgray;
-}
 
-.icon:hover:not(.disabled) {
-    cursor: pointer;
-}
 
-.trash-icon {
-    color: darkred;
-}
+
