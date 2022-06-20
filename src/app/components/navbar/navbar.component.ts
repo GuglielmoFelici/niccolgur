@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
     tabs = [
         {id: '1', desc: 'Queue', route: 'queue', show: () => true},
         {id: '2', desc: 'Season', route: 'season', show: () => true},
-        {id: '3', desc: 'Niccuscar', route: 'niccuscar', show: () => true},
+        // {id: '3', desc: 'Niccuscar', route: 'niccuscar', show: () => true},
     ];
 
     constructor(private router: Router,
