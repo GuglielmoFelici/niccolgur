@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {NiccolgurService} from './niccolgur.service';
 import {Niccolgur, Season, User} from '../ts/domain';
-import {map, tap} from 'rxjs/operators';
-import {addImageUrl, pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
+import {map} from 'rxjs/operators';
+import { pipeUsersWithImage, pipeUserWithImage} from "../ts/util";
 
 @Injectable({
     providedIn: 'root'
@@ -32,12 +32,9 @@ export class NiccolgurManagerService {
     /********************************************* Seasons *********************************************
      ***************************************************************************************************/
 
-    // TODO questa fix serve per il problema dell'indice della season nel backend
-    LAST_SEASON = '11'
 
     async getSeasonsCount(): Promise<string> {
-        return Promise.resolve(this.LAST_SEASON) // TODO rimuovere, vedi sopra
-        // return this.niccolgurService.getSeasonsCount().toPromise();
+        return this.niccolgurService.getSeasonsCount().toPromise();
     }
 
     async getSeason(seasonNumber: string): Promise<Season> {
