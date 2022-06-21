@@ -42,8 +42,7 @@ export class NiccolgurManagerService {
     }
 
     async getSeasonLast(): Promise<Season> {
-        return this.niccolgurService.getSeason(this.LAST_SEASON).toPromise() // TODO rimuovere, vedi sopra
-        //return this.niccolgurService.getSeasonLast().toPromise();
+        return this.niccolgurService.getSeasonLast().toPromise();
     }
 
     async getSeasons(): Promise<Season[]> {
